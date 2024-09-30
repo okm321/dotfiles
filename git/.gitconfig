@@ -1,0 +1,18 @@
+[include]
+  path = ~/dotfiles/git/user.conf
+
+[init]
+  defaultBranch = main
+
+[push]
+  default         = current
+  autoSetupRemote = true
+
+[fetch]
+  prune = true
+
+[alias]
+	# 現在いるブランチ名を取得してpushする
+  ps = "!git push origin $(git rev-parse --abbrev-ref @)"
+[core]
+	pager = git-split-diffs --color | less -RFX
