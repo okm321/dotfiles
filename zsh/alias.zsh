@@ -11,5 +11,5 @@ alias vim="nvim"
 alias view="nvim -R"
 alias c='clear'
 alias reload='exec $SHELL -l'
-alias cdf='cd "$(dirname "$(fzf --preview="bat --color=always {}")")"'
+alias cdf='cd "$(dirname "$(fzf --preview="bat --color=always  --height 100% {}")")"'
 alias tmux-load="tmux source-file ~/.config/tmux/.tmux.conf"

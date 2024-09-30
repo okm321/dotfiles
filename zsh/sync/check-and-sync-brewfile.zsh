@@ -3,11 +3,11 @@
 function check_and_sync_brewfile() {
   # 現在インストールされているパッケージ一覧を取得
   installed_packages=$(brew leaves && brew list --cask)
-  # .Brewfileに記載されているパッケージ一覧を取得
-  brewfile_packages=$(grep '^(brew|cask)' ~/dotfiles/homebrew/.Brewfile | awk '{gsub(/"/, "", $2); print $2}')
+  # Brewfileに記載されているパッケージ一覧を取得
+  brewfile_packages=$(grep '^(brew|cask)' ~/dotfiles/homebrew/Brewfile | awk '{gsub(/"/, "", $2); print $2}')
 
-  # インストールされていないパッケージをインストールし、.Brewfileに追加
-  echo ".Brewfileに記載されているがインストールされていないパッケージをインストールします:"
+  # インストールされていないパッケージをインストールし、Brewfileに追加
+  echo "Brewfileに記載されているがインストールされていないパッケージをインストールします:"
 
   installed_any=false
   while read -r package; do
@@ -24,8 +24,8 @@ function check_and_sync_brewfile() {
 
   echo
 
-  # .Brewfileに記載されていないがインストールされているパッケージを.Brewfileに追加
-  echo ".Brewfileに記載されていないがインストールされているパッケージを.Brewfileに追加します:"
+  # Brewfileに記載されていないがインストールされているパッケージをBrewfileに追加
+  echo "Brewfileに記載されていないがインストールされているパッケージをBrewfileに追加します:"
   installed_any=false
   while read -r package; do
     if ! echo "$brewfile_packages" | grep -q "^$package$"; then
@@ -34,18 +34,25 @@ function check_and_sync_brewfile() {
   done < <(echo "$installed_packages")
 
   if [ "$installed_any" = false ]; then
-    echo "すべてのパッケージがすでに.Brewfileに記載されています。"
+    echo "すべてのパッケージがすでにBrewfileに記載されています。"
   else
-    echo ".Brewfileの内容と実際のインストール状況が一致しません。"
-    echo ".Brewfileを再生成します。"
-    brew bundle dump --force --file=~/dotfiles/homebrew/.Brewfile
+    echo "Brewfileの内容と実際のインストール状況が一致しません。"
+    echo "Brewfileを再生成します。"
+    brew bundle dump --force --file=~/dotfiles/homebrew/Brewfile
   fi
 
 }
 
 # brewコマンドが実行された時に発火する
+# install uninstall upgrade caskのみ対応
 preexec() {
-  if [[ "$1" == brew* ]]; then
+  if [[ "$1" == brew && "$2" =~ ^(install|uninstall|upgrade|cask|tap)$ ]]; then
     check_and_sync_brewfile
   fi
 }
+
+# preexec() {
+#   if [[ "$1" == brew* ]]; then
+#     check_and_sync_brewfile
+#   fi
+# }
