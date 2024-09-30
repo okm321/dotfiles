@@ -5,8 +5,6 @@ source ~/dotfiles/zsh/sync/check-and-sync-brewfile.zsh
 
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec() {
-  echo "kokoyade"
-
   # npmのグローバルインストールを検知
   if [[ "$1" == npm\ install\ -g* ]]; then
     # npmでインストールされたパッケージ名を抽出
