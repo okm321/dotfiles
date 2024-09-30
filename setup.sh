@@ -16,4 +16,7 @@ source ~/dotfiles/replace-zsh.sh
 # gitをbrewのものに置き換え
 source ~/dotfiles/replace-git.sh
 
+# voltaをインストール
+source ~/dotfiles/volta/volta-init.sh
+
 printf "\n\e[36m🎊🎊 Finish setup my dotfiles 🎊🎊\e[m\n"
