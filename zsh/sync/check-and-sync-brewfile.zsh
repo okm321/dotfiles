@@ -46,5 +46,6 @@ function check_and_sync_brewfile() {
 # brewコマンドが実行された時に発火する
 preexec() {
   if [[ "$1" == brew* ]]; then
-    check_and_sync_brewfile fi
+    check_and_sync_brewfile
+  fi
 }

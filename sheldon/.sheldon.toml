@@ -26,8 +26,7 @@ apply = ["source"]
 
 # starship
 [plugins.starship]
-github = "starship/starship"
-run = 'eval "$(starship init zsh)"'
+inline = 'eval "$(starship init zsh)"'
 
 # zsh配下のファイルは遅延読み込みする
 [plugins.local-defers]
