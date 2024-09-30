@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Brewでzshがインストールされているか確認
+printf "\n\e[33m⚡\e[35mStart setup zsh \e[m\n"
 if ! brew list zsh &>/dev/null; then
-  echo "zshがインストールされていないため、インストールを開始します..."
+  printf "  \e[32mZsh is not installed, starting installation... \e[m\n"
   brew install zsh
 else
-  echo "zshはすでにインストールされています。"
+  printf "  Zsh is already installed. \n"
 fi
 
 # インストールしたzshのパスを取得
@@ -16,8 +17,15 @@ if ! grep -Fxq "$ZSH_PATH" /etc/shells; then
   echo "$ZSH_PATH" | sudo tee -a /etc/shells
 fi
 
-# デフォルトシェルをインストールしたzshに変更
-chsh -s "$ZSH_PATH"
+CURRENT_SHELL=$(dscl . -read ~/ UserShell | awk '{print $2}')
 
-# 設定の反映を促すメッセージ
-echo "brewでインストールしたzshをデフォルトシェルに設定しました。ターミナルを再起動してください。"
+# デフォルトシェルがすでにインストールしたzshか確認し、違う場合のみ変更
+if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
+  printf "  \e[32m♻️  Changing default shell to $ZSH_PATH... \e[m\n"
+  chsh -s "$ZSH_PATH"
+  printf "  \e[32m✅ Default shell changed to $ZSH_PATH. Please restart terminal. \e[m\n"]"
+else
+  echo " The default shell is already set to $ZSH_PATH.
+fi
+
+printf "\e[35m✅ Finish setup zsh \e[m\n"
