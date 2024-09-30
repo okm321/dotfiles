@@ -22,7 +22,7 @@ ln -sf ~/dotfiles/skhd ~/.config/skhd
 ln -sf ~/dotfiles/sheldon/.sheldon.toml ~/.sheldon.toml
 
 # starship
-ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
+ln -sf ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 
 # tmux/GitMux
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
