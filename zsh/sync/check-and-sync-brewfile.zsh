@@ -42,17 +42,3 @@ function check_and_sync_brewfile() {
   fi
 
 }
-
-# brewコマンドが実行された時に発火する
-# install uninstall upgrade caskのみ対応
-preexec() {
-  if [[ "$1" == brew && "$2" =~ ^(install|uninstall|upgrade|cask|tap)$ ]]; then
-    check_and_sync_brewfile
-  fi
-}
-
-# preexec() {
-#   if [[ "$1" == brew* ]]; then
-#     check_and_sync_brewfile
-#   fi
-# }
