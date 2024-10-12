@@ -3,6 +3,7 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
+tap "homeport/tap"
 tap "koekeishiya/formulae"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
@@ -16,6 +17,7 @@ brew "glib"
 brew "harfbuzz"
 brew "chafa"
 brew "eza"
+brew "fastfetch"
 brew "fd"
 brew "fzf"
 brew "gh"
@@ -52,6 +54,7 @@ brew "zsh-syntax-highlighting"
 brew "arl/arl/gitmux"
 brew "hashicorp/tap/terraform", link: false
 brew "hashicorp/tap/terraform-ls"
+brew "homeport/tap/termshot"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 brew "osx-cross/avr/avr-gcc@9"
@@ -59,14 +62,9 @@ brew "qmk/qmk/qmk"
 cask "alacritty"
 cask "fig"
 cask "font-agave-nerd-font"
+cask "font-envy-code-r-nerd-font"
+cask "font-fantasque-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
 vscode "4ops.terraform"
 vscode "adpyke.codesnap"
 vscode "akamud.vscode-javascript-snippet-pack"

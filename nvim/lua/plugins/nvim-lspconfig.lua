@@ -136,5 +136,10 @@ return {
 		lspconfig.taplo.setup({
 			capabilities = capabilities,
 		})
+
+		-- typos_lsp
+		lspconfig.typos_lsp.setup({
+			capabilities = capabilities,
+		})
 	end,
 }

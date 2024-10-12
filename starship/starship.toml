@@ -1,108 +1,164 @@
-# シェルプロンプトの間に空行を追加します
-add_newline = true
+[aws]
+symbol = "  "
 
-format = """
-[](fg:#7aa2f7)\
-$os\
-[ ](fg:#7aa2f7 bg:#1a1b26)\
-$directory\
-$git_branch\
-$git_status\
-$git_metrics\
-[](fg:#1a1b26)\
-$fill\
-([](fg:#1a1b26)$nodejs[](fg:208 bg:#1a1b26)$package)\
-([](fg:#1a1b26)$golang(bg:#1a1b26))\
-\n$character\
-"""
+[buf]
+symbol = " "
 
-right_format = """
-$cmd_duration
-$time
-"""
+[c]
+symbol = " "
 
-[os]
-format = "[$symbol]($style)"
-style = 'fg:#1a1b26 bg:#7aa2f7'
-disabled = false
-[os.symbols]
-Macos = "  " # nf-fa-apple
+[conda]
+symbol = " "
 
-# プロンプトの記号変更
-[character]
-success_symbol = "[󰀵 > ](bold green)"
-error_symbol = "[ > ](bold red)"
+[crystal]
+symbol = " "
 
-[status]
-style = "red"
-symbol = "🔴"
-format = '[\[$common_meaning$signal_name$maybe_int $status\]]($style) '
-map_symbol = true
-disabled = false
+[dart]
+symbol = " "
 
 [directory]
-truncation_length = 6
-truncation_symbol = ' '                                 # nf-fa-folder_open
-truncate_to_repo = false
-home_symbol = ' ~'                                      # nf-fa-home
-style = 'fg:#7aa2f7 bg:#1a1b26'
-read_only = ' 󰌾 '                                        # nf-md-lock
-read_only_style = 'fg:#f7768e bg:#1a1b26'
-format = '[$path]($style)[$read_only]($read_only_style)'
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
 
 [git_branch]
-symbol = '  '                                         # nf-fa-github_alt, nf-fa-code_fork
-truncation_symbol = ''
-style = 'fg:#7aa2f7 bg:#1a1b26'
-format = '[  $symbol$branch(:$remote_branch)]($style)' # nf-pl-left_soft_divider
+symbol = " "
 
-[git_status]
-style = 'fg:#e0af68 bg:#1a1b26'
-conflicted = '='
-ahead = '⇡${count}'
-behind = '⇣${count}'
-diverged = '⇕'
-up_to_date = '✓'
-untracked = '?'
-stashed = '∴'
-modified = '!${count}'
-renamed = '»'
-deleted = '✘'
-format = '([\[$all_status$ahead_behind\]]($style))'
+[golang]
+symbol = " "
 
-[git_metrics]
-added_style = 'fg:#9ece6a bg:#1a1b26'
-deleted_style = 'fg:#9ece6a bg:#1a1b26'
-format = '[+$added/-$deleted]($deleted_style)'
-disabled = false
+[guix_shell]
+symbol = " "
 
-[fill]
-symbol = '─'
-style = 'blue'
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
 
 [nodejs]
 symbol = " "
-style = 'fg:#9ece6a bg:#1a1b26'
-format = '[via $symbol($version )]($style)'
 
-[golang]
-symbol = "  󰟓 "
-style = "fg:#79d4fd bg:#1a1b26"
-format = '[via $symbol($version )]($style)'
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
 
 [package]
-format = '[ $symbol$version ]($style)'
-# オレンジのカラーをfgに当てる
-style = 'fg:#000000 bg:208'
+symbol = "󰏗 "
 
-[cmd_duration]
-min_time = 1
-style = 'fg:#e0af68'
-format = "[   $duration]($style)" # nf-pl-right_soft_divider, nf-mdi-clock
+[perl]
+symbol = " "
 
-[time]
-disabled = false
-style = 'fg:#73daca'
-format = '[   $time]($style)'
-time_format = '%T'
-utc_time_offset = '+9'
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
