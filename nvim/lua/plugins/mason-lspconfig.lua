@@ -17,6 +17,7 @@ return {
 				"jsonls",
 				"yamlls",
 				"taplo",
+				"typos_lsp",
 			}, -- 必要なLSPサーバーをインストール
 		})
 	end,
