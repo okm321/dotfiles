@@ -2,7 +2,7 @@
 
 function check_and_sync_brewfile() {
   # 現在インストールされているパッケージ一覧を取得
-  installed_packages=$(brew leaves && brew list --cask)
+  installed_packages=$(brew leaves && brew list --cask | tr ' ' '\n' | grep -v '^$')
   # Brewfileに記載されているパッケージ一覧を取得
   brewfile_packages=$(grep '^(brew|cask)' ~/dotfiles/homebrew/Brewfile | awk '{gsub(/"/, "", $2); print $2}')
 
