@@ -263,7 +263,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 		-- eslint_d の結果を変数に格納
 		local result = vim.fn.system(
-			"eslint_d --stdin --fix-to-stdout --stdin-filename " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+			"eslint_d --fix-to-stdout --stdin --stdin-filename " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
+			vim.api.nvim_buf_get_lines(0, 0, -1, true) -- ファイル内容をstdinに送る
 		)
 
 		-- eslint_d が成功した場合のみ修正を適用
