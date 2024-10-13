@@ -8,6 +8,7 @@ cssmodules-language-server
 cz-conventional-changelog
 dockerfile-language-server-nodejs
 eslint
+eslint_d
 git-cz
 git-split-diffs
 lehre
