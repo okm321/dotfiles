@@ -7,3 +7,6 @@ export SHELDON_CONFIG_FILE=$HOME/.sheldon.toml
 eval "$(sheldon source)"
 
 # zpro
+
+# bun completions
+[ -s "/Users/okm/.bun/_bun" ] && source "/Users/okm/.bun/_bun"
