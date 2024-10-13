@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [[ ! "$VOLTA_HOME" ]]; then
+# Voltaがインストールされていない場合はインストール
+if ! command -v volta &>/dev/null; then
   curl https://get.volta.sh | bash -s -- --skip-setup
   export VOLTA_HOME=~/.volta
   grep --silent "$VOLTA_HOME/bin" <<<$PATH || export PATH="$VOLTA_HOME/bin:$PATH"
