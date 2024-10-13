@@ -244,17 +244,17 @@ vim.cmd([[let g:terraform_fmt_on_save=1]])
 vim.cmd([[let g:terraform_align=1]])
 
 -- tsx, ts, js, jsxファイル保存時にeslint_dによるautofixを実行
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.tsx", "*.ts", "*.js", "*.jsx" },
-	callback = function()
-		-- カーソル位置の取得
-		local cursor = vim.api.nvim_win_get_cursor(0)
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = { "*.tsx", "*.ts", "*.js", "*.jsx" },
+-- 	callback = function()
+-- 		-- カーソル位置の取得
+-- 		local cursor = vim.api.nvim_win_get_cursor(0)
 
-		vim.cmd(
-			"%!eslint_d --stdin --fix-to-stdout --stdin-filename " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
-		) -- eslint_dによるautofixを実行
+-- 		vim.cmd(
+-- 			"%!eslint_d --stdin --fix-to-stdout --stdin-filename " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+-- 		) -- eslint_dによるautofixを実行
 
-		-- カーソル位置の設定
-		vim.api.nvim_win_set_cursor(0, cursor)
-	end,
-})
+-- 		-- カーソル位置の設定
+-- 		vim.api.nvim_win_set_cursor(0, cursor)
+-- 	end,
+-- })
