@@ -27,7 +27,7 @@ yabai --start-service
 skhd --start-service
 
 # TPMをクローン
-source ~/dotfiles/tpm/tpm-init.sh
+source ~/dotfiles/tmux/tpm-init.sh
 
 printf "\n\e[36m🎊🎊 Finish setup my dotfiles 🎊🎊\e[m\n"
 printf "\n\e[36m🎉🎉 Please restart your terminal 🎉🎉\e[m\n"
