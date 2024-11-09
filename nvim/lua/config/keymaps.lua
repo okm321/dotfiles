@@ -259,8 +259,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		-- eslint_d が成功した場合のみ修正を適用
 		if vim.v.shell_error == 0 then
 			vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result, "\n"))
-		else
-			print("eslint_d failed: " .. result)
+			-- else
+			-- 	print("eslint_d failed: " .. result)
 		end
 
 		-- カーソル位置の設定

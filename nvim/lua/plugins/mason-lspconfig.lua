@@ -18,6 +18,7 @@ return {
 				"yamlls",
 				"taplo",
 				"typos_lsp",
+				"sqls",
 			}, -- 必要なLSPサーバーをインストール
 		})
 	end,
