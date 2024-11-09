@@ -19,3 +19,5 @@ typescript-language-server
 vscode-langservers-extracted
 wrangler
 yaml-language-server
+sql-formatter
+sql-formatter-cli

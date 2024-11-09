@@ -23,6 +23,10 @@ return {
 						return #diag > 0
 					end,
 				},
+				sql_formatter = { -- sql-formatterの設定を追加
+					command = "sql-formatter",
+					args = { "-l", "postgresql" },
+				},
 			},
 			formatters_by_ft = {
 				javascript = { "prettier" },
@@ -37,6 +41,7 @@ return {
 				lua = { "stylua" },
 				["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+				sql = { "sql_formatter" }, -- SQL用のフォーマッターを追加
 			},
 			format_on_save = {
 				lsp_fallback = true,

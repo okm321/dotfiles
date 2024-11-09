@@ -16,6 +16,7 @@ return {
 			terraform = { "tflint" },
 			hcl = { "tflint" },
 			markdown = { "markdownlint-cli2" },
+			sql = { "sqlfluff" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

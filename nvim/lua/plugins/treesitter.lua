@@ -38,6 +38,7 @@ return {
 			"hcl",
 			"terraform",
 			"dockerfile",
+			"sql",
 		},
 		incremental_selection = {
 			enable = true,

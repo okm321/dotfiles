@@ -79,6 +79,11 @@ return {
 		-- gopls
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
+			settings = {
+				gopls = {
+					buildFlags = { "-tags=integration_handler,free_item_handler" },
+				},
+			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*.go",
@@ -101,6 +106,25 @@ return {
 				end
 				vim.lsp.buf.format({ async = false })
 			end,
+		})
+
+		--sqls
+		lspconfig.sqls.setup({
+			on_attach = function(client, bufnr)
+				require("sqls").on_attach(client, bufnr) -- require sqls.nvim
+				client.server_capabilities.documentFormattingProvider = false -- フォーマット機能を無効に
+				client.server_capabilities.documentRangeFormattingProvider = false -- 範囲指定のフォーマットも無効に
+			end,
+			settings = {
+				sqls = {
+					connections = {
+						{
+							driver = "postgresql",
+							dataSourceName = "host=127.0.0.1 port=5432 user=postgres password=password dbname=postgres sslmode=disable",
+						},
+					},
+				},
+			},
 		})
 
 		--html
