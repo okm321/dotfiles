@@ -21,3 +21,4 @@ wrangler
 yaml-language-server
 sql-formatter
 sql-formatter-cli
+@biomejs/biome

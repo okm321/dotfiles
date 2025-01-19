@@ -4,7 +4,7 @@ return {
 	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	keys = {
 		{ "<c-space>", desc = "Increment Selection" },
-		{ "<bs>", desc = "Decrement Selection", mode = "x" },
+		{ "<bs>",      desc = "Decrement Selection", mode = "x" },
 	},
 	opts = {
 		highlight = { enable = true },
@@ -39,6 +39,8 @@ return {
 			"terraform",
 			"dockerfile",
 			"sql",
+			"scss",
+			"css"
 		},
 		incremental_selection = {
 			enable = true,

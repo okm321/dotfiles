@@ -111,8 +111,8 @@ return {
 		--sqls
 		lspconfig.sqls.setup({
 			on_attach = function(client, bufnr)
-				require("sqls").on_attach(client, bufnr) -- require sqls.nvim
-				client.server_capabilities.documentFormattingProvider = false -- フォーマット機能を無効に
+				require("sqls").on_attach(client, bufnr)                       -- require sqls.nvim
+				client.server_capabilities.documentFormattingProvider = false  -- フォーマット機能を無効に
 				client.server_capabilities.documentRangeFormattingProvider = false -- 範囲指定のフォーマットも無効に
 			end,
 			settings = {
@@ -134,6 +134,11 @@ return {
 
 		-- css
 		lspconfig.cssls.setup({
+			capabilities = capabilities,
+		})
+
+		-- biome
+		lspconfig.biome.setup({
 			capabilities = capabilities,
 		})
 
