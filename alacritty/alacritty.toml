@@ -1,11 +1,5 @@
-import = ["~/.config/alacritty/themes/themes/everforest_dark.toml"]
-# seashells
-# everforest
-# nordic
 
-live_config_reload = true
-
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = [
   "-l",
@@ -44,3 +38,13 @@ TERM = "alacritty-direct"
 
 [keyboard]
 bindings = [{ key = "B", mods = "Command", action = "None" }]
+
+[general]
+# seashells
+# everforest
+# nordic
+
+live_config_reload = true
+import = ["~/.config/alacritty/themes/themes/everforest_dark.toml"]
+
+[terminal]

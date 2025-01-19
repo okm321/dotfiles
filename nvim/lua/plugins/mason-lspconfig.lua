@@ -19,6 +19,7 @@ return {
 				"taplo",
 				"typos_lsp",
 				"sqls",
+				"biome"
 			}, -- 必要なLSPサーバーをインストール
 		})
 	end,
