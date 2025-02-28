@@ -2,6 +2,7 @@ local keymap = vim.keymap
 
 -- Leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Do not yank with x
 keymap.set("n", "x", '"_x')
@@ -38,7 +39,14 @@ vim.api.nvim_set_keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", { noremap = true, s
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+vim.keymap.set("n", "<C-w><down>", "<C-w>-")
+
+-- 間違えてマクロ記録を始めないようにkeymap
+vim.api.nvim_set_keymap("n", "M", "q", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "q", "<Nop>", { noremap = true, silent = true })
+
+-- highlightのクリア
+vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, silent = true })
 
 --- 再度入れるか考え直し ---
 
@@ -94,7 +102,6 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 -- 	[[<CMD>lua require('close_buffers').delete({type = 'hidden'})<CR>]],
 -- 	{ noremap = true, silent = true }
 -- )
-
 
 -- -- Telescope
 -- keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", {})
