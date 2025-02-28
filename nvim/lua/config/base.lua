@@ -16,7 +16,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
 vim.opt.list = true
-vim.opt.listchars = { tab = ">-", trail = "*", nbsp = "+" }
+vim.opt.listchars = { tab = "▏ ", trail = "*", nbsp = "+" }
 
 vim.opt.showmatch = true
 vim.opt.matchtime = 1
@@ -33,7 +33,7 @@ vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.inccommand = "split"
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.wrap = false          -- No wrap lines
+vim.opt.wrap = false -- No wrap lines
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*" })
