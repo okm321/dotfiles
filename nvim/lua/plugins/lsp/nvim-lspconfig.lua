@@ -27,8 +27,8 @@ return {
 
 			-- リネームと診断間の移動
 			keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-			keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-			keymap("n", "]d", vim.diagnostic.goto_next, opts)
+			keymap("n", "dp", vim.diagnostic.goto_prev, opts)
+			keymap("n", "dn", vim.diagnostic.goto_next, opts)
 
 			-- フォーマット
 			keymap("n", "<leader>f", function()
