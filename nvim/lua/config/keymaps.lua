@@ -4,8 +4,19 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- Do not yank with x
-keymap.set("n", "x", '"_x')
+-- dとcをブラックホールレジスタに送る
+vim.keymap.set("n", "d", '"_d', { noremap = true })
+vim.keymap.set("n", "D", '"_D', { noremap = true })
+vim.keymap.set("v", "d", '"_d', { noremap = true })
+vim.keymap.set("n", "dd", '"_dd', { noremap = true })
+vim.keymap.set("n", "c", '"_c', { noremap = true })
+vim.keymap.set("n", "C", '"_C', { noremap = true })
+vim.keymap.set("v", "c", '"_c', { noremap = true })
+
+-- xにオペレータとしての機能を追加（d自体の元の機能を使う）
+vim.keymap.set("n", "x", "d", { noremap = true })
+vim.keymap.set("n", "xx", "dd", { noremap = false }) -- 行全体の削除でヤンク
+vim.keymap.set("n", "X", "D", { noremap = false }) -- 行末までの削除でヤンク
 
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
@@ -50,97 +61,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 
 --- 再度入れるか考え直し ---
 
--- dial
--- vim.keymap.set("n", "+", function()
--- 	require("dial.map").manipulate("increment", "normal")
--- end)
--- vim.keymap.set("n", "-", function()
--- 	require("dial.map").manipulate("decrement", "normal")
--- end)
--- vim.keymap.set("n", "g+", function()
--- 	require("dial.map").manipulate("increment", "gnormal")
--- end)
--- vim.keymap.set("n", "g-", function()
--- 	require("dial.map").manipulate("decrement", "gnormal")
--- end)
--- vim.keymap.set("v", "+", function()
--- 	require("dial.map").manipulate("increment", "visual")
--- end)
--- vim.keymap.set("v", "-", function()
--- 	require("dial.map").manipulate("decrement", "visual")
--- end)
--- vim.keymap.set("v", "g+", function()
--- 	require("dial.map").manipulate("increment", "gvisual")
--- end)
--- vim.keymap.set("v", "g-", function()
--- 	require("dial.map").manipulate("decrement", "gvisual")
--- end)
-
--- copilot
--- vim.g.copilot_no_tab_map = true
--- vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
--- neo-tree
--- keymap.set("n", "<C-q>", ":Neotree toggle<Return>", { noremap = true, silent = true })
-
--- barbar
--- keymap.set("n", "<S-l>", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<S-h>", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<S-t>", "<Cmd>BufferRestore<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>e", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>bn", "<Cmd>BufferOrderByName<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>", { noremap = true, silent = true })
-
--- close-buffers
--- vim.keymap.set(
--- 	"n",
--- 	"<Leader>th",
--- 	[[<CMD>lua require('close_buffers').delete({type = 'hidden'})<CR>]],
--- 	{ noremap = true, silent = true }
--- )
-
--- -- Telescope
--- keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", {})
--- -- keymap.set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", {})
--- keymap.set("n", "<leader>fg", function()
--- 	require("telescope.builtin").live_grep({
--- 		glob_pattern = "!.git",
--- 	})
--- end, {})
--- -- keymap.set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", {})
--- keymap.set(
--- 	"n",
--- 	"<leader>fr",
--- 	"<CMD>Telescope frecency workspace=CWD prompt_title=frecency path_display={'filename_first'}<CR>",
--- 	{}
--- )
--- keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", {})
--- keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", {})
--- keymap.set("n", "<leader>gs", "<CMD>Telescope git_status<CR>", {})
--- keymap.set("n", "<leader>gc", "<CMD>Telescope git_commits<CR>", {})
--- keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", {})
--- -- Telescope file browser
--- keymap.set("n", "<leader>tfb", "<CMD>Telescope file_browser<CR>", {})
-
--- -- lspsaga or lsp
--- local opts = { noremap = true, silent = true }
--- vim.keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
--- vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
--- vim.keymap.set("n", "gd", "<Cmd>Lspsaga finder tyd+ref+imp+def<CR>", opts)
--- vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder ref<CR>", opts)
--- vim.keymap.set("n", "gi", "<Cmd>Lspsaga finder imp<CR>", opts)
--- vim.keymap.set("n", "gt", "<Cmd>Lspsaga goto_definition<CR>", opts)
--- vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
--- vim.keymap.set("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
--- vim.keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
-
--- vim.api.nvim_set_keymap("n", "M", "q", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "q", "<Nop>", { noremap = true, silent = true })
-
 -- keymap.set("n", "<leader>ch", "<cmd>Chowcho<cr>", { noremap = true, silent = true })
 
 -- -- https://zenn.dev/vim_jp/articles/38915175fe4648#fn-368c-2
@@ -150,16 +70,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 
 -- -- url-open
 -- vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
-
--- -- windows
--- local function cmd(command)
--- 	return table.concat({ "<Cmd>", command, "<CR>" })
--- end
-
--- vim.keymap.set("n", "<C-w>z", cmd("WindowsMaximize"))
--- vim.keymap.set("n", "<C-w>_", cmd("WindowsMaximizeVertically"))
--- vim.keymap.set("n", "<C-w>|", cmd("WindowsMaximizeHorizontally"))
--- vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))
 
 -- -- vim-doge
 -- vim.api.nvim_set_keymap("n", "<Leader>d", ":DogeGenerate<CR>", { noremap = true, silent = true })
@@ -204,45 +114,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 -- -- Same for visual
 -- vim.keymap.set("x", "gnh", "<cmd>STSSwapOrHoldVisual<cr>", { silent = true, noremap = true })
 
--- -- yanky
--- vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
--- vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
--- vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
--- vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
--- vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
--- vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
-
--- vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
--- vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
--- vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
--- vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
-
--- vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
--- vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
--- vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
--- vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
-
--- vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
--- vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
-
--- vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
--- vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
-
--- -- nvim-spectre
--- vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
--- 	desc = "Toggle Spectre",
--- })
--- vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
--- 	desc = "Search current word",
--- })
--- vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
--- 	desc = "Search current word",
--- })
--- vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
--- 	desc = "Search on current file",
--- })
-
 -- -- vim-terreform settings
 -- vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
 -- vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
@@ -251,54 +122,3 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 -- vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
 -- vim.cmd([[let g:terraform_fmt_on_save=1]])
 -- vim.cmd([[let g:terraform_align=1]])
-
--- tsx, ts, js, jsxファイル保存時にeslint_dによるautofixを実行
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = { "*.tsx", "*.ts", "*.js", "*.jsx" },
--- 	callback = function()
--- 		-- カーソル位置の取得
--- 		local cursor = vim.api.nvim_win_get_cursor(0)
-
--- 		-- eslint_d の結果を変数に格納
--- 		local result = vim.fn.system(
--- 			"eslint_d --fix-to-stdout --stdin --stdin-filename " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
--- 			vim.api.nvim_buf_get_lines(0, 0, -1, true) -- ファイル内容をstdinに送る
--- 		)
-
--- 		-- eslint_d が成功した場合のみ修正を適用
--- 		if vim.v.shell_error == 0 then
--- 			vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result, "\n"))
--- 			-- else
--- 			-- 	print("eslint_d failed: " .. result)
--- 		end
-
--- 		-- カーソル位置の設定
--- 		vim.api.nvim_win_set_cursor(0, cursor)
--- 	end,
--- })
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = { "*.tsx", "*.ts", "*.js", "*.jsx" },
--- 	callback = function()
--- 		-- カーソル位置の取得
--- 		local cursor = vim.api.nvim_win_get_cursor(0)
-
--- 		-- eslint_dまたはbiomeのどちらを使用するか選択
--- 		local command = vim.fn.executable("eslint_d") == 1
--- 				and "eslint_d --fix-to-stdout --stdin --stdin-filename "
--- 				or "biome check --stdin --write "
-
--- 		-- コマンドの実行結果を変数に格納
--- 		local result = vim.fn.system(
--- 			command .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
--- 			vim.api.nvim_buf_get_lines(0, 0, -1, true) -- ファイル内容をstdinに送る
--- 		)
-
--- 		-- コマンドが成功した場合のみ修正を適用
--- 		if vim.v.shell_error == 0 then
--- 			vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result, "\n"))
--- 		end
-
--- 		-- カーソル位置の設定
--- 		vim.api.nvim_win_set_cursor(0, cursor)
--- 	end,
--- })
