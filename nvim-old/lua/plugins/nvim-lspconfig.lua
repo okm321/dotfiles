@@ -49,6 +49,10 @@ return {
 					path = "/opt/homebrew/bin/terraform",
 				},
 			},
+			on_attach = function(client, bufnr)
+				-- セマンティックトークンを無効化
+				client.server_capabilities.semanticTokensProvider = nil
+			end,
 		})
 		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 			pattern = { "*.tf", "*.tfvars" },
