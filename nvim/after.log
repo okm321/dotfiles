@@ -1,0 +1,130 @@
+╭───────────────────────────────────────────────────────────╮
+│                           After                           │
+╰───────────────────────────────────────────────────────────╯
+Extra options: []
+Measured: 10 times
+
+Total Average: 29.576300 msec
+Total Max:     35.678000 msec
+Total Min:     27.023000 msec
+
+  AVERAGE       MAX       MIN
+------------------------------
+23.196400 28.043000 21.084000: /Users/okamotonaofumi/.config/nvim/init.lua
+ 1.722500  1.929000  1.595000: reading ShaDa
+ 1.419900  1.829000  1.140000: require('nvim-web-devicons')
+ 1.402800  1.845000  0.993000: expanding arguments
+ 1.292900  1.389000  1.183000: /Users/okamotonaofumi/.local/share/nvim/lazy/nord.nvim/colors/nord.lua
+ 1.136760  5.190000  0.083000: require('nord.colors')
+ 1.063100  1.336000  0.914000: require('config')
+ 0.764000  0.885000  0.715000: require('bufferline.hover')
+ 0.747500  1.008000  0.520000: require('nvim-web-devicons.icons-default')
+ 0.709100  1.071000  0.548000: /Users/okamotonaofumi/.local/share/nvim/lazy/copilot.vim/autoload/copilot.vim
+ 0.596700  1.104000  0.256000: require('nord')
+ 0.575800  0.725000  0.450000: require('lazy.view.commands')
+ 0.555300  0.775000  0.434000: require('lazy.core.loader')
+ 0.485200  0.616000  0.381000: require('lazy.manage')
+ 0.472000  0.752000  0.301000: /Users/okamotonaofumi/.local/share/nvim/lazy/accelerated-jk.nvim/plugin/accelerated-jk.lua
+ 0.467400  0.525000  0.389000: require('config.keymaps')
+ 0.426500  0.710000  0.328000: require('bufferline')
+ 0.412200  0.902000  0.332000: sourcing vimrc file(s)
+ 0.404900  0.474000  0.331000: require('vim._defaults')
+ 0.399100  0.493000  0.317000: require('lazy.manage.runner')
+ 0.362900  0.565000  0.276000: require('lazy.core.plugin')
+ 0.360400  0.387000  0.341000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/matchit.vim
+ 0.357750  0.642000  0.215000: require('nord.util')
+ 0.340500  0.532000  0.209000: require('accelerated-jk')
+ 0.319600  0.564000  0.141000: require('vim.diagnostic')
+ 0.295350  0.554000  0.176000: require('nord.theme')
+ 0.289800  0.563000  0.183000: require('nvim-web-devicons.default.icons_by_file_extension')
+ 0.264300  0.413000  0.199000: require('lazy.core.meta')
+ 0.237400  0.296000  0.204000: require('lazy.manage.task')
+ 0.222700  0.252000  0.194000: locale set
+ 0.221200  0.328000  0.150000: require('config.base')
+ 0.205000  0.261000  0.150000: require('bufferline.groups')
+ 0.186600  0.211000  0.164000: init lua interpreter
+ 0.185700  0.216000  0.165000: inits 3
+ 0.181100  0.455000  0.133000: require('plugin_manager')
+ 0.180100  0.198000  0.159000: inits 1
+ 0.164600  0.221000  0.123000: require('lazy.stats')
+ 0.142200  0.186000  0.117000: BufEnter autocommands
+ 0.140600  0.271000  0.086000: require('lazy.pkg')
+ 0.137900  0.173000  0.099000: require('nvim-web-devicons.default.icons_by_filename')
+ 0.132400  0.158000  0.076000: require('bufferline.ui')
+ 0.129600  0.145000  0.118000: init highlight
+ 0.128900  0.150000  0.115000: require('vim.loader')
+ 0.128700  0.145000  0.117000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/syntax/syntax.vim
+ 0.128400  0.153000  0.118000: /Users/okamotonaofumi/.local/share/nvim/lazy/copilot.vim/plugin/copilot.vim
+ 0.116800  0.238000  0.073000: require('nvim-web-devicons.filetypes')
+ 0.113500  0.119000  0.108000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/netrwPlugin.vim
+ 0.110900  0.155000  0.069000: require('bufferline.state')
+ 0.105800  0.154000  0.057000: require('bufferline.commands')
+ 0.105500  0.215000  0.065000: require('nvim-web-devicons.default.icons_by_operating_system')
+ 0.100200  0.116000  0.091000: require('lazy')
+ 0.099300  0.107000  0.092000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+ 0.096200  0.145000  0.072000: require('bufferline.config')
+ 0.094900  0.143000  0.068000: require('lazy.core.util')
+ 0.093800  0.106000  0.084000: require('vim.uri')
+ 0.093700  0.114000  0.076000: require('lazy.manage.process')
+ 0.093500  0.098000  0.082000: require('vim._init_packages')
+ 0.090600  0.114000  0.081000: require('lazy.core.handler')
+ 0.088900  0.153000  0.055000: require('bufferline.theme')
+ 0.088550  0.184000  0.018000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/filetype.lua
+ 0.088100  0.137000  0.051000: require('lazy.core.handler.ft')
+ 0.087200  0.104000  0.078000: require('lazy.core.config')
+ 0.085100  0.117000  0.063000: require('bufferline.utils')
+ 0.084400  0.118000  0.062000: require('bufferline.highlights')
+ 0.077500  0.104000  0.053000: require('lazy.async')
+ 0.075000  0.119000  0.062000: require('lazy.terminal')
+ 0.073900  0.085000  0.064000: early init
+ 0.073400  0.112000  0.055000: require('vim.version')
+ 0.071200  0.109000  0.048000: require('lazy.core.handler.cmd')
+ 0.071100  0.120000  0.036000: require('nord.named_colors')
+ 0.068200  0.102000  0.050000: require('lazy.core.handler.keys')
+ 0.068200  0.093000  0.060000: require('config.highlights')
+ 0.068100  0.124000  0.050000: require('accelerated-jk.config')
+ 0.066800  0.094000  0.050000: require('nvim-web-devicons.default.icons_by_window_manager')
+ 0.066200  0.115000  0.050000: require('nvim-web-devicons.default.icons_by_desktop_environment')
+ 0.066000  0.082000  0.054000: require('lazy.core.handler.event')
+ 0.065500  0.157000  0.049000: require('bufferline.lazy')
+ 0.064300  0.101000  0.049000: require('accelerated-jk.time_driven')
+ 0.063500  0.099000  0.050000: require('lazy.core.fragments')
+ 0.062200  0.082000  0.050000: require('bufferline.constants')
+ 0.062000  0.073000  0.055000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/rplugin.vim
+ 0.061900  0.087000  0.048000: require('bufferline.colors')
+ 0.061800  0.075000  0.058000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/gzip.vim
+ 0.060300  0.062000  0.059000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/matchparen.vim
+ 0.058500  0.119000  0.048000: require('config.macos')
+ 0.056400  0.061000  0.054000: require('vim._editor')
+ 0.052700  0.062000  0.048000: opening buffers
+ 0.047000  0.052000  0.039000: event init
+ 0.046600  0.053000  0.044000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/zipPlugin.vim
+ 0.039800  0.073000  0.031000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/man.lua
+ 0.034200  0.040000  0.030000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/editorconfig.lua
+ 0.033400  0.037000  0.032000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/tarPlugin.vim
+ 0.032900  0.061000  0.025000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/osc52.lua
+ 0.032500  0.051000  0.026000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/ftplugin.vim
+ 0.031500  0.036000  0.026000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/tohtml.lua
+ 0.026700  0.032000  0.024000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/syntax/synload.vim
+ 0.025800  0.036000  0.018000: /Users/okamotonaofumi/.local/share/nvim/lazy/copilot.vim/autoload/copilot/util.vim
+ 0.025700  0.029000  0.020000: init first window
+ 0.023700  0.025000  0.022000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/shada.vim
+ 0.019800  0.087000  0.011000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/indent.vim
+ 0.017800  0.020000  0.017000: require('vim.inspect')
+ 0.016000  0.018000  0.015000: require('vim.shared')
+ 0.015800  0.017000  0.015000: require('vim._options')
+ 0.015000  0.018000  0.013000: require('vim.fs')
+ 0.014100  0.020000  0.010000: /Users/okamotonaofumi/.local/share/nvim/lazy/nvim-web-devicons/plugin/nvim-web-devicons.vim
+ 0.012500  0.017000  0.009000: clear screen
+ 0.011700  0.016000  0.010000: --- NVIM STARTED ---
+ 0.008800  0.012000  0.007000: inits 2
+ 0.008100  0.010000  0.007000: require('ffi')
+ 0.007400  0.010000  0.006000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/tutor.vim
+ 0.007300  0.008000  0.007000: /opt/homebrew/Cellar/neovim/0.10.2_1/share/nvim/runtime/plugin/spellfile.vim
+ 0.005800  0.007000  0.005000: window checked
+ 0.005700  0.009000  0.004000: require('vim.keymap')
+ 0.004700  0.011000  0.002000: require('vim.F')
+ 0.002800  0.003000  0.002000: parsing arguments
+ 0.002800  0.006000  0.002000: init default mappings & autocommands
+ 0.001700  0.005000  0.001000: editing files in windows
+ 0.000000  0.000000  0.000000: --- NVIM STARTING ---
