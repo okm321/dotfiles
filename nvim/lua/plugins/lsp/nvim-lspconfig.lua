@@ -153,6 +153,13 @@ return {
 			handlers = handlers,
 		})
 
+		-- Marksman CSS
+		require("lspconfig").marksman.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			handlers = handlers,
+		})
+
 		-- JSON
 		require("lspconfig").jsonls.setup({
 			capabilities = capabilities,
@@ -243,6 +250,10 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			handlers = handlers,
+			init_options = {
+				diagnosticSeverity = "warning",
+				config = "./config/.typos.toml",
+			},
 		})
 
 		-- SQL
