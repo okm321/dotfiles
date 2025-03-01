@@ -5,7 +5,7 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } }, -- LSPからの補完
 		{ "hrsh7th/cmp-buffer", event = { "InsertEnter" } }, -- バッファからの補完
 		{ "hrsh7th/cmp-path", event = { "InsertEnter" } }, -- ファイルパスの補完
-		{ "hrsh7th/cmp-cmdline", event = { "InsertEnter" } }, -- コマンドラインの補完
+		{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } }, -- コマンドラインの補完
 		{ "L3MON4D3/LuaSnip", event = { "InsertEnter" } }, -- スニペットエンジン
 		{ "saadparwaiz1/cmp_luasnip", event = { "InsertEnter" } }, -- スニペット補完ソース
 		{ "rafamadriz/friendly-snippets", event = { "InsertEnter" } }, -- スニペットコレクション
