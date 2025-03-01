@@ -1,8 +1,7 @@
 -- lua/plugins/lsp/conform.lua
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
+	event = { "BufReadPre", "BufWritePre" },
 	keys = {
 		{
 			"<leader>F", -- <leader>fではなく<leader>Fに変更（LSPとの競合回避）

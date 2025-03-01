@@ -1,8 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp", -- LSPソースを補完エンジンに提供
+		{ "williamboman/mason-lspconfig.nvim" },
+		{ "hrsh7th/cmp-nvim-lsp" }, -- LSPソースを補完エンジンに提供
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
@@ -252,7 +252,7 @@ return {
 			handlers = handlers,
 			init_options = {
 				diagnosticSeverity = "warning",
-				config = "./config/.typos.toml",
+				config = "~/.config/nvim/lua/plugins/lsp/config/.typos.toml",
 			},
 		})
 

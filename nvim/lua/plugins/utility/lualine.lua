@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
 	config = function()
 		require("lualine").setup({
 			options = {
