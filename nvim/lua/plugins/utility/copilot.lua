@@ -1,6 +1,7 @@
 return {
 	"github/copilot.vim",
 	lazy = false, -- 挿入モードで読み込む
+	event = "InsertEnter",
 	config = function()
 		-- copilot
 		vim.g.copilot_no_tab_map = true

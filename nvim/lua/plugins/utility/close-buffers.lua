@@ -1,5 +1,6 @@
 return {
 	"kazhala/close-buffers.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		-- 設定例
 		require("close_buffers").setup({

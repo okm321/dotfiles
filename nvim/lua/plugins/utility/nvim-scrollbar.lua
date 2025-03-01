@@ -1,5 +1,19 @@
 return {
 	"petertriho/nvim-scrollbar",
+	event = {
+		"BufReadPre",
+		"BufNewFile",
+	},
+	-- event = {
+	-- 	"BufWinEnter",
+	-- 	"CmdwinLeave",
+	-- 	"TabEnter",
+	-- 	"TermEnter",
+	-- 	"TextChanged",
+	-- 	"VimResized",
+	-- 	"WinEnter",
+	-- 	"WinScrolled",
+	-- },
 	config = function()
 		require("scrollbar").setup({
 			handle = {
@@ -23,6 +37,7 @@ return {
 			excluded_filetypes = {
 				"neo-tree",
 				"dashboard",
+				"dropbar",
 			},
 		})
 	end,

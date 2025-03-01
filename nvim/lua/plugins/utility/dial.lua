@@ -3,25 +3,33 @@ return {
 	keys = {
 		{
 			"+",
-			"<Cmd>DialIncrement<CR>",
+			function()
+				require("dial.map").manipulate("increment", "normal")
+			end,
 			mode = { "n", "v" },
 			desc = "Increment number under the cursor",
 		},
 		{
 			"-",
-			"<Cmd>DialDecrement<CR>",
+			function()
+				require("dial.map").manipulate("decrement", "normal")
+			end,
 			mode = { "n", "v" },
 			desc = "Decrement number under the cursor",
 		},
 		{
 			"g+",
-			"<Cmd>DialIncrement<CR>",
+			function()
+				require("dial.map").manipulate("increment", "gnormal")
+			end,
 			mode = { "n", "v" },
 			desc = "Increment number under the cursor",
 		},
 		{
 			"g-",
-			"<Cmd>DialDecrement<CR>",
+			function()
+				require("dial.map").manipulate("decrement", "gnormal")
+			end,
 			mode = { "n", "v" },
 			desc = "Decrement number under the cursor",
 		},

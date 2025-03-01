@@ -1,5 +1,6 @@
 return {
 	"Darazaki/indent-o-matic",
+	event = { "BufWritePre" },
 	config = function()
 		require("indent-o-matic").setup({
 			max_lines = 2048,

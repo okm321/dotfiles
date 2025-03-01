@@ -1,5 +1,56 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	keys = {
+		{
+			"<leader>ff",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+			mode = "n",
+			desc = "Find files",
+		},
+		{
+			"<leader>fg",
+			function()
+				require("telescope.builtin").live_grep({
+					glob_pattern = "!.git",
+				})
+			end,
+			mode = "n",
+			desc = "Grep",
+		},
+		{
+			"<leader>fb",
+			"<CMD>Telescope buffers<CR>",
+			mode = "n",
+			desc = "Find buffers",
+		},
+		{
+			"<leader>fh",
+			"<CMD>Telescope help_tags<CR>",
+			mode = "n",
+			desc = "Find help tags",
+		},
+		{
+			"<leader>gs",
+			"<CMD>Telescope git_status<CR>",
+			mode = "n",
+			desc = "Git status",
+		},
+		{
+			"<leader>gc",
+			"<CMD>Telescope git_commits<CR>",
+			mode = "n",
+			desc = "Git commits",
+		},
+		{
+			"<leader>gb",
+			"<CMD>Telescope git_branches<CR>",
+			mode = "n",
+			desc = "Git branches",
+		},
+	},
+	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
@@ -7,8 +58,15 @@ return {
 			build = "make",
 		}, -- FZF ネイティブ拡張
 		"nvim-telescope/telescope-github.nvim",
+		{
+			"prochri/telescope-all-recent.nvim",
+			config = function()
+				require("telescope-all-recent").setup({})
+			end,
+			after = "telescope.nvim",
+			dependencies = "kkharji/sqlite.lua",
+		},
 	},
-	event = "VeryLazy",
 	config = function()
 		require("telescope").setup({
 			defaults = {
@@ -38,17 +96,5 @@ return {
 		})
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("gh")
-
-		vim.keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", {})
-		vim.keymap.set("n", "<leader>fg", function()
-			require("telescope.builtin").live_grep({
-				glob_pattern = "!.git",
-			})
-		end, {})
-		vim.keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", {})
-		vim.keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>", {})
-		vim.keymap.set("n", "<leader>gs", "<CMD>Telescope git_status<CR>", {})
-		vim.keymap.set("n", "<leader>gc", "<CMD>Telescope git_commits<CR>", {})
-		vim.keymap.set("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", {})
 	end,
 }
