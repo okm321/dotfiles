@@ -85,11 +85,9 @@ return {
 				find_files = {
 					hidden = true,
 					file_ignore_patterns = {
-						file_ignore_patterns = {
-							"^.git/",
-							"^node_modules/",
-							-- 他に無視したいパターンがあればここに追加
-						},
+						"^.git/",
+						"^node_modules/",
+						-- 他に無視したいパターンがあればここに追加
 					},
 				},
 			},

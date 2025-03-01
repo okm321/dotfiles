@@ -68,9 +68,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 -- vim.keymap.set("x", "<leader>r", 'y:%s/<C-r><C-r>"//g<Left><Left>')
 -- vim.keymap.set("n", "<leader>r", 'yiw:%s/<C-r><C-r>"//g<Left><Left')
 
--- -- url-open
--- vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
-
 -- -- vim-doge
 -- vim.api.nvim_set_keymap("n", "<Leader>d", ":DogeGenerate<CR>", { noremap = true, silent = true })
 
