@@ -6,7 +6,9 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = "nord",
-				disabled_filetypes = {},
+				disabled_filetypes = {
+					"dashboard",
+				},
 			},
 			sections = {
 				lualine_a = { "mode" },
