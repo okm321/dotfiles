@@ -21,7 +21,7 @@ return {
 			-- keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 			-- ドキュメント表示とコードアクション
-			keymap("n", "K", vim.lsp.buf.hover, opts)
+			-- keymap("n", "K", vim.lsp.buf.hover, opts)
 			keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 			keymap("n", "gj", vim.lsp.buf.definition, opts)
 
