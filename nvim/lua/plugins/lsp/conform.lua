@@ -53,7 +53,7 @@ return {
 				yaml = { "prettier" },
 				toml = { "taplo" },
 				-- SQL
-				sql = { "sqlformat" },
+				sql = { "sql_formatter" }, -- SQL用のフォーマッターを追加
 				-- Terraform
 				terraform = { "terraform_fmt" },
 				-- Docker
@@ -147,6 +147,10 @@ return {
 					options = {
 						search_parents = true,
 					},
+				},
+				sql_formatter = { -- sql-formatterの設定を追加
+					command = "sql-formatter",
+					args = { "-l", "postgresql" },
 				},
 			},
 		})
