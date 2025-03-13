@@ -16,3 +16,8 @@
   ps = "!git push origin $(git rev-parse --abbrev-ref @)"
 [core]
 	pager = git-split-diffs --color | less -RFX
+
+[delta]
+  side-by-side = true
+  syntax-theme = Nord 
+  line-numbers = true

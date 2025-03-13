@@ -71,6 +71,9 @@ return {
 					},
 					staticcheck = true,
 					gofumpt = true,
+					buildFlags = { "-tags=application_handler,free_item_handler" },
+					-- experimentalWorkspaceModule = true,
+					-- memoryMode = "DegradeClosed",
 				},
 			},
 		})
