@@ -3,19 +3,21 @@ return {
 	keys = {
 		{
 			"<leader>ff",
-			function()
-				require("telescope.builtin").find_files()
-			end,
+			-- function()
+			-- 	require("telescope.builtin").find_files()
+			-- end,
+			"<CMD>Telescope find_files<CR>",
 			mode = "n",
 			desc = "Find files",
 		},
 		{
 			"<leader>fg",
-			function()
-				require("telescope.builtin").live_grep({
-					glob_pattern = "!.git",
-				})
-			end,
+			-- function()
+			-- 	require("telescope.builtin").live_grep({
+			-- 		glob_pattern = "!.git",
+			-- 	})
+			-- end,
+			"<CMD>Telescope live_grep<CR>",
 			mode = "n",
 			desc = "Grep",
 		},
@@ -58,14 +60,14 @@ return {
 			build = "make",
 		}, -- FZF ネイティブ拡張
 		"nvim-telescope/telescope-github.nvim",
-		{
-			"prochri/telescope-all-recent.nvim",
-			config = function()
-				require("telescope-all-recent").setup({})
-			end,
-			after = "telescope.nvim",
-			dependencies = "kkharji/sqlite.lua",
-		},
+		-- {
+		-- 	"prochri/telescope-all-recent.nvim",
+		-- 	config = function()
+		-- 		require("telescope-all-recent").setup({})
+		-- 	end,
+		-- 	after = "telescope.nvim",
+		-- 	dependencies = "kkharji/sqlite.lua",
+		-- },
 	},
 	config = function()
 		require("telescope").setup({

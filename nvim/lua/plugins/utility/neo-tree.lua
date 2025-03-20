@@ -22,7 +22,7 @@ return {
 			},
 			filesystem = {
 				follow_current_file = {
-					enabled = false,
+					enabled = true,
 					leave_dirs_open = true,
 				},
 				use_libuv_file_watcher = true, -- パフォーマンス向上

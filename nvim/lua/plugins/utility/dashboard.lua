@@ -24,13 +24,17 @@ return {
 						icon_hl = "@variable",
 						desc = "Files",
 						group = "Label",
-						action = "Telescope find_files",
+						action = function()
+							Snacks.picker.smart()
+						end,
 						key = "f",
 					},
 					{
 						desc = "󰗊 Grep",
 						group = "DiagnosticHint",
-						action = "Telescope live_grep",
+						action = function()
+							Snacks.picker.grep()
+						end,
 						key = "l",
 					},
 					{

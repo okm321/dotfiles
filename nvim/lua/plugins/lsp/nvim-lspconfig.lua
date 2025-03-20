@@ -249,15 +249,15 @@ return {
 		})
 
 		-- Typos
-		require("lspconfig").typos_lsp.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-			init_options = {
-				diagnosticSeverity = "warning",
-				config = "~/.config/nvim/lua/plugins/lsp/config/.typos.toml",
-			},
-		})
+		-- require("lspconfig").typos_lsp.setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- 	handlers = handlers,
+		-- 	init_options = {
+		-- 		diagnosticSeverity = "warning",
+		-- 		config = "~/.config/nvim/lua/plugins/lsp/config/.typos.toml",
+		-- 	},
+		-- })
 
 		-- SQL
 		require("lspconfig").sqls.setup({
