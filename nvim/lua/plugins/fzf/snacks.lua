@@ -95,7 +95,46 @@ return {
 				{ section = "startup" },
 			},
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			sources = {
+				files = {
+					hidden = true,
+					ignored = true,
+					file_ignore_patterns = {
+						"^.git/",
+						"^node_modules/",
+						-- 他に無視したいパターンがあればここに追加
+					},
+					hide_by_name = {
+						"node_modules",
+					},
+					hide_by_pattern = { -- uses glob style patterns
+						--"*.meta",
+						--"*/src/*/tsconfig.json",
+					},
+					always_show = { -- remains visible even if other settings would normally hide it
+						".gitignored",
+					},
+					always_show_by_pattern = { -- uses glob style patterns
+						".env*",
+					},
+					never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+						".DS_Store",
+						"thumbs.db",
+					},
+					never_show_by_pattern = { -- uses glob style patterns
+						--".null-ls_*",
+					},
+				},
+			},
+			formatters = {
+				file = {
+					filename_first = true,
+					truncate = 70,
+				},
+			},
+		},
 		scroll = { enabled = true },
 	},
 	keys = {

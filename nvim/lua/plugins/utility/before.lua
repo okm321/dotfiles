@@ -22,13 +22,13 @@ return {
 			end,
 			mode = "n",
 		},
-		{
-			"<leader>oe",
-			function()
-				require("before").show_edits_in_telescope()
-			end,
-			mode = "n",
-		},
+		-- {
+		-- 	"<leader>oe",
+		-- 	function()
+		-- 		require("before").show_edits_in_telescope()
+		-- 	end,
+		-- 	mode = "n",
+		-- },
 	},
 	config = function()
 		local before = require("before")
