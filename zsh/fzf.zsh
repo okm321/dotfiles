@@ -8,3 +8,6 @@ export FZF_DEFAULT_COMMAND="fd -H -E .git -E node_modules --color=always"
 export FZF_CTRL_T_COMMAND="fd --type f -H -E .git -E node_modules"
 export FZF_ALT_C_COMMAND="fd --type d -H -E .git -E node_modules"
 export FZF_TMUX_OPTS="-p 80%"
+
+# fzfの設定
+source <(fzf --zsh)

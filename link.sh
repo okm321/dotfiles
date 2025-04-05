@@ -27,6 +27,20 @@ else
   printf "  🔥 gitconfig is already linked \n"
 fi
 
+# aider
+if [ ! -L ~/.aider.conf.yml ]; then
+  ln -sf ~/dotfiles/aider/.aider.conf.yml ~/.aider.conf.yml
+  printf "  \e[32m✅ Linked aider.conf \e[m\n"
+else
+  printf "  🔥 aider.conf is already linked \n"
+fi
+if [ ! -L ~/.aider.model.settings.yml ]; then
+  ln -sf ~/dotfiles/aider/.aider.model.settings ~/.aider.model.settings.yml
+  printf "  \e[32m✅ Linked aider.model.settings \e[m\n"
+else
+  printf "  🔥 aider.model.settings is already linked \n"
+fi
+
 # Neovim
 if [ ! -L ~/.config/nvim ]; then
   ln -sf ~/dotfiles/nvim ~/.config/nvim
