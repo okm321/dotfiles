@@ -1,2 +1,4 @@
 .zshrc.local
 /git/user.conf
+
+/aider/.aider.conf.yml
