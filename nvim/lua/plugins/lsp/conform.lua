@@ -140,7 +140,12 @@ return {
 					condition = function()
 						return vim.fn.executable("biome") == 1
 					end,
-					args = { "format", "--write", "--stdin-file-path", "$FILENAME" },
+					args = {
+						"check",
+						"--apply",
+						"--stdin-file-path",
+						"$FILENAME",
+					},
 				},
 				prettier = {
 					-- prettierの設定ファイル探索を深くする
