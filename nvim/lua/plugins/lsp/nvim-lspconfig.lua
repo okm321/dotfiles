@@ -2,12 +2,14 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "williamboman/mason-lspconfig.nvim" },
-		{ "hrsh7th/cmp-nvim-lsp" }, -- LSPソースを補完エンジンに提供
+		-- { "hrsh7th/cmp-nvim-lsp" }, -- LSPソースを補完エンジンに提供
+		{ "saghen/blink.cmp" },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		-- 共通の機能設定
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- 共通のキーマッピング
 		local on_attach = function(client, bufnr)
@@ -69,10 +71,11 @@ return {
 					analyses = {
 						unusedparams = true,
 					},
-					staticcheck = true,
+					staticcheck = false,
 					gofumpt = true,
-					buildFlags = { "-tags=application_handler,free_item_handler" },
-					-- experimentalWorkspaceModule = true,
+					usePlaceholders = true,
+					buildFlags = { "-tags=application_handler,free_item_handler,candidate_handler" },
+					experimentalWorkspaceModule = false,
 					-- memoryMode = "DegradeClosed",
 				},
 			},

@@ -1,10 +1,20 @@
 return {
-	"zbirenbaum/copilot.vim",
-	lazy = false, -- 挿入モードで読み込む
+	"zbirenbaum/copilot.lua",
+	cmd = "Copilot",
 	event = "InsertEnter",
 	config = function()
-		-- copilot
-		vim.g.copilot_no_tab_map = true
-		vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+		require("copilot").setup({
+			suggestion = {
+				auto_trigger = true,
+				keymap = {
+					accept = "<C-l>",
+					-- accept_word = true,
+					-- accept_line = true,
+					next = "<M-]>",
+					prev = "<M-[>",
+					dismiss = "<C-;>",
+				},
+			},
+		})
 	end,
 }

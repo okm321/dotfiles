@@ -135,7 +135,7 @@ return {
 				},
 			},
 		},
-		scroll = { enabled = true },
+		scroll = { enabled = false },
 	},
 	keys = {
 		-- Top Pickers & Explorer

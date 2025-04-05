@@ -1,5 +1,8 @@
 local keymap = vim.keymap
 
+vim.cmd("command! Nw noautocmd w")
+vim.cmd("command! Nwq noautocmd wq")
+
 -- Leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
