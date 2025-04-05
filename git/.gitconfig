@@ -21,3 +21,6 @@
   side-by-side = true
   syntax-theme = Nord 
   line-numbers = true
+
+[credential]
+	helper = store
