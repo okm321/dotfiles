@@ -37,7 +37,12 @@ return {
 			excluded_filetypes = {
 				"neo-tree",
 				"dashboard",
-				"dropbar",
+				"dropbar_menu",
+				"snacks_picker_print",
+				"snacks_picker_list",
+				"snacks_picker_preview",
+				"Glance",
+				"TelescopePrompt",
 			},
 		})
 	end,
