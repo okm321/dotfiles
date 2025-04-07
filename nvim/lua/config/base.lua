@@ -1,58 +1,64 @@
-vim.cmd("autocmd!")
+-- 既存のautocommandをクリア
+vim.api.nvim_clear_autocmds({})
 
+-- エンコーディング設定
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+-- 表示設定
 vim.wo.number = true
-
 vim.opt.title = true
+vim.opt.hlsearch = true
+vim.opt.showmatch = true
+vim.opt.matchtime = 1
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
+vim.opt.scrolloff = 10
+vim.opt.wrap = false -- 行の折り返しなし
+
+-- インデント設定
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.hlsearch = true
-
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.smarttab = true
+vim.opt.breakindent = true
 
+-- 特殊文字の表示
 vim.opt.list = true
 vim.opt.listchars = { tab = "▏ ", trail = "*", nbsp = "+" }
 
-vim.opt.showmatch = true
-vim.opt.matchtime = 1
-
+-- 検索設定
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.scrolloff = 10
-vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.inccommand = "split"
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.wrap = false -- No wrap lines
+
+-- ファイル関連設定
+vim.opt.backup = false
+vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.backspace = "start,eol,indent"
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.path:append({ "**" }) -- サブフォルダ内のファイル検索
 vim.opt.wildignore:append({ "*/node_modules/*" })
 
+-- LSP設定
 vim.lsp.set_log_level("ERROR")
 
--- Turn off paste mode when leaving insert
+-- オートコマンド
+-- インサートモードを抜けたときにペーストモードをオフ
 vim.api.nvim_create_autocmd("InsertLeave", {
 	pattern = "*",
-	command = "set nopaste",
+	callback = function()
+		vim.opt.paste = false
+	end,
 })
 
--- formatoptionsはバッファローカルなので、autocmdで設定する必要がある
+-- formatoptionsはバッファローカルなので、autocmdで設定
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt_local.formatoptions:append({ "r" })
 	end,
 })
-
--- cmdの代わりにLua APIを使用
-vim.opt.laststatus = 3
