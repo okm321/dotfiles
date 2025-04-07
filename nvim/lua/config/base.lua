@@ -46,6 +46,13 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 	command = "set nopaste",
 })
 
-vim.opt.formatoptions:append({ "r" })
+-- formatoptionsはバッファローカルなので、autocmdで設定する必要がある
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:append({ "r" })
+	end,
+})
 
-vim.cmd([[set laststatus=3]])
+-- cmdの代わりにLua APIを使用
+vim.opt.laststatus = 3
