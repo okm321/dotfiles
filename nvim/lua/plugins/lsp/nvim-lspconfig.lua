@@ -74,7 +74,7 @@ return {
 					staticcheck = false,
 					gofumpt = true,
 					usePlaceholders = true,
-					buildFlags = { "-tags=application_handler,free_item_handler,candidate_handler" },
+					buildFlags = { "-tagsapplication_handler,free_item_handler,candidate_handler,job_handler" },
 					experimentalWorkspaceModule = false,
 					-- memoryMode = "DegradeClosed",
 				},
@@ -252,15 +252,15 @@ return {
 		})
 
 		-- Typos
-		-- require("lspconfig").typos_lsp.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- 	handlers = handlers,
-		-- 	init_options = {
-		-- 		diagnosticSeverity = "warning",
-		-- 		config = "~/.config/nvim/lua/plugins/lsp/config/.typos.toml",
-		-- 	},
-		-- })
+		require("lspconfig").typos_lsp.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			handlers = handlers,
+			init_options = {
+				diagnosticSeverity = "warning",
+				config = "~/.config/nvim/lua/plugins/lsp/config/.typos.toml",
+			},
+		})
 
 		-- SQL
 		require("lspconfig").sqls.setup({
