@@ -62,3 +62,15 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.formatoptions:append({ "r" })
 	end,
 })
+
+-- なんかavanteでmonorepoの場合diff表示する時にnew bufになるから入れてる
+-- https://github.com/yetone/avante.nvim/issues/1759#issuecomment-2770887161
+-- local chdir = vim.api.nvim_create_augroup("chdir", {})
+--
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	group = chdir,
+-- 	nested = true,
+-- 	callback = function()
+-- 		vim.go.autochdir = not vim.bo.filetype:match("^Avante")
+-- 	end,
+-- })

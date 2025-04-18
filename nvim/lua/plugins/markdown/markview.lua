@@ -1,4 +1,5 @@
 return {
 	"OXY2DEV/markview.nvim",
-	ft = "markdown",
+	file_types = { "markdown", "Avante" },
+	ft = { "markdown", "Avante" },
 }

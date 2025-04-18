@@ -2,14 +2,14 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "williamboman/mason-lspconfig.nvim" },
-		-- { "hrsh7th/cmp-nvim-lsp" }, -- LSPソースを補完エンジンに提供
-		{ "saghen/blink.cmp" },
+		{ "hrsh7th/cmp-nvim-lsp" }, -- LSPソースを補完エンジンに提供
+		-- { "saghen/blink.cmp" },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		-- 共通の機能設定
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- 共通のキーマッピング
 		local on_attach = function(client, bufnr)
@@ -74,7 +74,7 @@ return {
 					staticcheck = false,
 					gofumpt = true,
 					usePlaceholders = true,
-					buildFlags = { "-tagsapplication_handler,free_item_handler,candidate_handler,job_handler" },
+					buildFlags = { "-tags=application_handler,free_item_handler,candidate_handler,job_handler" },
 					experimentalWorkspaceModule = false,
 					-- memoryMode = "DegradeClosed",
 				},
@@ -263,26 +263,26 @@ return {
 		})
 
 		-- SQL
-		require("lspconfig").sqls.setup({
-			capabilities = capabilities,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				require("sqls").on_attach(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-			handlers = handlers,
-			settings = {
-				sqls = {
-					connections = {
-						{
-							driver = "postgresql",
-							dataSourceName = "host=127.0.0.1 port=5432 user=postgres password=password dbname=postgres sslmode=disable",
-						},
-					},
-				},
-			},
-		})
+		-- require("lspconfig").sqls.setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = function(client, bufnr)
+		-- 		on_attach(client, bufnr)
+		-- 		require("sqls").on_attach(client, bufnr)
+		-- 		client.server_capabilities.documentFormattingProvider = false
+		-- 		client.server_capabilities.documentRangeFormattingProvider = false
+		-- 	end,
+		-- 	handlers = handlers,
+		-- 	settings = {
+		-- 		sqls = {
+		-- 			connections = {
+		-- 				{
+		-- 					driver = "postgresql",
+		-- 					dataSourceName = "host=127.0.0.1 port=5432 user=postgres password=password dbname=postgres sslmode=disable",
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
 		-- 診断表示の設定
 		vim.diagnostic.config({
@@ -298,18 +298,15 @@ return {
 				border = "rounded",
 				source = "always",
 			},
+			-- 新しい診断サイン設定
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "✘",
+					[vim.diagnostic.severity.WARN] = "▲",
+					[vim.diagnostic.severity.HINT] = "⚑",
+					[vim.diagnostic.severity.INFO] = "ℹ",
+				},
+			},
 		})
-
-		-- 診断アイコンの設定
-		local signs = {
-			{ name = "DiagnosticSignError", text = "✘" },
-			{ name = "DiagnosticSignWarn", text = "▲" },
-			{ name = "DiagnosticSignHint", text = "⚑" },
-			{ name = "DiagnosticSignInfo", text = "ℹ" },
-		}
-
-		for _, sign in ipairs(signs) do
-			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-		end
 	end,
 }

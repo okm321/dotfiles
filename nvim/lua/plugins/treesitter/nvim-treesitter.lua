@@ -4,7 +4,7 @@ return {
 	event = { "BufReadPost", "BufNewFile" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"windwp/nvim-ts-autotag", -- HTMLタグの自動閉じ
+		-- "windwp/nvim-ts-autotag", -- HTMLタグの自動閉じ
 	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -58,9 +58,9 @@ return {
 			indent = {
 				enable = true,
 			},
-			autotag = {
-				enable = true, -- HTMLタグの自動閉じを有効化
-			},
+			-- autotag = {
+			-- 	enable = true, -- HTMLタグの自動閉じを有効化
+			-- },
 			-- テキストオブジェクト
 			textobjects = {
 				move = {
