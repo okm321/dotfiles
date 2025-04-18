@@ -43,6 +43,9 @@ return {
 				"snacks_picker_preview",
 				"Glance",
 				"TelescopePrompt",
+				"AvanteInput",
+				"Avante",
+				"AvanteSelectedFiles",
 			},
 		})
 	end,

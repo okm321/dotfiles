@@ -24,6 +24,7 @@ multiplier = 3
 # Agave Nerd font
 # EnvyCodeR Nerd Font
 # Hack Nerd Font
+# Ubuntu Mono Nerd Font
 # normal = { family = "Agave Nerd Font", style = "Regular" }
 normal = { family = "Agave Nerd Font", style = "Regular" }
 bold = { family = "Agave Nerd Font", style = "Bold" }

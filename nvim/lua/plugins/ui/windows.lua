@@ -18,6 +18,10 @@ return {
 		vim.keymap.set("n", "<C-w>_", cmd("WindowsMaximizeVertically"))
 		vim.keymap.set("n", "<C-w>|", cmd("WindowsMaximizeHorizontally"))
 		vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))
-		require("windows").setup()
+		require("windows").setup({
+			ignore = {
+				filetype = { "Avante", "AvanteSelectedFiles", "AvanteInput" },
+			},
+		})
 	end,
 }

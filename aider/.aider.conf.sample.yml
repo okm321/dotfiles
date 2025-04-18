@@ -123,7 +123,7 @@
 # Cache settings:
 
 ## Enable caching of prompts (default: False)
-#cache-prompts: false
+cache-prompts: true
 
 ## Number of times to ping at 5min intervals to keep prompt cache warm (default: 0)
 #cache-keepalive-pings: false
@@ -207,10 +207,10 @@
 # Git settings:
 
 ## Enable/disable looking for a git repo (default: True)
-#git: true
+git: true
 
 ## Enable/disable adding .aider* to .gitignore (default: True)
-#gitignore: true
+gitignore: true
 
 ## Specify the aider ignore file (default: .aiderignore in git root)
 #aiderignore: .aiderignore
@@ -219,10 +219,10 @@
 #subtree-only: false
 
 ## Enable/disable auto commit of LLM changes (default: True)
-#auto-commits: true
+auto-commits: false
 
 ## Enable/disable commits when repo is found dirty (default: True)
-#dirty-commits: true
+dirty-commits: false
 
 ## Attribute aider code changes in the git author name (default: True)
 #attribute-author: true
@@ -237,7 +237,7 @@
 #attribute-commit-message-committer: false
 
 ## Enable/disable git pre-commit hooks with --no-verify (default: False)
-#git-commit-verify: false
+git-commit-verify: true
 
 ## Commit all pending changes with a suitable commit message, then exit
 #commit: false
