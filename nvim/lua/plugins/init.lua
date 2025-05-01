@@ -1,5 +1,7 @@
 return {
 	{ import = "plugins.git" },
+	{ import = "plugins.csv" },
+	{ import = "plugins.go" },
 	{ import = "plugins.color-scheme" },
 	{ import = "plugins.fzf" },
 	{ import = "plugins.lsp" },
