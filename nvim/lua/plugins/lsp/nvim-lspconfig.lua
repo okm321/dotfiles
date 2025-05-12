@@ -44,6 +44,12 @@ return {
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 		}
 
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			handlers = handlers,
+		})
+
 		-- 各言語サーバーの設定
 		-- TypeScript/JavaScript
 		require("lspconfig").ts_ls.setup({
@@ -62,10 +68,9 @@ return {
 		})
 
 		-- Go
-		require("lspconfig").gopls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
+		vim.lsp.config["gopls"] = {
+			cmd = { "gopls" },
+			filetype = { "go", "gomod", "gowork", "gotmpl" },
 			settings = {
 				gopls = {
 					analyses = {
@@ -76,10 +81,10 @@ return {
 					usePlaceholders = true,
 					buildFlags = { "-tags=application_handler,free_item_handler,candidate_handler,job_handler" },
 					experimentalWorkspaceModule = false,
-					-- memoryMode = "DegradeClosed",
 				},
 			},
-		})
+		}
+		vim.lsp.enable("gopls")
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*.go",
 			callback = function()
