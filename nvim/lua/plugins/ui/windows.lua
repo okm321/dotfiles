@@ -20,7 +20,7 @@ return {
 		vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))
 		require("windows").setup({
 			ignore = {
-				filetype = { "Avante", "AvanteSelectedFiles", "AvanteInput" },
+				filetype = { "Avante", "AvanteSelectedFiles", "AvanteInput", "trouble" },
 			},
 		})
 	end,

@@ -6,6 +6,10 @@ vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+-- 画面分割設定
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- 表示設定
 vim.wo.number = true
 vim.opt.title = true
