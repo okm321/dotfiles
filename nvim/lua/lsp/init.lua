@@ -1,0 +1,17 @@
+vim.lsp.enable({
+  "gopls",
+  "lua_ls",
+  "ts_ls",
+  "typos_lsp",
+  "eslint",
+  "html",
+  "css_variables",
+  "cssls",
+  "cssmodules_ls",
+  "marksman",
+  "dockerls",
+  "terraformls",
+  "jsonls",
+  "yamlls",
+  "taplo",
+})
