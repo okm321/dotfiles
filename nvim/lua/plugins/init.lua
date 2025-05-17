@@ -6,6 +6,7 @@ return {
 	{ import = "plugins.fzf" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.markdown" },
+	{ import = "plugins.obsidian" },
 	-- { import = "plugins.telescope" },
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.typescript" },
