@@ -72,7 +72,6 @@ return {
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
 			-- ドキュメント表示とコードアクション
-			-- keymap("n", "K", vim.lsp.buf.hover, opts)
 			keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 			keymap("n", "gj", vim.lsp.buf.definition, opts)
 			-- vsplitで定義ジャンプ

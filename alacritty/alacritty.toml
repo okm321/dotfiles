@@ -2,8 +2,8 @@
 program = "/bin/zsh"
 args = [
   "-l",
-  "-c",
-  "/opt/homebrew/bin/tmux a -t 0 || /opt/homebrew/bin/tmux -u",
+  # "-c",
+  # "/opt/homebrew/bin/tmux a -t 0 || /opt/homebrew/bin/tmux -u",
 ]
 
 [window]
@@ -25,7 +25,6 @@ multiplier = 3
 # EnvyCodeR Nerd Font
 # Hack Nerd Font
 # Ubuntu Mono Nerd Font
-# normal = { family = "Agave Nerd Font", style = "Regular" }
 normal = { family = "Agave Nerd Font", style = "Regular" }
 bold = { family = "Agave Nerd Font", style = "Bold" }
 italic = { family = "Agave Nerd Font", style = "Italic" }
