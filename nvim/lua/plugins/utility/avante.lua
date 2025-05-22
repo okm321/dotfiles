@@ -1,6 +1,6 @@
 return {
 	"yetone/avante.nvim",
-	fevent = "VeryLazy",
+	event = "BufReadPost",
 	version = false, -- これを "*" に設定しないでください！絶対に！
 	opts = {
 		-- ここにオプションを追加
