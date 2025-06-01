@@ -162,3 +162,8 @@ symbol = " "
 
 [zig]
 symbol = " "
+
+[time]
+disabled = false
+style = "cyan"
+format = '[\[$time\]]($style) '
