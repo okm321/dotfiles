@@ -74,39 +74,52 @@ return {
 				},
 			}),
 			formatting = {
-				format = lspkind.cmp_format({
-					mode = "symbol_text",
-					maxwidth = 50,
-					ellipsis_char = "...",
-					symbol_map = {
-						Text = "󰉿",
-						Method = "󰆧",
-						Function = "󰊕",
-						Constructor = "",
-						Field = "󰜢",
-						Variable = "󰀫",
-						Class = "󰠱",
-						Interface = "",
-						Module = "",
-						Property = "󰜢",
-						Unit = "󰑭",
-						Value = "󰎠",
-						Enum = "",
-						Keyword = "󰌋",
-						Snippet = "",
-						Color = "󰏘",
-						File = "󰈙",
-						Reference = "󰈇",
-						Folder = "󰉋",
-						EnumMember = "",
-						Constant = "󰏿",
-						Struct = "󰙅",
-						Event = "",
-						Operator = "󰆕",
-						TypeParameter = "",
-						Copilot = "",
-					},
-				}),
+				-- format = lspkind.cmp_format({
+				-- 	mode = "symbol_text",
+				-- 	maxwidth = 50,
+				-- 	ellipsis_char = "...",
+				-- 	symbol_map = {
+				-- 		Text = "󰉿",
+				-- 		Method = "󰆧",
+				-- 		Function = "󰊕",
+				-- 		Constructor = "",
+				-- 		Field = "󰜢",
+				-- 		Variable = "󰀫",
+				-- 		Class = "󰠱",
+				-- 		Interface = "",
+				-- 		Module = "",
+				-- 		Property = "󰜢",
+				-- 		Unit = "󰑭",
+				-- 		Value = "󰎠",
+				-- 		Enum = "",
+				-- 		Keyword = "󰌋",
+				-- 		Snippet = "",
+				-- 		Color = "󰏘",
+				-- 		File = "󰈙",
+				-- 		Reference = "󰈇",
+				-- 		Folder = "󰉋",
+				-- 		EnumMember = "",
+				-- 		Constant = "󰏿",
+				-- 		Struct = "󰙅",
+				-- 		Event = "",
+				-- 		Operator = "󰆕",
+				-- 		TypeParameter = "",
+				-- 		Copilot = "",
+				-- 	},
+				-- }),
+				formatting = {
+					format = function(entry, item)
+						local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+						item = require("lspkind").cmp_format({
+							-- any lspkind format settings here
+						})(entry, item)
+						if color_item.abbr_hl_group then
+							item.kind_hl_group = color_item.abbr_hl_group
+							item.kind = color_item.abbr
+						end
+						return item
+					end,
+				},
 			},
 		})
 

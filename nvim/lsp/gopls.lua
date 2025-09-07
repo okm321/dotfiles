@@ -7,7 +7,9 @@ vim.lsp.config("gopls", {
 			staticcheck = false,
 			gofumpt = true,
 			usePlaceholders = true,
-			buildFlags = { "-tags=application_handler,free_item_handler,candidate_handler,job_handler" },
+			buildFlags = {
+				"-tags=application_handler,free_item_handler,candidate_handler,job_handler,job_delivery_periodical_setting_handler,batch_periodical_job_delivery_handler,free_delivery_periodical_setting_handler,all_handler",
+			},
 			experimentalWorkspaceModule = false,
 		},
 	},
@@ -33,5 +35,5 @@ vim.lsp.config("gopls", {
 			end
 			vim.lsp.buf.format({ async = false })
 		end,
-	})
+	}),
 })
