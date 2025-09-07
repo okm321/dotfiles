@@ -26,3 +26,5 @@ if [ -f '/Users/okm/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/okm/google-
 if [ -f '/Users/okm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okm/google-cloud-sdk/completion.zsh.inc'; fi
 
 . "$HOME/.local/bin/env"
+
+eval "$(direnv hook zsh)"
