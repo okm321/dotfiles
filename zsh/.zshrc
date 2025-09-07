@@ -28,3 +28,7 @@ if [ -f '/Users/okm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okm/g
 . "$HOME/.local/bin/env"
 
 eval "$(direnv hook zsh)"
+alias claude="$HOME/.claude/local/claude"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+export PATH=/Users/okamotonaofumi/.humanlog/bin:$PATH
