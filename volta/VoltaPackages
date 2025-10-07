@@ -22,3 +22,7 @@ yaml-language-server
 sql-formatter
 sql-formatter-cli
 @biomejs/biome
+@aikidosec/safe-chain
+@openai/codex
+@anthropic-ai/claude-code
+@github/copilot-language-server

@@ -137,6 +137,23 @@ return {
 		},
 		scroll = { enabled = false },
 	},
+	config = function(_, opts)
+		require("snacks").setup(opts)
+		local nord = require("nord.named_colors")
+
+		local function set_snacks_picker_hl()
+			vim.api.nvim_set_hl(0, "SnacksPickerDir", { fg = nord.light_gray_bright })
+			vim.api.nvim_set_hl(0, "SnacksPickerMatch", { fg = nord.yellow, bold = true })
+			vim.api.nvim_set_hl(0, "SnacksPickerComment", { fg = nord.blue })
+		end
+
+		set_snacks_picker_hl()
+
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			callback = set_snacks_picker_hl,
+			desc = "Snacks picker highlight adjustments",
+		})
+	end,
 	keys = {
 		-- Top Pickers & Explorer
 		{

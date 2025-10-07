@@ -32,3 +32,5 @@ alias claude="$HOME/.claude/local/claude"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 export PATH=/Users/okamotonaofumi/.humanlog/bin:$PATH
+
+source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

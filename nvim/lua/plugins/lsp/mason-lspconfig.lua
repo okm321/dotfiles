@@ -48,6 +48,7 @@ return {
 			"typos_lsp", -- Typos
 			-- Markdown LSP
 			"marksman", -- Markdown LSP
+			"copilot",
 
 			-- リンター
 			"eslint_d",
