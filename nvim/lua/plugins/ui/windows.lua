@@ -28,8 +28,21 @@ return {
 					"snacks_terminal",
 					"neo-tree",
 					"sidekick_terminal",
+					"codex",
 				},
 			},
 		})
+
+		local calc_layout = require("windows.calculate-layout")
+		if not calc_layout._ignore_current_autowidth_patch then
+			local original_autowidth = calc_layout.autowidth
+			calc_layout.autowidth = function(curwin)
+				if curwin and curwin.is_ignored and curwin:is_ignored() then
+					return {}
+				end
+				return original_autowidth(curwin)
+			end
+			calc_layout._ignore_current_autowidth_patch = true
+		end
 	end,
 }

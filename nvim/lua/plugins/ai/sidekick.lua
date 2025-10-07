@@ -7,6 +7,14 @@ return {
 				backend = "tmux",
 				enabled = false,
 			},
+			win = {
+				split = {
+					width = 70,
+				},
+				keys = {
+					hide_t = { "<c-q>Q", "hide" },
+				},
+			},
 		},
 	},
 	config = function(_, opts)
