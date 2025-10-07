@@ -4,7 +4,7 @@ local logo = [[
 ██╔██╗ ██║███████║██║   ██║██║   ██║██║██╔████╔██║
 ██║╚██╗██║██╔══██║██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║██║  ██║╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+╚═ ╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 ]]
 
 logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -145,6 +145,9 @@ return {
 			vim.api.nvim_set_hl(0, "SnacksPickerDir", { fg = nord.light_gray_bright })
 			vim.api.nvim_set_hl(0, "SnacksPickerMatch", { fg = nord.yellow, bold = true })
 			vim.api.nvim_set_hl(0, "SnacksPickerComment", { fg = nord.blue })
+			vim.api.nvim_set_hl(0, "SnacksPickerTotals", { fg = nord.light_gray_bright })
+			-- vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { fg = nord.light_gray_bright })
+			-- vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = nord.light_gray_bright })
 		end
 
 		set_snacks_picker_hl()
@@ -264,7 +267,7 @@ return {
 			desc = "Grep",
 		},
 		{
-			"<leader>sw",
+			"<leader>gw",
 			function()
 				Snacks.picker.grep_word()
 			end,
