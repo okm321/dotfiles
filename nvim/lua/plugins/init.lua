@@ -1,4 +1,5 @@
 return {
+	{ import = "plugins.ai" },
 	{ import = "plugins.git" },
 	{ import = "plugins.csv" },
 	{ import = "plugins.go" },
