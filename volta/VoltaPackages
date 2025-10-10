@@ -26,3 +26,4 @@ sql-formatter-cli
 @openai/codex
 @anthropic-ai/claude-code
 @github/copilot-language-server
+chrome-devtools-mcp

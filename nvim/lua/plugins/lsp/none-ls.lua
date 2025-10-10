@@ -9,6 +9,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.terraform_fmt,
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.sql_formatter,
 				null_ls.builtins.formatting.biome.with({
 					only_local = "node_modules/.bin",
 					filetypes = {
@@ -29,7 +30,7 @@ return {
 					condition = function(utils)
 						return utils.root_has_file({ "biome.json", ".biomerc.json", ".biomerc.yaml", ".biomerc.yml" })
 					end,
-					args = { "check", "--apply", "--stdin-file-path", "$FILENAME" },
+					args = { "check", ".", "--write", "--stdin-file-path", "$FILENAME" },
 				}),
 				null_ls.builtins.formatting.prettierd.with({
 					prefer_local = "node_modules/.bin",
@@ -48,6 +49,7 @@ return {
 						"javascriptreact",
 						"typescript.tsx",
 					},
+					ignore_filetypes = { "biome.json" },
 					condition = function(utils)
 						return utils.root_has_file({
 							".prettierrc",
