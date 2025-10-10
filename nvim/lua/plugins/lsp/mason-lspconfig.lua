@@ -57,6 +57,7 @@ return {
 			-- フォーマッター
 			"prettierd",
 			"stylua",
+			"sql-formatter",
 
 			-- その他必要なツール
 			"markdownlint-cli2",
