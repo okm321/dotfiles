@@ -45,7 +45,7 @@ NVIM_APPNAME=okm321/dotfiles/nvim nvim
 ### completion
 
 + [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
-+ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
++ [saghen/blink.cmp](https://dotfyle.com/plugins/saghen/blink.cmp)
 + [bloznelis/before.nvim](https://dotfyle.com/plugins/bloznelis/before.nvim)
 ### csv-files
 
@@ -90,7 +90,6 @@ NVIM_APPNAME=okm321/dotfiles/nvim nvim
 + [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
 ### lsp
 
-+ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
 + [rachartier/tiny-inline-diagnostic.nvim](https://dotfyle.com/plugins/rachartier/tiny-inline-diagnostic.nvim)
 + [nvimtools/none-ls.nvim](https://dotfyle.com/plugins/nvimtools/none-ls.nvim)
 + [lewis6991/hover.nvim](https://dotfyle.com/plugins/lewis6991/hover.nvim)

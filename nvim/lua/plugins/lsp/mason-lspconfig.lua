@@ -13,7 +13,6 @@ return {
 				"MasonUpdate",
 			},
 		},
-		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "williamboman/mason.nvim" },
 	},
 	opts = {
@@ -66,7 +65,7 @@ return {
 	},
 	config = function()
 		require("mason").setup()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- 共通のキーマッピング
 		local on_attach = function(client, bufnr)
@@ -104,7 +103,7 @@ return {
 		}
 
 		vim.lsp.config("*", {
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_attach = on_attach,
 			handlers = handlers,
 		})
