@@ -51,7 +51,7 @@ vim.opt.path:append({ "**" }) -- サブフォルダ内のファイル検索
 vim.opt.wildignore:append({ "*/node_modules/*" })
 
 -- LSP設定
-vim.lsp.set_log_level("ERROR")
+-- vim.lsp.set_log_level("ERROR")
 
 -- オートコマンド
 -- インサートモードを抜けたときにペーストモードをオフ
