@@ -6,7 +6,17 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
-		require("go").setup()
+		require("go").setup({
+			diagnostic = {
+				hdlr = false,
+				underline = true,
+				update_in_insert = false,
+				signs = true,
+				-- これを設定しないと、vimのdiagnosticのvirtual_textをfalseにしても、go.nvimが読み込まれる時にtrueに戻されてしまう
+				virtual_text = false,
+				float = { border = "single" },
+			},
+		})
 	end,
 	event = { "CmdlineEnter" },
 	ft = { "go", "gomod" },

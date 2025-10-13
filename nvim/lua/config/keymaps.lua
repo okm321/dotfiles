@@ -61,3 +61,8 @@ vim.api.nvim_set_keymap("n", "q", "<Nop>", { noremap = true, silent = true })
 
 -- highlightのクリア
 vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, silent = true })
+
+-- 診断の仮想テキストを即座に無効化
+vim.keymap.set("n", "<leader>dv", function()
+	vim.diagnostic.config({ virtual_text = false })
+end, { desc = "Disable diagnostic virtual text", silent = true })

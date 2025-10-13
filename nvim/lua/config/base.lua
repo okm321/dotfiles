@@ -70,6 +70,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.diagnostic.config({
+	virtual_text = false,
+	float = { border = "single" },
+})
+
 -- see: https://github.com/coder/claudecode.nvim/issues/52#issuecomment-2994326218
 -- vim.env.CLAUDE_CONFIG_DIR = vim.fn.expand("~/.config/claude")
 

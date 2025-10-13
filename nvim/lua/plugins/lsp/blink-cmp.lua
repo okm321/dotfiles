@@ -46,7 +46,7 @@ return {
 				selection = { preselect = true, auto_insert = true },
 			},
 			documentation = { auto_show = true, window = { border = "single" }, auto_show_delay_ms = 100 },
-			ghost_text = { enabled = true },
+			ghost_text = { enabled = false },
 		},
 		fuzzy = {
 			-- version指定なしだとLua実装にフォールバックした際に警告が出るのでRust優先
@@ -94,7 +94,7 @@ return {
 				},
 			},
 		},
-		signature = { enabled = true },
+		signature = { enabled = false },
 		cmdline = {
 			keymap = {
 				-- recommended, as the default keymap will only show and select the next item
