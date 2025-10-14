@@ -162,7 +162,11 @@ return {
 		{
 			"<leader>fg",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					hidden = true,
+					ignored = true,
+					exclude = { "node_modules", "^.git/" },
+				})
 			end,
 			desc = "Grep",
 		},
