@@ -34,3 +34,5 @@ alias claude="$HOME/.claude/local/claude"
 export PATH=/Users/okamotonaofumi/.humanlog/bin:$PATH
 
 source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
+
+eval "$(mise activate zsh)"

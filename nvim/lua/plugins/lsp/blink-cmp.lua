@@ -97,8 +97,8 @@ return {
 		signature = { enabled = false },
 		cmdline = {
 			keymap = {
-				-- recommended, as the default keymap will only show and select the next item
-				["<Tab>"] = { "show", "accept" },
+				["<Tab>"] = { "select_next", "fallback" },
+				["<S-Tab>"] = { "select_prev", "fallback" },
 			},
 			completion = {
 				menu = { auto_show = true },
