@@ -236,7 +236,7 @@ run = "move-node-to-workspace A" # mnemonics: A - AI Assistant
 
 [workspace-to-monitor-force-assignment]
 W = "main"
-A = 2
+A = "main"
 T = 2
 I = 2
 C = 3
