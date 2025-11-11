@@ -97,6 +97,11 @@ return {
 		},
 		picker = {
 			enabled = true,
+			exclude = {
+				".git",
+				"node_modules",
+				".next",
+			},
 			sources = {
 				files = {
 					hidden = true,
@@ -126,6 +131,10 @@ return {
 					never_show_by_pattern = { -- uses glob style patterns
 						--".null-ls_*",
 					},
+				},
+				grep = {
+					hidden = true,
+					ignored = true,
 				},
 			},
 			formatters = {
@@ -162,11 +171,7 @@ return {
 		{
 			"<leader>fg",
 			function()
-				Snacks.picker.grep({
-					hidden = true,
-					ignored = true,
-					exclude = { "node_modules", "^.git/" },
-				})
+				Snacks.picker.grep()
 			end,
 			desc = "Grep",
 		},

@@ -24,19 +24,19 @@ return {
 						icon_hl = "@variable",
 						desc = "Files",
 						group = "Label",
-						-- action = function()
-						-- 	Snacks.picker.smart()
-						-- end,
-						action = "Telescope find_files",
+						action = function()
+							Snacks.picker.smart()
+						end,
+						-- action = "Telescope find_files",
 						key = "f",
 					},
 					{
 						desc = "󰗊 Grep",
 						group = "DiagnosticHint",
-						-- action = function()
-						-- 	Snacks.picker.grep()
-						-- end,
-						action = "Telescope live_grep",
+						action = function()
+							Snacks.picker.grep()
+						end,
+						-- action = "Telescope live_grep",
 						key = "l",
 					},
 					{
