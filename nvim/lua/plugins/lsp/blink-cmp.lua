@@ -5,7 +5,6 @@ return {
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
-			version = "v2.*",
 		},
 		"rafamadriz/friendly-snippets",
 		"moyiz/blink-emoji.nvim",
@@ -17,6 +16,7 @@ return {
 		appearance = { nerd_font_variant = "mono" },
 		keymap = {
 			preset = "enter",
+			["<CR>"] = { "accept", "fallback" },
 			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
@@ -97,11 +97,18 @@ return {
 		signature = { enabled = false },
 		cmdline = {
 			keymap = {
+				["<CR>"] = { "accept", "fallback" },
 				["<Tab>"] = { "select_next", "fallback" },
 				["<S-Tab>"] = { "select_prev", "fallback" },
 			},
 			completion = {
 				menu = { auto_show = true },
+				list = {
+					selection = {
+						preselect = false,
+						auto_insert = true,
+					},
+				},
 				ghost_text = { enabled = false },
 			},
 		},

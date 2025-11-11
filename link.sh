@@ -49,14 +49,6 @@ else
   printf "  🔥 nvim is already linked \n"
 fi
 
-# skhd
-if [ ! -L ~/.config/skhd ]; then
-  ln -sf ~/dotfiles/skhd ~/.config/skhd
-  printf "  \e[32m✅ Linked skhd \e[m\n"
-else
-  printf "  🔥 skhd is already linked \n"
-fi
-
 # sheldon
 if [ ! -L ~/.sheldon.toml ]; then
   ln -sf ~/dotfiles/sheldon/.sheldon.toml ~/.sheldon.toml
@@ -89,12 +81,12 @@ else
   printf "  🔥 gitmux.conf is already linked \n"
 fi
 
-# yabai
-if [ ! -L ~/.config/yabai ]; then
-  ln -sf ~/dotfiles/yabai ~/.config/yabai
-  printf "  \e[32m✅ Linked yabai \e[m\n"
+# aerospace
+if [ ! -L ~/.config/aerospace ]; then
+  ln -sf ~/dotfiles/aerospace ~/.config/aerospace
+  printf "  \e[32m✅ Linked aerospace \e[m\n"
 else
-  printf "  🔥 yabai is already linked \n"
+  printf "  🔥 aerospace is already linked \n"
 fi
 
 # zsh
