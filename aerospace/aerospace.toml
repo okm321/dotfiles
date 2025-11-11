@@ -203,11 +203,23 @@ if.app-id = "company.thebrowser.Browser"
 run = "move-node-to-workspace W" # mnemonics: W - Web Browser
 
 [[on-window-detected]]
+if.app-id = "company.thebrowser.dia"
+run = "move-node-to-workspace W" # mnemonics: W - Web Browser
+
+[[on-window-detected]]
+if.app-id = "ai.perplexity.comet"
+run = "move-node-to-workspace W" # mnemonics: W - Web Browser
+
+[[on-window-detected]]
 if.app-id = "org.alacritty"
 run = "move-node-to-workspace T" # mnemonics: T - Terminal
 
 [[on-window-detected]]
 if.app-id = "com.microsoft.VSCode"
+run = "move-node-to-workspace I" # mnemonics: I - IDE
+
+[[on-window-detected]]
+if.app-id = "dev.zed.Zed"
 run = "move-node-to-workspace I" # mnemonics: I - IDE
 
 [[on-window-detected]]
@@ -218,8 +230,13 @@ run = "move-node-to-workspace C" # mnemonics: C - Communication
 if.app-id = "com.gather.GatherV2"
 run = "move-node-to-workspace C" # mnemonics: C - Communication
 
+[[on-window-detected]]
+if.app-id = "com.anthropic.claudefordesktop"
+run = "move-node-to-workspace A" # mnemonics: A - AI Assistant
+
 [workspace-to-monitor-force-assignment]
 W = "main"
+A = 2
 T = 2
 I = 2
 C = 3
