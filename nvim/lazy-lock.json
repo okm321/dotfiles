@@ -62,6 +62,7 @@
   "trace-pr.nvim": { "branch": "main", "commit": "91d310762f8ecb206e3d49cdcf8d1df7a73f81df" },
   "treesj": { "branch": "main", "commit": "4770492244ccecdc9b01e0e81fa8f2f6b4a23841" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
+  "typescript-tools.nvim": { "branch": "master", "commit": "db26c05e267239581c89f5c825fdb8c3cf6da0c5" },
   "url-open": { "branch": "main", "commit": "dce2a9bc51e4885ea80ca03da5b4d0f719aaf820" },
   "vim-doge": { "branch": "master", "commit": "03a84072ef21b205237c77986c78914395d646c3" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },

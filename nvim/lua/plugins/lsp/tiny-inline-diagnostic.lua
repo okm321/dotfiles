@@ -1,6 +1,7 @@
 return {
 	"rachartier/tiny-inline-diagnostic.nvim",
-	event = { "BufReadPost", "BufNewFile" }, -- Or `LspAttach`
+	-- event = { "BufReadPost", "BufNewFile" }, -- Or `LspAttach`
+	event = { "LspAttach" }, -- Or `LspAttach`
 	priority = 1000, -- needs to be loaded in first
 	config = function()
 		require("tiny-inline-diagnostic").setup({
