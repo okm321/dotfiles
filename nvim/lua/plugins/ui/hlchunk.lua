@@ -6,6 +6,7 @@ return {
 			chunk = {
 				enable = true,
 				style = "#81A1C1",
+				delay = 0,
 			},
 			indent = {
 				enable = true,
