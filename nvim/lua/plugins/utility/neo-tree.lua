@@ -25,14 +25,14 @@ return {
 					enabled = true,
 					leave_dirs_open = true,
 				},
-				use_libuv_file_watcher = true, -- パフォーマンス向上
+				use_libuv_file_watcher = false, -- パフォーマンス向上
 				filtered_items = {
 					visible = false,
 					hide_dotfiles = false,
 					hide_gitignored = false,
-					-- hide_by_name = {
-					--     "node_modules",
-					-- },
+					hide_by_name = {
+            "node_modules",
+					},
 					never_show = {
 						".git",
 						".DS_Store",
