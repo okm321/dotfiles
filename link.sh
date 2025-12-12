@@ -19,12 +19,28 @@ else
   printf "  🔥 Brewfile is already linked \n"
 fi
 
+# Ghostty
+if [ ! -L ~/.config/ghostty ]; then
+  ln -sf ~/dotfiles/ghostty ~/.config/ghostty
+  printf "  \e[32m✅ Linked ghostty \e[m\n"
+else
+  printf "  🔥 ghostty is already linked \n"
+fi
+
 # Git
 if [ ! -L ~/.gitconfig ]; then
   ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
   printf "  \e[32m✅ Linked gitconfig \e[m\n"
 else
   printf "  🔥 gitconfig is already linked \n"
+fi
+
+# lazygit
+if [ ! -L ~/.config/lazygit ]; then
+  ln -sf ~/dotfiles/lazygit ~/.config/lazygit
+  printf "  \e[32m✅ Linked lazygit \e[m\n"
+else
+  printf "  🔥 lazygit is already linked \n"
 fi
 
 # aider
@@ -47,6 +63,15 @@ if [ ! -L ~/.config/nvim ]; then
   printf "  \e[32m✅ Linked nvim \e[m\n"
 else
   printf "  🔥 nvim is already linked \n"
+fi
+
+# Raycast
+if [ ! -L ~/.config/raycast/scripts ]; then
+  ln -sf ~/dotfiles/raycast/scripts ~/.config/raycast/scripts
+  chmod +x ~/.config/raycast/scripts/*
+  printf "  \e[32m✅ Linked raycast \e[m\n"
+else
+  printf "  🔥 raycast is already linked \n"
 fi
 
 # sheldon
@@ -87,6 +112,14 @@ if [ ! -L ~/.config/aerospace ]; then
   printf "  \e[32m✅ Linked aerospace \e[m\n"
 else
   printf "  🔥 aerospace is already linked \n"
+fi
+
+# yazi 
+if [ ! -L ~/.config/yazi ]; then
+  ln -sf ~/dotfiles/yazi ~/.config/yazi
+  printf "  \e[32m✅ Linked yazi \e[m\n"
+else
+  printf "  🔥 yazi is already linked \n"
 fi
 
 # zsh

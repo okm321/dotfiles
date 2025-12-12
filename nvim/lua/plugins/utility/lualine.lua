@@ -49,6 +49,9 @@ return {
 			tabline = {},
 			extensions = { "fugitive" },
 		})
+
+		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#ECEFF4" })
+		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", fg = "#4C566A" })
 	end,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }

@@ -12,29 +12,27 @@ return {
 		local nordColors = require("nord.colors")
 
 		local highlights = require("nord").bufferline.highlights({
-			-- fill = nordColors.nord10_gui, -- バッファラインの背景色
 			indicator_visible = {
 				fg = nordColors.nord14_gui,
-				bg = nordColors.nord10_gui,
 			},
 			indicator_selected = {
 				fg = nordColors.nord14_gui,
-				bg = nordColors.nord10_gui,
 			},
 			diagnostic_visible = {
 				fg = nordColors.nord14_gui,
-				bg = nordColors.nord10_gui,
 				sp = nordColors.nord10_gui,
 				bold = true,
 				italic = true,
 			},
-			bg = nordColors.nord0_gui,
-			buffer_bg = nordColors.nord0_gui,
-			buffer_bg_selected = nordColors.nord1_gui,
-			buffer_bg_visible = "#2A2F3A",
 			italic = true,
 			bold = true,
 		})
+
+		for _, value in pairs(highlights) do -- バッファラインの全ての背景色を透過
+			if type(value) == "table" and value.bg ~= nil then
+				value.bg = "NONE"
+			end
+		end
 
 		require("bufferline").setup({
 			options = {

@@ -1,0 +1,39 @@
+theme = nord
+background-opacity = 0.95
+
+# フォント
+font-family = "Maple Mono NF CN Medium"
+font-family = "x14y24pxHeadUpDaisy"
+font-family = "Hiragino Kaku Gothic Pro"
+font-thicken
+font-style-italic = Italic
+font-style-bold = Bold
+font-style-bold-italic = BoldItalic
+font-size = 14
+
+# カーソルはblockで点滅させない
+cursor-style = block
+cursor-style-blink = false
+
+# adjust-cell-height = 25%
+# adjust-font-baseline = -2
+
+term = xterm-256color
+
+# クリップボード設定
+copy-on-select = false
+clipboard-read = allow
+clipboard-write = allow
+
+# Undercurl対応（neovimの診断表示）
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# tmux用：Option/Altキー設定
+macos-option-as-alt = true
+
+# tmuxのpaneをいじるためにキーバインド削除
+keybind = super+left=unbind
+keybind = super+right=unbind
+keybind = super+up=unbind
+keybind = super+down=unbind

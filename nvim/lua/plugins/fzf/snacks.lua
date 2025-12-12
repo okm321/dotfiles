@@ -100,6 +100,9 @@ return {
 			exclude = {
 				".git",
 				"node_modules",
+				"storybook-static",
+				"tenant-api",
+				"_coverage",
 				".next",
 			},
 			sources = {
@@ -109,6 +112,8 @@ return {
 					file_ignore_patterns = {
 						"^.git/",
 						"^node_modules/",
+						"^tenant-api/",
+						"^storybook-static/",
 						-- 他に無視したいパターンがあればここに追加
 					},
 					hide_by_name = {
@@ -155,6 +160,19 @@ return {
 			vim.api.nvim_set_hl(0, "SnacksPickerMatch", { fg = nord.yellow, bold = true })
 			vim.api.nvim_set_hl(0, "SnacksPickerComment", { fg = nord.blue })
 			vim.api.nvim_set_hl(0, "SnacksPickerTotals", { fg = nord.light_gray_bright })
+			local transparent_groups = {
+				"SnacksPicker",
+				"SnacksPickerList",
+				"SnacksPickerPreview",
+				"SnacksPickerInput",
+				"SnacksPickerBox",
+			}
+			for _, group in ipairs(transparent_groups) do
+				local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+				hl = ok and hl or {}
+				hl.bg = "NONE"
+				vim.api.nvim_set_hl(0, group, hl)
+			end
 			-- vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { fg = nord.light_gray_bright })
 			-- vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = nord.light_gray_bright })
 		end
