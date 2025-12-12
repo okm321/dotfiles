@@ -9,7 +9,6 @@ return {
 			sources = {
 				null_ls.builtins.formatting.terraform_fmt,
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.sql_formatter,
 				null_ls.builtins.formatting.biome.with({
 					only_local = "node_modules/.bin",
 					filetypes = {
@@ -67,7 +66,7 @@ return {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({ async = false })
+							vim.lsp.buf.format({ async = true })
 						end,
 					})
 				end

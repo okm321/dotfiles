@@ -22,10 +22,6 @@ source ~/dotfiles/volta/volta-init.sh
 # Bunをインストール
 source ~/dotfiles/bun/bun-init.sh
 
-# yabaiとskhdをスタート
-yabai --start-service
-skhd --start-service
-
 # TPMをクローン
 source ~/dotfiles/tmux/tpm-init.sh
 

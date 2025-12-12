@@ -1,16 +1,30 @@
 return {
 	"shaunsingh/nord.nvim",
 	config = function()
+		vim.g.nord_disable_background = true
+		vim.g.nord_cursorline_transparent = true
+		vim.g.nord_enable_sidebar_background = false
 		require("nord").set()
 		-- vim.g.nord_contrast = false
 		-- vim.g.nord_borders = true
-		-- vim.g.nord_disable_background = true
-		-- vim.g.nord_cursorline_transparent = true
-		-- vim.g.nord_enable_sidebar_background = false
 		-- vim.g.nord_italic = false
 		-- vim.g.nord_uniform_diff_background = true
 		-- vim.g.nord_bold = false
 		vim.cmd([[colorscheme nord]])
+		vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
+
+		local nord = {
+			float_bg = "#2E3440",
+			float_border = "#4C566A",
+			float_fg = "#ECEFF4",
+		}
+
+		-- 透過設定でも Neo-tree のポップアップ入力が読めるように浮動ウィンドウへ背景色を付与
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = nord.float_bg, fg = nord.float_fg })
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = nord.float_bg, fg = nord.float_border })
+		vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", { bg = nord.float_bg, fg = nord.float_border })
+		vim.api.nvim_set_hl(0, "NeoTreeFloatTitle", { bg = nord.float_bg, fg = nord.float_fg, bold = true })
 	end,
 }
 

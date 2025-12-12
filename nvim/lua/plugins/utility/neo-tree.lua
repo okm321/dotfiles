@@ -31,7 +31,7 @@ return {
 					hide_dotfiles = false,
 					hide_gitignored = false,
 					hide_by_name = {
-            "node_modules",
+						"node_modules",
 					},
 					never_show = {
 						".git",
@@ -47,6 +47,21 @@ return {
 					["s"] = "",
 					["V"] = "open_vsplit",
 					["v"] = "",
+					["Y"] = function(state)
+						local node = state.tree:get_node()
+						local filepath = node:get_id()
+						local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+						local relative = filepath:sub(#git_root + 2) -- +2 for trailing slash
+						vim.fn.setreg("+", relative)
+						vim.notify("Copied: " .. relative)
+					end,
+					-- ファイル名だけコピーしたい場合
+					["yn"] = function(state)
+						local node = state.tree:get_node()
+						local filename = node.name
+						vim.fn.setreg("+", filename)
+						vim.notify("Copied: " .. filename)
+					end,
 				},
 			},
 		})

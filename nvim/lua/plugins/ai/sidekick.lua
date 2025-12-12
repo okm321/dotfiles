@@ -103,5 +103,10 @@ return {
       function() require("sidekick.cli").toggle({ name = "codex", focus = true }) end,
       desc = "Sidekick Toggle Codex",
     },
+    {
+      "<leader>acg",
+      function() require("sidekick.cli").toggle({ name = "gemini", focus = true }) end,
+      desc = "Gemini Toggle Codex",
+    },
   },
 }

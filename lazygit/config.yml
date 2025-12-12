@@ -1,0 +1,9 @@
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --side-by-side
+gui:
+  nerdFontsVersion: "3"
+os:
+  # editPreset: "nvim-remote"
+  edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" {{filename}})'

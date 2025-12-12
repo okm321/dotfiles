@@ -22,6 +22,10 @@ return {
 					width = 60,
 					height = "auto",
 				},
+				win_options = {
+					-- 透過設定時でも背後のバッファ文字を透かさない
+					winblend = 0,
+				},
 			},
 		},
 	},
