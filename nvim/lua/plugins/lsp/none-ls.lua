@@ -66,7 +66,8 @@ return {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({ async = true })
+							-- 同期でフォーマットしてから書き込み、保存後に未保存状態になるのを防ぐ
+							vim.lsp.buf.format({ async = false, bufnr = bufnr })
 						end,
 					})
 				end

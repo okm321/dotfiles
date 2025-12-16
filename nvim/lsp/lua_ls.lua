@@ -4,6 +4,9 @@ vim.lsp.config("lua_ls", {
 			diagnostics = {
 				globals = { "vim" },
 			},
+			hint = {
+				enable = false, -- これでインレイヒント無効化
+			},
 		},
 	},
 })

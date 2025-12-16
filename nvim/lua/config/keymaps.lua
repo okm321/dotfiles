@@ -67,3 +67,9 @@ vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, sile
 vim.keymap.set("n", "<leader>dv", function()
 	vim.diagnostic.config({ virtual_text = false })
 end, { desc = "Disable diagnostic virtual text", silent = true })
+
+-- ヒントの表示・非表示切り替え
+vim.keymap.set("n", "<leader>ih", function()
+	local enabled = not vim.lsp.inlay_hint.is_enabled()
+	vim.lsp.inlay_hint.enable(enabled)
+end, { desc = "Toggle Inlay Hints" })
