@@ -2,7 +2,8 @@ theme = nord
 background-opacity = 0.95
 
 # フォント
-font-family = "Maple Mono NF CN Medium" # https://github.com/subframe7536/maple-font
+# https://github.com/subframe7536/maple-font
+font-family = "Maple Mono NF CN Medium"
 font-family = "x14y24pxHeadUpDaisy"
 font-family = "Hiragino Kaku Gothic Pro"
 font-thicken
