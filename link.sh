@@ -11,6 +11,19 @@ else
   printf "  🔥 alacritty is already linked \n"
 fi
 
+# Claude (ファイル単位でリンク)
+mkdir -p ~/.config/claude
+for item in settings.json CLAUDE.md skills agents rules hooks; do
+  if [ -e ~/dotfiles/claude/$item ]; then
+    if [ ! -L ~/.config/claude/$item ]; then
+      ln -sf ~/dotfiles/claude/$item ~/.config/claude/$item
+      printf "  \e[32m✅ Linked claude/$item \e[m\n"
+    else
+      printf "  🔥 claude/$item is already linked \n"
+    fi
+  fi
+done
+
 # homebrew
 if [ ! -L ~/.Brewfile ]; then
   ln -sf ~/dotfiles/homebrew/Brewfile ~/.Brewfile
