@@ -167,3 +167,7 @@ symbol = " "
 disabled = false
 style = "cyan"
 format = '[\[$time\]]($style) '
+
+[gcloud]
+# Hide logged-in account; show only the project next to the icon.
+format = "$symbol($project) "

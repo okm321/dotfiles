@@ -19,3 +19,7 @@ function create_ide_layout() {
   tmux split-window -h -p 50 #新しく作成されたペインをさらに水平に分割
 }
 alias ide='create_ide_layout'
+function ghql() {
+  local dir=$(ghq list -p | fzf --preview "eza -la {}" --prompt="🔍 ghq Search ")
+  [ -n "$dir" ] && builtin cd "$dir"
+}
