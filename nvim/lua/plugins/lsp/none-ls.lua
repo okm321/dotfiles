@@ -10,7 +10,7 @@ return {
 				null_ls.builtins.formatting.terraform_fmt,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.biome.with({
-					only_local = "node_modules/.bin",
+					-- only_local = "node_modules/.bin",
 					filetypes = {
 						"css",
 						"scss",
@@ -27,6 +27,10 @@ return {
 						"typescript.tsx",
 					},
 					condition = function(utils)
+						-- prettierの設定がある場合は無効
+						if utils.root_has_file({ ".prettierrc", ".prettierrc.json", ".prettierrc.js", ".prettierrc.cjs" }) then
+							return false
+						end
 						return utils.root_has_file({ "biome.json", ".biomerc.json", ".biomerc.yaml", ".biomerc.yml" })
 					end,
 					args = { "check", ".", "--write", "--stdin-file-path", "$FILENAME" },
@@ -50,6 +54,10 @@ return {
 					},
 					ignore_filetypes = { "biome.json" },
 					condition = function(utils)
+						-- biome.jsonがある場合は無効
+						if utils.root_has_file({ "biome.json", ".biomerc.json", ".biomerc.yaml", ".biomerc.yml" }) then
+							return false
+						end
 						return utils.root_has_file({
 							".prettierrc",
 							".prettierrc.json",

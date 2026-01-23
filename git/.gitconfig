@@ -24,3 +24,5 @@
 
 [credential]
 	helper = store
+[ghq]
+  root = ~/project

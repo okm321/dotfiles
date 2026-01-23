@@ -104,6 +104,7 @@ return {
 				"tenant-api",
 				"_coverage",
 				".next",
+				".vercel",
 			},
 			sources = {
 				files = {
@@ -114,6 +115,7 @@ return {
 						"^node_modules/",
 						"^tenant-api/",
 						"^storybook-static/",
+						"^.vercel/",
 						-- 他に無視したいパターンがあればここに追加
 					},
 					hide_by_name = {
