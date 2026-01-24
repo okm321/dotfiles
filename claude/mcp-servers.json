@@ -1,0 +1,13 @@
+{
+  "chrome-devtools": {
+    "command": "npx",
+    "args": ["chrome-devtools-mcp@latest"]
+  },
+  "context7": {
+    "command": "npx",
+    "args": ["-y", "@upstash/context7-mcp"],
+    "env": {
+      "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+    }
+  }
+}
