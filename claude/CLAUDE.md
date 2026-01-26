@@ -4,12 +4,20 @@
 - 日本語で会話する
 - 簡潔に、要点を押さえて回答する
 - 不明点は推測せず確認する
+- 曖昧な指示や複数の選択肢がある場合は `AskUserQuestionTool` で選択肢を提示してヒアリングする
 
 ## Code Style
 - シンプルで読みやすいコードを優先
 - 過度な抽象化を避ける
 - 既存のコードスタイルに合わせる
 - 不要なコメントは書かない（コードで意図を表現する）
+
+## Development Environment
+- Terminal: Ghostty
+- Editor: Neovim
+- Multiplexer: tmux
+- Shell: zsh + sheldon
+- Package Manager: Homebrew
 
 ## Development Preferences
 - テストは実装と一緒に考える
@@ -28,9 +36,12 @@
 - 現在シンボリックリンクで管理しているもの:
   - `CLAUDE.md` - グローバル指示
   - `settings.json` - 設定ファイル
+  - `mcp-servers.json` - MCPサーバー設定
   - `hooks/` - フック用スクリプト
   - `skills/` - カスタムスキル
   - `commands/` - カスタムコマンド
   - `agents/` - カスタムエージェント
   - `rules/` - 追加ルール
   - `statusline.sh` - ステータスライン表示
+- MCPサーバーは `mcp-servers.json` に追加する（`settings.json` の `mcpServers` は使わない）
+- MCPサーバーを追加・変更したら「`sh ~/dotfiles/claude/setup.sh` を実行してください」とユーザーに伝える

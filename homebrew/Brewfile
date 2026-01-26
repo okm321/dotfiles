@@ -63,6 +63,7 @@ brew "sevenzip"
 brew "sheldon"
 brew "skaffold"
 brew "starship"
+brew "terminal-notifier"
 brew "tfenv"
 brew "tflint"
 brew "tmux"
@@ -116,6 +117,7 @@ mas "Kindle", id: 302584613
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
+mas "Tailscale", id: 1475387142
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
 vscode "4ops.terraform"
