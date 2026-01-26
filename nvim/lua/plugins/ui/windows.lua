@@ -6,7 +6,7 @@ return {
 		-- "anuvyklack/animation.nvim",
 	},
 	config = function()
-		vim.o.winwidth = 10
+		vim.o.winwidth = 100
 		vim.o.winminwidth = 10
 		vim.o.equalalways = false
 		-- windows

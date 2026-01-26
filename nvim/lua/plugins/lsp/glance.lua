@@ -27,5 +27,17 @@ return {
 			},
 			use_trouble_qf = true,
 		})
+
+		-- 背景を必ず塗る（透過テーマでも背後の文字が見えないようにする）
+		local bg = "transparent" -- 固定色だけ指定。好みで変えてOK。
+		for _, g in ipairs({
+			"GlanceListNormal",
+			"GlancePreviewNormal",
+			"GlanceBorderTop",
+			"GlanceListBorderBottom",
+			"GlancePreviewBorderBottom",
+		}) do
+			vim.api.nvim_set_hl(0, g, { bg = bg })
+		end
 	end,
 }
