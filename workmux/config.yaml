@@ -1,0 +1,12 @@
+nerdfont: true
+agent: claude
+
+panes:
+  - focus: true
+  - split: vertical
+    size: 30
+  - split: horizontal
+
+files:
+  symlink:
+    - .claude/lseettings.local.json

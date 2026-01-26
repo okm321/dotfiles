@@ -23,3 +23,6 @@ function ghql() {
   local dir=$(ghq list -p | fzf --preview "eza -la {}" --prompt="🔍 ghq Search ")
   [ -n "$dir" ] && builtin cd "$dir"
 }
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias wt="workmux"

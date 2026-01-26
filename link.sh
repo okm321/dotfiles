@@ -127,7 +127,16 @@ else
   printf "  🔥 aerospace is already linked \n"
 fi
 
-# yazi 
+# workmux
+mkdir -p ~/.config/workmux
+if [ ! -L ~/.config/workmux/config.yaml ]; then
+  ln -sf ~/dotfiles/workmux/config.yaml ~/.config/workmux/config.yaml
+  printf "  \e[32m✅ Linked workmux \e[m\n"
+else
+  printf "  🔥 workmux is already linked \n"
+fi
+
+# yazi
 if [ ! -L ~/.config/yazi ]; then
   ln -sf ~/dotfiles/yazi ~/.config/yazi
   printf "  \e[32m✅ Linked yazi \e[m\n"
