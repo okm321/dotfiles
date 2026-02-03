@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# ミーティング中かチェック（職場カレンダーに現在進行中のイベントがあるか）
+if icalBuddy -ic "職場" -nc eventsNow 2>/dev/null | grep -q .; then
+  exit 0
+fi
+
 # stdinからJSONを読み取り、プロジェクト名を取得
 INPUT=$(cat)
 PROJECT_PATH=$(echo "$INPUT" | jq -r '.cwd // empty')
