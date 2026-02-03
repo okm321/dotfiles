@@ -36,7 +36,8 @@ export PATH=/Users/okamotonaofumi/.humanlog/bin:$PATH
 
 eval "$(mise activate zsh)"
 
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh --no-cmd)"
+source ~/dotfiles/zsh/zoxide.zsh
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
