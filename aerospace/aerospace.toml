@@ -239,8 +239,8 @@ if.app-id = "com.anthropic.claudefordesktop"
 run = "move-node-to-workspace A" # mnemonics: A - AI Assistant
 
 [workspace-to-monitor-force-assignment]
-W = "main"
-A = "main"
-T = 2
-I = 2
+W = 1
+A = 1
+T = "main"
+I = "main"
 C = 3

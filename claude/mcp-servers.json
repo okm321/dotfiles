@@ -13,5 +13,9 @@
   "codex": {
     "command": "codex",
     "args": ["mcp-server"]
+  },
+  "ReactAria": {
+    "command": "npx",
+    "args": ["@react-aria/mcp@latest"]
   }
 }

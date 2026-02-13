@@ -77,4 +77,4 @@ terminal-notifier \
   -group "claude-${TMUX_SESSION:-default}" \
   -execute "bash ${SCRIPT_DIR}/focus-session.sh '${TMUX_SESSION}' '${TMUX_WINDOW}'"
 
-say -v Kyoko "${PROJECT_NAME}、${SAY_MSG}"
+# say -v Kyoko "${PROJECT_NAME}、${SAY_MSG}"
