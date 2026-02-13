@@ -30,8 +30,6 @@ if [ -f '/Users/okm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okm/g
 eval "$(direnv hook zsh)"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-export PATH=/Users/okamotonaofumi/.humanlog/bin:$PATH
-
 # source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
 
 eval "$(mise activate zsh)"
@@ -47,3 +45,7 @@ export EDITOR="nvim"
 
 # Load local secrets (not committed to dotfiles)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+
+# humanlog
+export PATH=~/.humanlog/bin:$PATH
