@@ -15,6 +15,9 @@ return {
 					hide_t = { "<c-q>Q", "hide" },
 				},
 			},
+			prompts = {
+				createPR = "/commit-commands:commit-push-pr .github/PULL_REQUEST_TEMPLATE.mdを使って。targetブランチは",
+			},
 		},
 	},
 	config = function(_, opts)

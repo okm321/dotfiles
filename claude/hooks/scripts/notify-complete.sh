@@ -44,4 +44,4 @@ terminal-notifier \
   -group "claude" \
   -execute "bash ${SCRIPT_DIR}/focus-session.sh '${TMUX_SESSION}' '${TMUX_WINDOW}' '${TMUX_PANE}'"
 
-say -v Kyoko "${PROJECT_NAME}、タスク完了"
+# say -v Kyoko "${PROJECT_NAME}、タスク完了"

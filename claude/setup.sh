@@ -11,12 +11,21 @@ echo "=== Installing Plugins ==="
 if [[ ! -f "$SETTINGS_FILE" ]]; then
   echo "Warning: settings.json not found"
 else
-  plugins=$(jq -r '.enabledPlugins | keys[]' "$SETTINGS_FILE")
+  # GitHub マーケットプレイスを登録
+  jq -r '.plugins // [] | .[].source | select(.source == "github") | .repo' "$SETTINGS_FILE" | sort -u | while read -r repo; do
+    echo "Adding marketplace: $repo"
+    claude plugin marketplace add "$repo" 2>/dev/null || true
+  done
+
+  # enabledPlugins からプラグインをインストール
+  plugins=$(jq -r '.enabledPlugins // {} | keys[]' "$SETTINGS_FILE")
   if [[ -n "$plugins" ]]; then
     echo "$plugins" | while read -r plugin; do
-      echo "Installing $plugin..."
+      echo "Installing plugin: $plugin"
       claude plugin install "$plugin"
     done
+  else
+    echo "No plugins to install"
   fi
 fi
 

@@ -43,5 +43,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
+export EDITOR="nvim"
+
 # Load local secrets (not committed to dotfiles)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
