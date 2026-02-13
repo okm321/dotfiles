@@ -6,7 +6,7 @@ planモード使用時のルール。
 
 planモードで計画を作成した後、ExitPlanMode を呼ぶ前に以下を実行する：
 
-1. **Codex MCP を使って計画を/Users/okm/Library/Application\ Support/CleanShot/media/media_htbPndddtk/CleanShot\ 2026-01-25\ at\ 17.54.15@2x.pngレビュー**
+1. **Codex MCP を使って計画をレビュー**
    - `codex` MCPサーバーの `ask` ツールを使用
    - 以下の観点でレビューを依頼:
      - 計画の妥当性（実装方針やアーキテクチャの穴がないか）
