@@ -46,7 +46,6 @@ export EDITOR="nvim"
 # Load local secrets (not committed to dotfiles)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-
 # humanlog
 export PATH=~/.humanlog/bin:$PATH
 
