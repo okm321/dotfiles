@@ -65,11 +65,9 @@ class SessionStore: ObservableObject {
         DispatchQueue.main.async {
             let k = self.key(session: session, window: window, project: project)
             if let idx = self.sessions.firstIndex(where: { $0.id == k }) {
-                if let perm = self.sessions[idx].pendingPermission {
-                    if status == .running && (perm.hookPid <= 0 || kill(perm.hookPid, 0) != 0) {
-                        close(perm.connection)
-                        self.sessions[idx].pendingPermission = nil
-                    }
+                if let perm = self.sessions[idx].pendingPermission, status == .running {
+                    close(perm.connection)
+                    self.sessions[idx].pendingPermission = nil
                 }
                 if self.sessions[idx].pendingPermission == nil {
                     self.sessions[idx].status = status
@@ -847,6 +845,11 @@ func sendStatus(status: String, session: String, window: String, project: String
 
 func sendPermissionRequest(description: String, command: String, session: String, window: String, project: String) -> Bool {
     guard let fd = connectToSocket() else { return false }
+
+    // recvタイムアウト: ターミナルで承認された場合にフックがゾンビ化しないようにする
+    var tv = timeval(tv_sec: 60, tv_usec: 0)
+    setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, socklen_t(MemoryLayout<timeval>.size))
+
     sendJSON([
         "action": "permission",
         "session": session, "window": window, "project": project,
