@@ -17,6 +17,7 @@ return {
 			},
 			prompts = {
 				createPR = "/commit-commands:commit-push-pr .github/PULL_REQUEST_TEMPLATE.mdを使って。targetブランチは",
+				plan = "/plan\n\n## タスク\n\n\n## 対象コード\n\n```\n\n```\n\n## 参考\n\n\n## 前提条件\n\n\n## 制約\n",
 			},
 		},
 	},

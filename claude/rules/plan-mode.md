@@ -1,6 +1,16 @@
+---
+paths:
+  - ".claude/plans/**"
+---
+
 # Plan Mode Rules
 
 planモード使用時のルール。
+
+## Plan ファイル名
+
+- 内容を表す簡潔な英語3〜4語をハイフン区切りにする
+- 例: `add-auth-middleware.md`, `refactor-db-queries.md`
 
 ## Codex レビュー
 

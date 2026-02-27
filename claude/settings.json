@@ -1,8 +1,60 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(npm *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(bun *)",
+      "Bash(go *)",
+      "Bash(cargo *)",
+      "Bash(make *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(chmod *)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(* --version)",
+      "Bash(* --help)",
+      "Read",
+      "Grep",
+      "Glob",
+      "WebFetch",
+      "WebSearch",
+      "mcp__chrome-devtools__*",
+      "mcp__context7__*",
+      "mcp__codex__*",
+      "mcp__ReactAria__*",
+      "mcp__claude_ai_Claudeflare_Documents__*"
+    ]
+  },
   "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/notify-complete.sh"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/permission-handler.sh"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
-        "matcher": "permission_prompt|elicitation_dialog",
         "hooks": [
           {
             "type": "command",
@@ -11,12 +63,26 @@
         ]
       }
     ],
-    "Stop": [
+    "PreToolUse": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/notify-complete.sh"
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/setup-plan-exclude.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/session-register.sh"
           }
         ]
       }
@@ -37,9 +103,13 @@
     "vercel@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
-    "explanatory-output-style@claude-plugins-official": true
+    "explanatory-output-style@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
+  "plansDirectory": ".claude/plans",
+  "skipDangerousModePermissionPrompt": true,
+  "defaultMode": "acceptEdits",
   "plugins": [
     {
       "name": "accesslint",

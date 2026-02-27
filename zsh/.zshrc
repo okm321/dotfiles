@@ -49,3 +49,5 @@ export EDITOR="nvim"
 
 # humanlog
 export PATH=~/.humanlog/bin:$PATH
+
+. "/Users/okamotonaofumi/.deno/env"

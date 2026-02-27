@@ -26,3 +26,14 @@ function ghql() {
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias wt="workmux"
+
+function claude-mute() {
+  local flag="/tmp/claude-sound-muted"
+  if [ -f "$flag" ]; then
+    rm "$flag"
+    echo "🔔 Claude通知音: ON"
+  else
+    touch "$flag"
+    echo "🔕 Claude通知音: OFF"
+  fi
+}

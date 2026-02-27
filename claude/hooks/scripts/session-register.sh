@@ -7,4 +7,4 @@ PROJECT=$(basename "$CWD")
 source "$(dirname "$0")/detect-tmux.sh"
 
 BIN="$HOME/.config/claude/hooks/scripts/claude-approve"
-[ -S /tmp/claude-approve.sock ] && "$BIN" status "idle" "$TMUX_SESSION" "$TMUX_WINDOW" "$PROJECT"
+[ -S /tmp/claude-approve.sock ] && "$BIN" status "running" "$TMUX_SESSION" "$TMUX_WINDOW" "$PROJECT"
