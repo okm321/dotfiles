@@ -17,5 +17,20 @@
   "ReactAria": {
     "command": "npx",
     "args": ["@react-aria/mcp@latest"]
+  },
+  "playwright": {
+    "command": "npx",
+    "args": [
+      "@playwright/mcp@latest"
+    ]
+  },
+  "pencil": {
+    "command": "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+    "args": [
+      "--app",
+      "desktop"
+    ],
+    "env": {},
+    "type": "stdio"
   }
 }

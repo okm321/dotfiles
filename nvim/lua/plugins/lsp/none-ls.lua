@@ -28,12 +28,19 @@ return {
 					},
 					condition = function(utils)
 						-- prettierの設定がある場合は無効
-						if utils.root_has_file({ ".prettierrc", ".prettierrc.json", ".prettierrc.js", ".prettierrc.cjs" }) then
+						if
+							utils.root_has_file({
+								".prettierrc",
+								".prettierrc.json",
+								".prettierrc.js",
+								".prettierrc.cjs",
+							})
+						then
 							return false
 						end
 						return utils.root_has_file({ "biome.json", ".biomerc.json", ".biomerc.yaml", ".biomerc.yml" })
 					end,
-					args = { "check", ".", "--write", "--stdin-file-path", "$FILENAME" },
+					args = { "check", "--write", "--stdin-file-path", "$FILENAME" },
 				}),
 				null_ls.builtins.formatting.prettierd.with({
 					prefer_local = "node_modules/.bin",
@@ -75,7 +82,13 @@ return {
 						buffer = bufnr,
 						callback = function()
 							-- 同期でフォーマットしてから書き込み、保存後に未保存状態になるのを防ぐ
-							vim.lsp.buf.format({ async = false, bufnr = bufnr })
+							vim.lsp.buf.format({
+								async = false,
+								bufnr = bufnr,
+								filter = function(c)
+									return c.name == "null-ls"
+								end,
+							})
 						end,
 					})
 				end
