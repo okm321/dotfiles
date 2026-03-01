@@ -106,6 +106,14 @@
     "explanatory-output-style@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {
+    "accesslint": {
+      "source": {
+        "source": "github",
+        "repo": "accesslint/claude-marketplace"
+      }
+    }
+  },
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".claude/plans",
   "skipDangerousModePermissionPrompt": true,
