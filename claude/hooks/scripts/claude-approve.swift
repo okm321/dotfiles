@@ -542,7 +542,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DispatchQueue.main.async {
                 self?.updateIcon()
                 let needsAttention = self?.store.sessions.contains {
-                    $0.status == .permission || $0.status == .waiting || $0.status == .idle
+                    $0.status == .permission || $0.status == .waiting
                 } ?? false
                 if needsAttention { self?.showPopoverQuietly() }
                 // SwiftUIレンダリング後にポップオーバーサイズ更新

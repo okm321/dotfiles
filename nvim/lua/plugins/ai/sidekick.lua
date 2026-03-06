@@ -9,7 +9,7 @@ return {
 			},
 			win = {
 				split = {
-					width = 70,
+					width = 100,
 				},
 				keys = {
 					hide_t = { "<c-q>Q", "hide" },

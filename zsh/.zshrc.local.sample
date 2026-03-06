@@ -1,1 +1,2 @@
 export CONTEXT7_API_KEY=""
+export NOTION_TOKEN=""

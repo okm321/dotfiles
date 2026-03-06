@@ -104,7 +104,8 @@
     "ralph-loop@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "accesslint": {
