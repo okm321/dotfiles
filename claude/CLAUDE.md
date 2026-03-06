@@ -4,20 +4,12 @@
 - 日本語で会話する
 - 簡潔に、要点を押さえて回答する
 - 不明点は推測せず確認する
-- 曖昧な指示や複数の選択肢がある場合は `AskUserQuestionTool` で選択肢を提示してヒアリングする
 
 ## Code Style
-- シンプルで読みやすいコードを優先
 - 過度な抽象化を避ける
 - 既存のコードスタイルに合わせる
 - 不要なコメントは書かない（コードで意図を表現する）
-
-## Development Environment
-- Terminal: Ghostty
-- Editor: Neovim
-- Multiplexer: tmux
-- Shell: zsh + sheldon
-- Package Manager: Homebrew
+- アーキテクチャを意識して、責務を分ける
 
 ## Development Preferences
 - テストは実装と一緒に考える
@@ -27,6 +19,7 @@
 - ライブラリの機能を使う時は、コードベースだけでなく公式ドキュメントも確認する
 
 ## Git
+- commit, push は明示的に指示されるまで行わない
 - コミットメッセージは日本語で、簡潔に
 - 1コミット = 1つの論理的な変更
 - GitHub操作（PR、Issue、リポジトリ情報など）は `gh` CLIを使用する

@@ -1,22 +1,31 @@
 {
   "chrome-devtools": {
     "command": "npx",
-    "args": ["chrome-devtools-mcp@latest"]
+    "args": [
+      "chrome-devtools-mcp@latest"
+    ]
   },
   "context7": {
     "command": "npx",
-    "args": ["-y", "@upstash/context7-mcp"],
+    "args": [
+      "-y",
+      "@upstash/context7-mcp"
+    ],
     "env": {
       "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
     }
   },
   "codex": {
     "command": "codex",
-    "args": ["mcp-server"]
+    "args": [
+      "mcp-server"
+    ]
   },
   "ReactAria": {
     "command": "npx",
-    "args": ["@react-aria/mcp@latest"]
+    "args": [
+      "@react-aria/mcp@latest"
+    ]
   },
   "playwright": {
     "command": "npx",
@@ -32,5 +41,15 @@
     ],
     "env": {},
     "type": "stdio"
+  },
+  "notionApi": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@notionhq/notion-mcp-server"
+    ],
+    "env": {
+      "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ${NOTION_TOKEN}\", \"Notion-Version\": \"2025-09-03\" }"
+    }
   }
 }
