@@ -129,20 +129,21 @@ conflicted = '='
 ahead = '⇡${count}'
 behind = '⇣${count}'
 diverged = '⇕'
-up_to_date = '✓'
+up_to_date = ''
 untracked = '?'
 stashed = '\$'
 modified = '!${count}'
 renamed = '»'
 deleted = '✘'
 format = """
-[  $all_status$ahead_behind]($style)\
+([  $all_status$ahead_behind]($style))
 """
 
 [git_metrics]
 disabled = false
+only_nonzero_diffs = true
 format = """
-[  +$added]($added_style)[-$deleted]($deleted_style)\
+([  +$added]($added_style)[-$deleted]($deleted_style))
 """
 
 [golang]
