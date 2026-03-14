@@ -10,9 +10,37 @@ apply = ["source"]
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
-# zsh-syntax-highlighting
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
+# EDITOR=nvim による vi モード自動有効化を無効にする（zeno より前に実行）
+[plugins.emacs-mode]
+inline = 'bindkey -e'
+
+# zeno.zsh（lazy-load + キーバインド）
+[plugins.zeno]
+github = "yuki-yano/zeno.zsh"
+use = ["zeno-bootstrap.zsh"]
+apply = ["source"]
+
+[plugins.zeno-keybinds]
+inline = '''
+export ZENO_HOME="$HOME/.config/zeno"
+export ZENO_COMPLETION_FALLBACK=expand-or-complete
+zeno-register-lazy-widget zeno-auto-snippet
+zeno-register-lazy-widget zeno-auto-snippet-and-accept-line
+zeno-register-lazy-widget zeno-completion
+zeno-register-lazy-widget zeno-insert-snippet
+zeno-register-lazy-widget zeno-insert-space
+zeno-register-lazy-widget zeno-toggle-auto-snippet
+zeno-register-lazy-widget zeno-history-selection
+bindkey ' '  zeno-auto-snippet
+bindkey '^m' zeno-auto-snippet-and-accept-line
+bindkey '^i' zeno-completion
+bindkey '^xx' zeno-insert-snippet
+bindkey '^x ' zeno-insert-space
+bindkey '^x^m' accept-line
+bindkey '^x^z' zeno-toggle-auto-snippet
+bindkey '^r' zeno-history-selection
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(zeno-auto-snippet-and-accept-line)
+'''
 
 # zsh-autosuggestions
 [plugins.zsh-autosuggestions]
@@ -24,17 +52,25 @@ apply = ["source"]
 github = "zsh-users/zsh-history-substring-search"
 apply = ["source"]
 
-# starship
+# zsh配下のファイルは遅延読み込みする（sync/は除外）
+[plugins.local-defers]
+local = "~/dotfiles/zsh"
+use = ["*.zsh"]
+
+# zsh/sync配下のファイルは即時読み込みする
+[plugins.local-sync]
+local = "~/dotfiles/zsh/sync"
+use = ["*.zsh"]
+apply = ["source"]
+
+# npm 補完強化
+[plugins.zsh-better-npm-completion]
+github = "lukechilds/zsh-better-npm-completion"
+
+# starship（プロンプト制御のため即時読み込み）
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
-# zsh配下のファイルは遅延読み込みする
-[plugins.local-defers]
-local = "~/dotfiles/zsh"
-use = ["{!sync,*}.zsh"]
-
-# zsh/sync配下のファイルは遅延読み込みしない
-[plugins.local-sync]
-local = "~/dotfiles/zsh"
-use = ["sync/*.zsh"]
-apply = ["source"]
+# fast-syntax-highlighting（最後に読み込む）
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
