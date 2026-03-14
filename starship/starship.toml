@@ -135,16 +135,12 @@ stashed = '\$'
 modified = '!${count}'
 renamed = '»'
 deleted = '✘'
-format = """
-([  $all_status$ahead_behind]($style))
-"""
+format = "([  $all_status$ahead_behind]($style))"
 
 [git_metrics]
 disabled = false
 only_nonzero_diffs = true
-format = """
-([  +$added]($added_style)[-$deleted]($deleted_style))
-"""
+format = "([  +$added]($added_style)[-$deleted]($deleted_style))"
 
 [golang]
 symbol = " "
