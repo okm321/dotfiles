@@ -144,6 +144,14 @@ else
   printf "  🔥 yazi is already linked \n"
 fi
 
+# zeno
+if [ ! -L ~/.config/zeno ]; then
+  ln -sf ~/dotfiles/zeno ~/.config/zeno
+  printf "  \e[32m✅ Linked zeno \e[m\n"
+else
+  printf "  🔥 zeno is already linked \n"
+fi
+
 # zsh
 if [ ! -L ~/.zshrc ]; then
   ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc

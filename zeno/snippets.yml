@@ -1,0 +1,74 @@
+snippets:
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+
+  - name: git add
+    keyword: ga
+    snippet: git add
+
+  - name: git commit message
+    keyword: gcim
+    snippet: git commit -m '{{commit_message}}'
+
+  - name: git push
+    keyword: gp
+    snippet: git push
+
+  - name: git pull
+    keyword: gl
+    snippet: git pull
+
+  - name: git checkout
+    keyword: gco
+    snippet: git checkout
+
+  - name: git branch
+    keyword: gb
+    snippet: git branch
+
+  - name: git diff
+    keyword: gd
+    snippet: git diff
+
+  - name: git log oneline
+    keyword: glo
+    snippet: git log --oneline
+
+  - name: docker compose
+    keyword: dc
+    snippet: docker compose
+
+  - name: docker compose up
+    keyword: dcu
+    snippet: docker compose up -d
+
+  - name: docker compose down
+    keyword: dcd
+    snippet: docker compose down
+
+  - name: docker compose logs
+    keyword: dcl
+    snippet: docker compose logs -f
+
+  - name: docker compose restart
+    keyword: dcr
+    snippet: docker compose restart
+
+  - name: docker compose exec
+    keyword: dce
+    snippet: docker compose exec {{service}}
+
+  - name: docker compose build
+    keyword: dcb
+    snippet: docker compose build
+
+  - name: docker ps
+    keyword: dps
+    snippet: docker ps
+
+  - name: "null"
+    keyword: "null"
+    snippet: ">/dev/null 2>&1"
+    context:
+      lbuffer: '.+\s'
