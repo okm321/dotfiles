@@ -117,6 +117,7 @@
   },
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".claude/plans",
+  "voiceEnabled": true,
   "skipDangerousModePermissionPrompt": true,
   "defaultMode": "acceptEdits",
   "plugins": [
