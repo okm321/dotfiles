@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/Users/okamotonaofumi/dotfiles/ai-digest/digest.py", line 422, in <module>
+    main()
+    ~~~~^^
+  File "/Users/okamotonaofumi/dotfiles/ai-digest/digest.py", line 401, in main
+    tweets = search_tweets()
+  File "/Users/okamotonaofumi/dotfiles/ai-digest/digest.py", line 241, in search_tweets
+    result = subprocess.run(
+        ["claude", "-p", prompt, "--allowedTools", "WebSearch"],
+        capture_output=True, text=True, timeout=300, env=env,
+    )
+  File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1989, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'claude'
