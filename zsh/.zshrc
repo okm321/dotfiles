@@ -3,6 +3,9 @@
 # zshの読み込み時間を表示するときはコメントアウトを外す
 # zmodload zsh/zprof
 
+# Deno（sheldonより先に読み込む。zeno.zshが依存）
+. "$HOME/.deno/env"
+
 export SHELDON_CONFIG_FILE=$HOME/.sheldon.toml
 eval "$(sheldon source)"
 
@@ -49,4 +52,3 @@ export EDITOR="nvim"
 # humanlog
 export PATH=~/.humanlog/bin:$PATH
 
-. "/Users/okamotonaofumi/.deno/env"

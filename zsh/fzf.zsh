@@ -1,6 +1,5 @@
 #!/bin/bash
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--ansi -e --ignore-case --prompt='🔍 ' --layout=reverse --border=rounded --height 100% "
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=header,grid --line-range :100 {} --theme="Nord"' --prompt='🔍 Search File ' --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'"
 export FZF_CTRL_R_OPTS="--prompt='🔍 Search History '"
@@ -10,5 +9,6 @@ export FZF_CTRL_T_COMMAND="fd --type f -H -E .git -E node_modules"
 export FZF_ALT_C_COMMAND="fd --type d -H -E .git -E node_modules"
 export FZF_TMUX_OPTS="-p 80%"
 
-# fzfの設定
-source <(fzf --zsh)
+# fzfのキーバインドのみ読み込み（補完はzenoに任せる）
+# Ctrl+T: ファイル検索, Ctrl+R: 履歴検索（zenoで上書き）, Alt+C: ディレクトリ移動
+source <(fzf --zsh | grep -v 'bindkey.*fzf-completion')
