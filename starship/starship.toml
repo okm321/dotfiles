@@ -1,3 +1,80 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$memory_usage\
+$fill\
+$golang\
+$package\
+$nodejs\
+$deno\
+$terraform\
+$gcloud\
+$line_break\
+$character\
+$status\
+"""
+
+right_format = """
+$cmd_duration\
+$time\
+"""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = '[╰─>\$](bold cyan)'
+error_symbol = '[╰─>\$](bold red)'
+
+[sudo]
+disabled = false
+symbol = ' 󰿆 sudo'
+format = """
+[$symbol]($style)\
+"""
+style = "bold yellow"
+
+[direnv]
+disabled = false
+format = """
+[$symbol$allowed]($style)\
+"""
+style = "bold green"
+
+[localip]
+ssh_only = false
+format = '@[$localipv4](bold red) '
+disabled = false
+
+[package]
+format = '[🎁 $version](bold 208) '
+
+[terraform]
+format = '[$symbol$version $workspace]($style)'
+symbol = " "
+detect_files = ['.terraform-version']
+
+[memory_usage]
+disabled = false
+threshold = 75
+style = 'bold dimmed green'
+symbol = "󰍛"
+format = ' $symbol [${ram}( | ${swap})]($style) '
+
+# [status]
+# symbol = '🔴 '
+# success_symbol = '🟢 '
+# format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+# map_symbol = true
+# disabled = false
+
 [aws]
 symbol = "  "
 
@@ -17,7 +94,12 @@ symbol = " "
 symbol = " "
 
 [directory]
+format = '[┬─\[$path\]]($style)[$read_only]($read_only_style) '
+truncation_length = 2
+truncate_to_repo = true
 read_only = " 󰌾"
+fish_style_pwd_dir_length = 1
+home_symbol = "~"
 
 [docker_context]
 symbol = " "
@@ -36,9 +118,39 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+truncation_length = 8
+format = """
+[$symbol$branch(:$remote_branch)]($style)\
+"""
+
+[git_status]
+disabled = false
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕'
+up_to_date = '✓'
+untracked = '?'
+stashed = '\$'
+modified = '!${count}'
+renamed = '»'
+deleted = '✘'
+format = """
+[  $all_status$ahead_behind]($style)\
+"""
+
+[git_metrics]
+disabled = false
+format = """
+[  +$added]($added_style)[-$deleted]($deleted_style)\
+"""
 
 [golang]
 symbol = " "
+format = ' [$symbol($version )($mod_version )]($style)'
+
+[deno]
+format = ' [🦕 $version](green bold)'
 
 [guix_shell]
 symbol = " "
@@ -67,9 +179,6 @@ symbol = " "
 [lua]
 symbol = " "
 
-[memory_usage]
-symbol = "󰍛 "
-
 [meson]
 symbol = "󰔷 "
 
@@ -80,6 +189,7 @@ symbol = "󰆥 "
 symbol = " "
 
 [nodejs]
+format = '[$symbol($version)]($style)'
 symbol = " "
 
 [ocaml]
@@ -130,9 +240,6 @@ Unknown = " "
 Void = " "
 Windows = "󰍲 "
 
-[package]
-symbol = "󰏗 "
-
 [perl]
 symbol = " "
 
@@ -165,9 +272,16 @@ symbol = " "
 
 [time]
 disabled = false
-style = "cyan"
-format = '[\[$time\]]($style) '
+format = '[ $time](bold cyan)'
+time_format = '%T'
+
+[cmd_duration]
+show_milliseconds = false
+min_time = 1000
+show_notifications = true
+format = '[󰞌 $duration ](bold yellow)'
 
 [gcloud]
-# Hide logged-in account; show only the project next to the icon.
-format = "$symbol($project) "
+symbol = "󱇶 "
+style = "bold blue"
+format = " [$symbol($project)]($style)"
