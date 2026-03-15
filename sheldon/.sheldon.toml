@@ -24,6 +24,7 @@ apply = ["source"]
 inline = '''
 export ZENO_HOME="$HOME/.config/zeno"
 export ZENO_COMPLETION_FALLBACK=expand-or-complete
+export ZENO_DISABLE_EXECUTE_CACHE_COMMAND=1
 zeno-register-lazy-widget zeno-auto-snippet
 zeno-register-lazy-widget zeno-auto-snippet-and-accept-line
 zeno-register-lazy-widget zeno-completion
