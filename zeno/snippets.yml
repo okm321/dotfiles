@@ -12,11 +12,11 @@ snippets:
     snippet: git commit -m '{{commit_message}}'
 
   - name: git push
-    keyword: gp
+    keyword: gP
     snippet: git push
 
   - name: git pull
-    keyword: gl
+    keyword: gp
     snippet: git pull
 
   - name: git checkout
