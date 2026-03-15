@@ -44,20 +44,5 @@ else
   done
 fi
 
-# Build CC Watcher
-echo ""
-echo "=== Building CC Watcher ==="
-
-CCWATCHER_BUILD="$SCRIPT_DIR/hooks/scripts/build-claude-approve.sh"
-if [[ -f "$CCWATCHER_BUILD" ]]; then
-  if command -v swiftc &>/dev/null; then
-    bash "$CCWATCHER_BUILD"
-  else
-    echo "Warning: swiftc not found. Install Xcode Command Line Tools to build CC Watcher."
-  fi
-else
-  echo "Warning: build script not found"
-fi
-
 echo ""
 echo "Done!"
