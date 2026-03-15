@@ -3,3 +3,4 @@
 
 /aider/.aider.conf.yml
 .aider*
+.tmux-setup/
