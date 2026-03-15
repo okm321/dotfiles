@@ -53,6 +53,7 @@ format = '@[$localipv4](bold red) '
 disabled = false
 
 [package]
+display_private = true
 format = '[🎁 $version](bold 208) '
 
 [terraform]
