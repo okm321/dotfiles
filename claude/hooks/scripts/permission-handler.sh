@@ -52,18 +52,23 @@ if echo "$COMMAND" | grep -qE '^(git |gh |npm |pnpm |yarn |bun |go |cargo |make 
   allow
 fi
 
-# デーモンが起動していなければ自動承認（ブロックしない）
+# デーモンが起動していなければClaude Codeのデフォルト処理に委譲（ユーザーが選択）
 if [ ! -S /tmp/claude-approve.sock ]; then
-  allow
+  exit 0
 fi
 
-# PIDファイルがあってもプロセスが死んでいたら掃除して自動承認
+# ソケットはあるがプロセスが死んでいたら掃除してデフォルト処理に委譲
+DAEMON_ALIVE=false
 if [ -f /tmp/claude-approve.pid ]; then
   DAEMON_PID=$(cat /tmp/claude-approve.pid 2>/dev/null)
-  if [ -n "$DAEMON_PID" ] && ! kill -0 "$DAEMON_PID" 2>/dev/null; then
-    rm -f /tmp/claude-approve.sock /tmp/claude-approve.pid
-    allow
+  if [ -n "$DAEMON_PID" ] && kill -0 "$DAEMON_PID" 2>/dev/null; then
+    DAEMON_ALIVE=true
   fi
+fi
+
+if [ "$DAEMON_ALIVE" = false ]; then
+  rm -f /tmp/claude-approve.sock /tmp/claude-approve.pid
+  exit 0
 fi
 
 # デーモンにリクエスト送信
