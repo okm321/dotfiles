@@ -111,7 +111,7 @@ symbol = " "
 
 [git_branch]
 symbol = " "
-truncation_length = 15
+truncation_length = 20
 format = """
 [$symbol$branch(:$remote_branch)]($style)\
 """
