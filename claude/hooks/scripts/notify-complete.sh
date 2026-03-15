@@ -1,10 +1,4 @@
 #!/bin/bash
-INPUT=$(cat)
-CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
-PROJECT=$(basename "$CWD")
-[ -z "$PROJECT" ] && PROJECT="Unknown"
-
-source "$(dirname "$0")/detect-tmux.sh"
-
-BIN="$HOME/.config/claude/hooks/scripts/claude-approve"
-[ -S /tmp/claude-approve.sock ] && "$BIN" status "idle" "$TMUX_SESSION" "$TMUX_WINDOW" "$PROJECT"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$SCRIPT_DIR/tmux-status.sh"
+clear_claude_status

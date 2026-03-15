@@ -73,6 +73,26 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [
