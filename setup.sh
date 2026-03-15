@@ -16,8 +16,8 @@ source ~/dotfiles/replace-zsh.sh
 # gitをbrewのものに置き換え
 source ~/dotfiles/replace-git.sh
 
-# voltaをインストール
-source ~/dotfiles/volta/volta-init.sh
+# miseをセットアップ
+source ~/dotfiles/mise/mise-init.sh
 
 # Bunをインストール
 source ~/dotfiles/bun/bun-init.sh
