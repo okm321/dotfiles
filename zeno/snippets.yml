@@ -67,6 +67,10 @@ snippets:
     keyword: dps
     snippet: docker ps
 
+  - name: tmux-setup
+    keyword: ts
+    snippet: tmux-setup {{profile}}
+
   - name: "null"
     keyword: "null"
     snippet: ">/dev/null 2>&1"
