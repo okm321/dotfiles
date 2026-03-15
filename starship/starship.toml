@@ -18,7 +18,6 @@ $terraform\
 $gcloud\
 $line_break\
 $character\
-$status\
 """
 
 right_format = """
@@ -63,17 +62,10 @@ detect_files = ['.terraform-version']
 
 [memory_usage]
 disabled = false
-threshold = 75
+threshold = 85
 style = 'bold dimmed green'
 symbol = "󰍛"
 format = ' $symbol [${ram}( | ${swap})]($style) '
-
-# [status]
-# symbol = '🔴 '
-# success_symbol = '🟢 '
-# format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
-# map_symbol = true
-# disabled = false
 
 [aws]
 symbol = "  "
