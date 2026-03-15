@@ -3,5 +3,5 @@
 
 /aider/.aider.conf.yml
 .aider*
-.tmux-setup/*
-!.tmux-setup/sample.conf
+zsh/.tmux-setup/*
+!zsh/.tmux-setup/sample.conf
