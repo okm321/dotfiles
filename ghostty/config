@@ -1,5 +1,6 @@
 theme = nord
-background-opacity = 0.95
+background-opacity = 0.90
+background-blur-radius = 50
 
 # フォント
 # https://github.com/subframe7536/maple-font
