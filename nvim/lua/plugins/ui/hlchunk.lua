@@ -8,7 +8,7 @@ return {
 			chunk = {
 				enable = true,
 				style = "#81A1C1",
-				delay = 0,
+				delay = 50,
 				exclude_filetypes = exclude_ft,
 			},
 			indent = {
