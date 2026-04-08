@@ -28,7 +28,6 @@ return {
 			menu = {
 				border = "single",
 				draw = {
-					treesitter = { "lsp" },
 					columns = { { "kind_icon" }, { "label", gap = 1 } },
 					components = {
 						label = {

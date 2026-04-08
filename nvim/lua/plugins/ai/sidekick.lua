@@ -40,6 +40,45 @@ return {
 			desc = "Sidekick highlight adjustments",
 			callback = set_sidekick_hl,
 		})
+
+		local function in_tmux()
+			return vim.env.TMUX ~= nil and vim.env.TMUX ~= ""
+		end
+
+		local function tmux_set_pane(key, value)
+			vim.fn.system({ "tmux", "set", "-p", key, value })
+		end
+
+		local function tmux_unset_pane(key)
+			vim.fn.system({ "tmux", "set", "-pu", key })
+		end
+
+		if in_tmux() then
+			local group = vim.api.nvim_create_augroup("SidekickTmuxAgent", { clear = true })
+
+			vim.api.nvim_create_autocmd("TermOpen", {
+				group = group,
+				callback = function()
+					vim.schedule(function()
+						if vim.bo.filetype == "sidekick_terminal" then
+							tmux_set_pane("@pane_agent", "sidekick")
+							tmux_set_pane("@pane_status", "running")
+							tmux_set_pane("@pane_cwd", vim.fn.getcwd())
+						end
+					end)
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("TermClose", {
+				group = group,
+				callback = function()
+					if vim.bo.filetype == "sidekick_terminal" then
+						tmux_set_pane("@pane_status", "idle")
+						tmux_unset_pane("@pane_agent")
+					end
+				end,
+			})
+		end
 	end,
   -- stylua: ignore
   keys = {
