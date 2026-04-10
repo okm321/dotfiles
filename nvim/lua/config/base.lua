@@ -12,6 +12,9 @@ vim.opt.fileencoding = "utf-8"
 -- 画面分割設定
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.o.winwidth = 100
+vim.o.winminwidth = 10
+vim.o.equalalways = false
 
 -- 表示設定
 vim.wo.number = true
@@ -52,6 +55,7 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 
 -- LSP設定
 -- vim.lsp.set_log_level("ERROR")
+vim.lsp.inlay_hint.enable(false)
 
 -- オートコマンド
 -- インサートモードを抜けたときにペーストモードをオフ

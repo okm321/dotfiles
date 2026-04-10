@@ -1,11 +1,11 @@
-vim.lsp.config("dockerls", {
-  settings = {
-    docker = {
-	    languageserver = {
-        formatter = {
-          ignoreMultilineInstructions = true,
-        },
-	    },
-    }
-  }
-})
+return {
+	settings = {
+		docker = {
+			languageserver = {
+				formatter = {
+					ignoreMultilineInstructions = true,
+				},
+			},
+		},
+	},
+}

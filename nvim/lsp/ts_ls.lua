@@ -1,4 +1,4 @@
-vim.lsp.config("ts_ls", {
+return {
 	workspace_required = true,
 	root_markers = { ".git", "tsconfig.json", "package.json" },
 	settings = {
@@ -21,4 +21,4 @@ vim.lsp.config("ts_ls", {
 			},
 		},
 	},
-})
+}

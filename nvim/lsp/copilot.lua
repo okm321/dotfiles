@@ -1,4 +1,4 @@
-vim.lsp.config("copilot", {
+return {
 	root_dir = function(bufnr, callback)
 		-- 特定の名前を持つファイルでは起動しないようにする
 		local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
@@ -11,7 +11,6 @@ vim.lsp.config("copilot", {
 		end
 
 		-- git管理下でのみ起動する
-		-- lspconfigで定義されているroot_markersが`{ '.git' }`なのを踏襲
 		local root_dir = vim.fs.root(bufnr, { ".git" })
 		if root_dir then
 			return callback(root_dir)
@@ -19,7 +18,6 @@ vim.lsp.config("copilot", {
 	end,
 	on_init = function()
 		-- サジェストのハイライト
-		-- CommentやMoreMsgのハイライトを拝借しつつアンダーラインをつける
 		local hlc = vim.api.nvim_get_hl(0, { name = "Comment" })
 		vim.api.nvim_set_hl(0, "ComplHint", vim.tbl_extend("force", hlc, { underline = true }))
 		local hlm = vim.api.nvim_get_hl(0, { name = "MoreMsg" })
@@ -33,16 +31,13 @@ vim.lsp.config("copilot", {
 				-- インライン補完を有効に
 				vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
 
-				-- <c-e>で確定
 				vim.keymap.set("i", "<c-l>", function()
 					vim.lsp.inline_completion.get()
-					-- 補完ウィンドウが開きっぱなしになるのを防止
 					if vim.fn.pumvisible() == 1 then
 						return "<c-e>"
 					end
 				end, { silent = true, expr = true, buffer = bufnr })
 
-				-- <c-f>/<c-b>で補完候補を選択
 				vim.keymap.set("i", "<M-]>", function()
 					vim.lsp.inline_completion.select()
 					vim.notify("copilot: next suggestion", vim.log.levels.INFO)
@@ -53,4 +48,4 @@ vim.lsp.config("copilot", {
 			end,
 		})
 	end,
-})
+}
