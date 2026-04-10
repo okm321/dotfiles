@@ -16,6 +16,11 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
+		indent = {
+			enabled = true,
+			animate = { enabled = false },
+		},
+		scope = { enabled = true },
 		dashboard = {
 			enabled = false,
 			sections = {

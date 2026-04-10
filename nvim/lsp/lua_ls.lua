@@ -1,12 +1,12 @@
-vim.lsp.config("lua_ls", {
+return {
 	settings = {
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },
 			},
 			hint = {
-				enable = false, -- これでインレイヒント無効化
+				enable = false,
 			},
 		},
 	},
-})
+}

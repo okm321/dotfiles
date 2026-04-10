@@ -1,1 +1,1 @@
--- vim.lsp.config("css_variables")
+return {}

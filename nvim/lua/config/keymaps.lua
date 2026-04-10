@@ -56,9 +56,25 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
+-- ウィンドウ最大化トグル（windows.nvim の代替）
+local win_maximized = false
+vim.keymap.set("n", "<C-w>z", function()
+	if win_maximized then
+		vim.cmd("wincmd =")
+	else
+		vim.cmd("wincmd _ | wincmd |")
+	end
+	win_maximized = not win_maximized
+end, { silent = true })
+
 -- 間違えてマクロ記録を始めないようにkeymap
 vim.api.nvim_set_keymap("n", "M", "q", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "q", "<Nop>", { noremap = true, silent = true })
+
+-- hover（border付き）
+vim.keymap.set("n", "K", function()
+	vim.lsp.buf.hover({ border = "rounded" })
+end, { silent = true })
 
 -- highlightのクリア
 vim.api.nvim_set_keymap("n", "<leader>l", "<Cmd>noh<CR>", { noremap = true, silent = true })
