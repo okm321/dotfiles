@@ -41,10 +41,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/notify-complete.sh"
-          },
-          {
-            "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
           }
         ]
@@ -70,23 +66,9 @@
         ]
       }
     ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/permission-handler.sh"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/notify-waiting.sh"
-          },
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude notification"
@@ -94,23 +76,9 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
-          },
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude activity-log"
@@ -121,10 +89,6 @@
     "UserPromptSubmit": [
       {
         "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/tool-activity.sh"
-          },
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude user-prompt-submit"
@@ -138,10 +102,6 @@
           {
             "type": "command",
             "command": "bash \"$HOME\"/.config/claude/hooks/scripts/setup-plan-exclude.sh"
-          },
-          {
-            "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/session-register.sh"
           },
           {
             "type": "command",
@@ -170,7 +130,8 @@
     "swift-lsp@claude-plugins-official": true,
     "Notion@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "notion@claude-plugins-official": true
+    "notion@claude-plugins-official": true,
+    "git@castingone-plugins": true
   },
   "extraKnownMarketplaces": {
     "accesslint": {
