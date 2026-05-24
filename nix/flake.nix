@@ -16,10 +16,27 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Homebrew 本体も Nix flake で管理 (default は有効、既存環境マシンのみ disable)
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # tap 群を flake.lock で固定
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, ... }:
+    inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, nix-homebrew, ... }:
     let
       system = "aarch64-darwin";
 
@@ -32,22 +49,36 @@
 
       pkgs = import nixpkgs { inherit system overlays; config.allowUnfree = true; };
 
-      # 全マシン共通の darwinSystem 定義 (DRY)
-      # マシン固有設定が必要になったら modules に分岐を入れる
-      darwinSystem = nix-darwin.lib.darwinSystem {
-        inherit system;
-        modules = [
-          { nixpkgs.overlays = overlays; }
-          ./darwin.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.okamotonaofumi = import ./home.nix;
-          }
-        ];
-      };
+      # 全マシン共通の modules
+      # nix-homebrew は default 有効 = 新 PC は 0 から構築可能
+      # 既存 Homebrew 環境を持つマシンは個別に disable する
+      commonModules = [
+        { nixpkgs.overlays = overlays; }
+        ./darwin.nix
+
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = false;
+            user = "okamotonaofumi";
+            mutableTaps = true;
+            taps = {
+              "homebrew/homebrew-core" = inputs.homebrew-core;
+              "homebrew/homebrew-cask" = inputs.homebrew-cask;
+              "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+            };
+          };
+        }
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.okamotonaofumi = import ./home.nix;
+        }
+      ];
 
       homeConfig = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -56,8 +87,21 @@
     in
     {
       darwinConfigurations = {
-        "macbook-casone" = darwinSystem; # 現在の会社 Mac
-        "macbook-oned" = darwinSystem; # 新 PC 用 (構成は共通)
+        # 新 PC: nix-homebrew で完全管理 (これがデフォルト)
+        "macbook-oned" = nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = commonModules;
+        };
+
+        # 現 PC (macbook-casone): 既存 /opt/homebrew があり autoMigrate が機能しないため
+        # nix-homebrew を無効化。このマシンを廃棄する時はこの darwinConfigurations.macbook-casone
+        # 全体を削除すれば良い (common に統一される)
+        "macbook-casone" = nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = commonModules ++ [{
+            nix-homebrew.enable = nixpkgs.lib.mkForce false;
+          }];
+        };
       };
 
       homeConfigurations = {
