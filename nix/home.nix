@@ -1,4 +1,4 @@
-{ ... }:
+{ username, ... }:
 {
   imports = [
     ./modules/home/packages.nix
@@ -10,8 +10,8 @@
     # ./modules/home/tmux.nix  # ロールバック: programs.tmux のデフォルト設定が競合して tmux server 死亡
   ];
 
-  home.username = "okm";
-  home.homeDirectory = "/Users/okm";
+  home.username = username;
+  home.homeDirectory = "/Users/${username}";
   home.stateVersion = "25.11";
 
   home.sessionVariables = { };

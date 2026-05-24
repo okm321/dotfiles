@@ -40,7 +40,6 @@
     let
       system = "aarch64-darwin";
 
-      # 特定パッケージを unstable から取るための overlay
       overlays = [
         (final: prev: {
           neovim = nixpkgs-unstable.legacyPackages.${system}.neovim;
@@ -49,64 +48,68 @@
 
       pkgs = import nixpkgs { inherit system overlays; config.allowUnfree = true; };
 
-      # 全マシン共通の modules
-      # nix-homebrew は default 有効 = 新 PC は 0 から構築可能
-      # 既存 Homebrew 環境を持つマシンは個別に disable する
-      commonModules = [
-        { nixpkgs.overlays = overlays; }
-        ./darwin.nix
+      # マシン固有 darwinSystem を組み立てる関数
+      # username はマシンごとに違うので specialArgs で全 module に渡す
+      mkSystem = { username, extraModules ? [] }:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = { inherit username; };
+          modules = [
+            { nixpkgs.overlays = overlays; }
+            ./darwin.nix
 
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = false;
-            user = "okm";
-            mutableTaps = true;
-            taps = {
-              "homebrew/homebrew-core" = inputs.homebrew-core;
-              "homebrew/homebrew-cask" = inputs.homebrew-cask;
-              "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-            };
-          };
-        }
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = false;
+                user = username;
+                mutableTaps = true;
+                taps = {
+                  "homebrew/homebrew-core" = inputs.homebrew-core;
+                  "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                  "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                };
+              };
+            }
 
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.okm = import ./home.nix;
-        }
-      ];
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} = import ./home.nix;
+              home-manager.extraSpecialArgs = { inherit username; };
+            }
+          ] ++ extraModules;
+        };
 
-      homeConfig = home-manager.lib.homeManagerConfiguration {
+      mkHome = username: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = { inherit username; };
         modules = [ ./home.nix ];
       };
     in
     {
       darwinConfigurations = {
-        # 新 PC: nix-homebrew で完全管理 (これがデフォルト)
-        "macbook-work" = nix-darwin.lib.darwinSystem {
-          inherit system;
-          modules = commonModules;
-        };
-
-        # 現 PC (macbook-private): 既存 /opt/homebrew があり autoMigrate が機能しないため
-        # nix-homebrew を無効化。このマシンを廃棄する時はこの darwinConfigurations.macbook-private
-        # 全体を削除すれば良い (common に統一される)
-        "macbook-private" = nix-darwin.lib.darwinSystem {
-          inherit system;
-          modules = commonModules ++ [{
+        # 現 PC: 既存 /opt/homebrew のため nix-homebrew は disable
+        # このマシン廃棄時はこの attribute 全体を削除すれば良い
+        "macbook-private" = mkSystem {
+          username = "okm";
+          extraModules = [{
             nix-homebrew.enable = nixpkgs.lib.mkForce false;
           }];
+        };
+
+        # 新 PC: nix-homebrew で完全管理 (これがデフォルト)
+        "macbook-work" = mkSystem {
+          username = "okmkm";
         };
       };
 
       homeConfigurations = {
-        "macbook-private" = homeConfig;
-        "macbook-work" = homeConfig;
+        "macbook-private" = mkHome "okm";
+        "macbook-work" = mkHome "okmkm";
       };
     };
 }
