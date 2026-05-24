@@ -66,7 +66,6 @@
         "/Applications/Nani.app"
         "/Applications/Claude.app"
         "/System/Applications/App Store.app"
-        "/System/Applications/Books.app"
         "/Applications/OrbStack.app"
         "/Applications/Postman.app"
         "/Applications/draw.io.app"
