@@ -48,6 +48,7 @@
 
       # エディタ
       "zed"
+      "visual-studio-code"
 
       # ブラウザ
       "google-chrome"
