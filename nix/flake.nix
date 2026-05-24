@@ -33,6 +33,25 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+
+    # darwin.nix の homebrew.taps で使う追加 tap (全マシン共通)
+    # nix-homebrew で flake.lock に固定 → permission denied 回避
+    homebrew-osx-cross-avr = {
+      url = "github:osx-cross/homebrew-avr";
+      flake = false;
+    };
+    homebrew-raine-workmux = {
+      url = "github:raine/homebrew-workmux";
+      flake = false;
+    };
+    homebrew-morantron-tmux-fingers = {
+      url = "github:Morantron/tmux-fingers";
+      flake = false;
+    };
+    homebrew-nikitabobko-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =
@@ -69,6 +88,10 @@
                   "homebrew/homebrew-core" = inputs.homebrew-core;
                   "homebrew/homebrew-cask" = inputs.homebrew-cask;
                   "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                  "osx-cross/avr" = inputs.homebrew-osx-cross-avr;
+                  "raine/workmux" = inputs.homebrew-raine-workmux;
+                  "morantron/tmux-fingers" = inputs.homebrew-morantron-tmux-fingers;
+                  "nikitabobko/tap" = inputs.homebrew-nikitabobko-tap;
                 };
               };
             }
