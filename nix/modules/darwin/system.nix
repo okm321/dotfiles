@@ -20,10 +20,12 @@
   system.defaults = {
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
-      KeyRepeat = 2;
+      KeyRepeat = 1; # 最速 (画像のスライダー右端)
       InitialKeyRepeat = 15;
       "com.apple.swipescrolldirection" = false;
       "com.apple.trackpad.scaling" = 2.0;
+      "com.apple.mouse.scaling" = 2.0; # マウス軌跡速度 (右寄り)
+      "com.apple.scrollwheel.scaling" = 0.3125; # マウススクロール速度 (中間)
 
       ApplePressAndHoldEnabled = false;
       NSAutomaticCapitalizationEnabled = false;
@@ -96,6 +98,20 @@
       Clicking = true;
       TrackpadRightClick = true;
       TrackpadThreeFingerDrag = true;
+    };
+
+    # system.defaults.trackpad で書けない詳細設定は CustomUserPreferences で
+    CustomUserPreferences = {
+      "com.apple.AppleMultitouchTrackpad" = {
+        TrackpadPinch = 1;                       # 拡大/縮小 (2 本指ピンチ)
+        TrackpadRotate = 1;                       # 回転 (2 本指)
+        TrackpadTwoFingerDoubleTapGesture = 1;    # スマートズーム (2 本指ダブルタップ)
+        TrackpadScroll = 1;
+        TrackpadMomentumScroll = 1;
+        TrackpadHorizScroll = 1;
+        TrackpadFourFingerPinchGesture = 2;       # 4 本指ピンチ
+        TrackpadFiveFingerPinchGesture = 2;       # 5 本指ピンチ
+      };
     };
   };
 }
