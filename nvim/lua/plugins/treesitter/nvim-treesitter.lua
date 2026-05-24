@@ -1,109 +1,73 @@
+-- 依存: brew install tree-sitter-cli（パーサーのビルドに必要）
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
 	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile" },
+	lazy = false,
 	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		-- "windwp/nvim-ts-autotag", -- HTMLタグの自動閉じ
+		{
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			branch = "main",
+		},
 	},
+	init = function()
+		-- ハイライトとインデントをビルトイン treesitter で有効化
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function()
+				pcall(vim.treesitter.start)
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+	end,
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				-- 主要言語
-				"typescript",
-				"tsx",
-				"javascript",
-				"vue",
-				"go",
-				-- スタイル・マークアップ
-				"html",
-				"css",
-				"scss",
-				-- データ形式
-				"json",
-				"jsonc",
-				"yaml",
-				"toml",
-				"xml",
-				-- ドキュメント
-				"markdown",
-				"markdown_inline",
-				"jsdoc",
-				-- インフラ関連
-				"dockerfile",
-				"bash",
-				-- 拡張機能（diff表示など）
-				"diff",
-				"regex",
-				"c",
-				-- Neovim設定関連
-				"lua",
-				"luadoc",
-				"luap",
-				"vim",
-				"vimdoc",
-				-- ユーティリティ
-				"printf",
-				"query",
-				-- 必要に応じて追加
-				"sql",
-				"hcl",
-				"terraform",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-			indent = {
-				enable = true,
-			},
-			-- autotag = {
-			-- 	enable = true, -- HTMLタグの自動閉じを有効化
-			-- },
-			-- テキストオブジェクト
-			textobjects = {
-				move = {
-					enable = true,
-					goto_next_start = {
-						["]f"] = "@function.outer",
-						["]c"] = "@class.outer",
-						["]a"] = "@parameter.inner",
-					},
-					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-					goto_previous_start = {
-						["[f"] = "@function.outer",
-						["[c"] = "@class.outer",
-						["[a"] = "@parameter.inner",
-					},
-					goto_previous_end = {
-						["[F"] = "@function.outer",
-						["[C"] = "@class.outer",
-						["[A"] = "@parameter.inner",
-					},
-				},
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-						["aa"] = "@parameter.outer",
-						["ia"] = "@parameter.inner",
-					},
-				},
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<CR>",
-					node_incremental = "<CR>",
-					scope_incremental = "<nop>",
-					node_decremental = "<bs>",
-				},
+		-- パーサーの自動インストール
+		local ensure_installed = {
+			"typescript", "tsx", "javascript", "vue", "go",
+			"html", "css", "scss",
+			"json", "jsonc", "yaml", "toml", "xml",
+			"markdown", "markdown_inline", "jsdoc",
+			"dockerfile", "bash",
+			"diff", "regex",
+			"lua", "luadoc", "luap", "vim", "vimdoc",
+			"printf", "query",
+			"sql", "hcl", "terraform", "c",
+		}
+		local installed = require("nvim-treesitter.config").get_installed()
+		local to_install = vim.iter(ensure_installed)
+			:filter(function(p) return not vim.tbl_contains(installed, p) end)
+			:totable()
+		if #to_install > 0 then
+			require("nvim-treesitter").install(to_install)
+		end
+
+		-- textobjects: select
+		require("nvim-treesitter-textobjects").setup({
+			select = {
+				lookahead = true,
 			},
 		})
+
+		local sel = require("nvim-treesitter-textobjects.select").select_textobject
+		vim.keymap.set({ "x", "o" }, "af", function() sel("@function.outer", "textobjects") end)
+		vim.keymap.set({ "x", "o" }, "if", function() sel("@function.inner", "textobjects") end)
+		vim.keymap.set({ "x", "o" }, "ac", function() sel("@class.outer", "textobjects") end)
+		vim.keymap.set({ "x", "o" }, "ic", function() sel("@class.inner", "textobjects") end)
+		vim.keymap.set({ "x", "o" }, "aa", function() sel("@parameter.outer", "textobjects") end)
+		vim.keymap.set({ "x", "o" }, "ia", function() sel("@parameter.inner", "textobjects") end)
+
+		-- textobjects: move
+		local move = require("nvim-treesitter-textobjects.move")
+		vim.keymap.set({ "n", "x", "o" }, "]f", function() move.goto_next_start("@function.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "]c", function() move.goto_next_start("@class.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "]a", function() move.goto_next_start("@parameter.inner", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "]F", function() move.goto_next_end("@function.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next_end("@class.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "]A", function() move.goto_next_end("@parameter.inner", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[f", function() move.goto_previous_start("@function.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[c", function() move.goto_previous_start("@class.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@parameter.inner", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[F", function() move.goto_previous_end("@function.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[C", function() move.goto_previous_end("@class.outer", "textobjects") end)
+		vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_end("@parameter.inner", "textobjects") end)
 	end,
 }

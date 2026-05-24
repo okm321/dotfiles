@@ -42,14 +42,9 @@
     "env": {},
     "type": "stdio"
   },
-  "notionApi": {
-    "command": "npx",
-    "args": [
-      "-y",
-      "@notionhq/notion-mcp-server"
-    ],
-    "env": {
-      "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ${NOTION_TOKEN}\", \"Notion-Version\": \"2025-09-03\" }"
-    }
+  "drawio": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@drawio/mcp"]
   }
 }
