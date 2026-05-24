@@ -46,7 +46,7 @@
 
       # ブラウザ
       "google-chrome"
-      "dia"
+      # "dia"  # Homebrew cask 未登録のため手動管理 (/Applications/Dia.app)
 
       # コミュニケーション
       "slack"
