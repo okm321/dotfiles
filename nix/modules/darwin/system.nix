@@ -37,6 +37,41 @@
 
       mru-spaces = false;
       expose-animation-duration = 0.1;
+
+      # Dock の常駐アプリ (左から右の並び)
+      # 存在しないアプリのパスは macOS が無視する
+      persistent-apps = [
+        "/System/Applications/Apps.app"
+        "/System/Applications/Calendar.app"
+        "/Applications/Spotify.app"
+        "/Applications/Notion.app"
+        "/Applications/Google Chrome.app"
+        "/Applications/Dia.app"
+        "/Applications/Comet.app"
+        "/Applications/Zen.app"
+        "/Applications/Alacritty.app"
+        "/Applications/Ghostty.app"
+        "/Applications/CleanShot X.app"
+        "/Applications/Slack.app"
+        "/Applications/Zed.app"
+        "/Applications/Cursor.app"
+        "/Applications/cmux.app"
+        "/Applications/GatherV2.app"
+        "/Applications/Nani.app"
+        "/Applications/Claude.app"
+        "/System/Applications/App Store.app"
+        "/Applications/Amazon Kindle.app"
+        "/System/Applications/Books.app"
+        "/Applications/OrbStack.app"
+        "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+        "/Applications/Postman.app"
+        "/Applications/draw.io.app"
+        "/Applications/TablePlus.app"
+        "/Applications/Obsidian.app"
+        "/Applications/VoiceInk.app"
+        "/Applications/Raycast.app"
+        "/System/Applications/System Settings.app"
+      ];
     };
 
     finder = {
