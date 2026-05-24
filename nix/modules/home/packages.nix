@@ -52,6 +52,27 @@
     tflint
     skaffold
 
+    # --- npm tool / LSP (mise の npm:* から Nix 管理に移行) ---
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.bash-language-server
+    nodePackages.yaml-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.eslint
+    nodePackages.eslint_d
+    nodePackages.wrangler
+    nodePackages.yarn
+    nodePackages.sql-formatter
+    nodePackages."@vue/language-server"
+    nodePackages."@antfu/ni"
+    nodePackages.vercel
+    prettierd
+    biome
+    taplo
+    codex          # @openai/codex
+    gemini-cli     # @google/gemini-cli
+
     # --- Nix 自身の LSP / formatter ---
     nil
     nixpkgs-fmt
