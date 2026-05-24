@@ -52,6 +52,12 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
+
+    # gh-prism: gh の TUI 拡張 (PR レビュー)
+    gh-prism = {
+      url = "github:kawarimidoll/gh-prism";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -72,7 +78,7 @@
       mkSystem = { username, extraModules ? [] }:
         nix-darwin.lib.darwinSystem {
           inherit system;
-          specialArgs = { inherit username; };
+          specialArgs = { inherit username inputs; };
           modules = [
             { nixpkgs.overlays = overlays; }
             ./darwin.nix
@@ -102,7 +108,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = import ./home.nix;
-              home-manager.extraSpecialArgs = { inherit username; };
+              home-manager.extraSpecialArgs = { inherit username inputs; };
             }
           ] ++ extraModules;
         };

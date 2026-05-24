@@ -4,7 +4,17 @@
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+
+    # Cachix キャッシュ追加 (prebuilt バイナリで build 時間短縮)
+    extra-substituters = [
+      "https://kawarimidoll.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "kawarimidoll.cachix.org-1:43W5G98mVTyDaMeG7ZGzx4h/be5u4ULUGV/9svLjKJY="
+    ];
+  };
   nixpkgs.config.allowUnfree = true;
 
   system.defaults = {

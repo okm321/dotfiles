@@ -23,10 +23,15 @@
       "ical-buddy"
     ];
 
-    masApps = {
-      Xcode = 497799835;
-      "Amazon Kindle" = 302584613;
-    };
+    # mas が新版 (v2+) で `mas get <id>` サブコマンドを削除したため
+    # Homebrew bundle 経由の install が失敗する。一旦コメントアウトして手動 install:
+    # - Xcode: App Store で検索 → install
+    # - Amazon Kindle: App Store で検索 → install
+    # 将来 Homebrew bundle 側が `mas install` に対応したら復活
+    # masApps = {
+    #   Xcode = 497799835;
+    #   "Amazon Kindle" = 302584613;
+    # };
 
     casks = [
       # ターミナル / ウィンドウ管理 / ランチャー

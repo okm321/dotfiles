@@ -11,7 +11,7 @@
     bat
     fd
     fzf
-    gh
+    # gh は programs.gh (modules/home/gh.nix) で管理
     git
     delta
     jq
