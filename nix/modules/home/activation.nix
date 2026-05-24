@@ -1,10 +1,16 @@
 { config, lib, pkgs, ... }:
 {
   # TPM (tmux Plugin Manager) を ~/.tmux/plugins/tpm に自動 clone
-  # 既に存在すれば何もしない (冪等)
+  # さらに install_plugins で .tmux.conf に書かれた plugin を install
+  # (clone だけだと TPM 本体しか入らず、prefix + I を手動で押す必要がある)
+  # tmux server が無くても install_plugins は内部で起動するので動く
   home.activation.installTPM = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
       ${pkgs.git}/bin/git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
+    if [ -x "$HOME/.tmux/plugins/tpm/bin/install_plugins" ]; then
+      echo "🔌 Installing tmux plugins via TPM..."
+      PATH="${pkgs.tmux}/bin:$PATH" "$HOME/.tmux/plugins/tpm/bin/install_plugins" || true
     fi
   '';
 
