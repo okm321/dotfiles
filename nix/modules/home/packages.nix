@@ -72,6 +72,7 @@
     taplo
     codex          # @openai/codex
     gemini-cli     # @google/gemini-cli
+    claude-code-bin # Anthropic Claude Code (prebuilt binary)
 
     # --- Nix 自身の LSP / formatter ---
     nil
