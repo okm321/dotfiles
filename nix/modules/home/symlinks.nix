@@ -23,6 +23,7 @@ in
     "zeno".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zeno";
     "workmux/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/workmux/config.yaml";
     "raycast/scripts".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/raycast/scripts";
+    "mise/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
 
     "claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/CLAUDE.md";
     "claude/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/settings.json";
