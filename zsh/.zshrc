@@ -3,32 +3,28 @@
 # zshの読み込み時間を表示するときはコメントアウトを外す
 # zmodload zsh/zprof
 
-# Deno（sheldonより先に読み込む。zeno.zshが依存）
-. "$HOME/.deno/env"
+# Deno (sheldon より先に読み込む。zeno.zsh が依存)
+[ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 
 export SHELDON_CONFIG_FILE=$HOME/.sheldon.toml
 eval "$(sheldon source)"
 
-# zpro
-
 # bun completions
-[ -s "/Users/okm/.bun/_bun" ] && source "/Users/okm/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # pnpm
-export PNPM_HOME="/Users/okm/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/okm/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/okm/google-cloud-sdk/path.zsh.inc'; fi
+# Google Cloud SDK
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && . "$HOME/google-cloud-sdk/path.zsh.inc"
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && . "$HOME/google-cloud-sdk/completion.zsh.inc"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/okm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okm/google-cloud-sdk/completion.zsh.inc'; fi
-
-. "$HOME/.local/bin/env"
+# uv (Python package manager)
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 eval "$(direnv hook zsh)"
 
