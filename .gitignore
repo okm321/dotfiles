@@ -1,5 +1,6 @@
 .zshrc.local
 /git/user.conf
+/.nix-host
 
 /aider/.aider.conf.yml
 .aider*
