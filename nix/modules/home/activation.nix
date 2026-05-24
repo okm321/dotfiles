@@ -15,4 +15,13 @@
       ${pkgs.mise}/bin/mise trust "$HOME/dotfiles/mise/config.toml" 2>/dev/null || true
     fi
   '';
+
+  # mise install で config 内の全 tool (node + npm:*) を一気に install
+  # 既に install 済みは skip されるので冪等
+  # 初回は時間かかる (node + 30+ npm package で数分)
+  home.activation.miseInstall = lib.hm.dag.entryAfter [ "miseTrust" ] ''
+    if [ -f "$HOME/dotfiles/mise/config.toml" ] && command -v ${pkgs.mise}/bin/mise > /dev/null; then
+      ${pkgs.mise}/bin/mise install --quiet 2>/dev/null || true
+    fi
+  '';
 }
