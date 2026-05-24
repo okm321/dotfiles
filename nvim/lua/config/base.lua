@@ -1,8 +1,13 @@
 -- 既存のautocommandをクリア
 vim.api.nvim_clear_autocmds({})
 
--- obsidianで設定
-vim.opt.conceallevel = 2
+-- obsidian用のconceal設定（markdownのみ）
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown" },
+	callback = function()
+		vim.wo.conceallevel = 2
+	end,
+})
 
 -- エンコーディング設定
 vim.scriptencoding = "utf-8"
@@ -72,11 +77,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt_local.formatoptions:append({ "r" })
 	end,
-})
-
-vim.diagnostic.config({
-	virtual_text = false,
-	float = { border = "single" },
 })
 
 -- see: https://github.com/coder/claudecode.nvim/issues/52#issuecomment-2994326218

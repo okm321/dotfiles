@@ -33,7 +33,8 @@
       "mcp__codex__*",
       "mcp__ReactAria__*",
       "mcp__claude_ai_Claudeflare_Documents__*"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Stop": [
@@ -128,7 +129,6 @@
     "learning-output-style@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
-    "Notion@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
     "notion@claude-plugins-official": true,
     "git@castingone-plugins": true
@@ -141,10 +141,18 @@
       }
     }
   },
+  "language": "Japanese",
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".claude/plans",
-  "voiceEnabled": true,
+  "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
   "skipDangerousModePermissionPrompt": true,
+  "remoteControlAtStartup": false,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
   "defaultMode": "acceptEdits",
   "plugins": [
     {
