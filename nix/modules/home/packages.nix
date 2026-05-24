@@ -4,7 +4,7 @@
     # --- シェル基盤 ---
     zsh
     bash
-    starship
+    # starship は programs.starship (modules/home/starship.nix) で管理
     sheldon
 
     # --- CLI 定番 ---
@@ -52,6 +52,10 @@
     tflint
     skaffold
 
+    # --- Nix 自身の LSP / formatter ---
+    nil
+    nixpkgs-fmt
+
     # --- Tap 経由のニッチ系 (Nix にあったもの) ---
     gitmux
     mo
@@ -64,6 +68,6 @@
     terminal-notifier
     uv
     bun
-    direnv
+    # direnv は programs.direnv (modules/home/direnv.nix) で管理するため packages から除外
   ];
 }

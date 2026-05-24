@@ -4,7 +4,7 @@ let
 in
 {
   home.file = {
-    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/git/.gitconfig";
+    # .gitconfig は programs.git が生成するので symlink 不要 (modules/home/git.nix)
     ".aider.conf.yml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/aider/.aider.conf.yml";
     ".aider.model.settings.yml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/aider/.aider.model.settings";
     ".sheldon.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/sheldon/.sheldon.toml";
