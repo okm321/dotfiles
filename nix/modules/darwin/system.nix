@@ -24,8 +24,8 @@
       InitialKeyRepeat = 15;
       "com.apple.swipescrolldirection" = false;
       "com.apple.trackpad.scaling" = 2.0;
-      "com.apple.mouse.scaling" = 2.0; # マウス軌跡速度 (右寄り)
-      "com.apple.scrollwheel.scaling" = 0.3125; # マウススクロール速度 (中間)
+      # com.apple.mouse.scaling / scrollwheel.scaling は新 nix-darwin で
+      # NSGlobalDomain 直接書き込み不可になったため CustomUserPreferences へ移動
 
       ApplePressAndHoldEnabled = false;
       NSAutomaticCapitalizationEnabled = false;
@@ -102,6 +102,11 @@
 
     # system.defaults.trackpad で書けない詳細設定は CustomUserPreferences で
     CustomUserPreferences = {
+      NSGlobalDomain = {
+        "com.apple.mouse.scaling" = 2.0;             # マウス軌跡速度
+        "com.apple.scrollwheel.scaling" = 0.3125;    # マウススクロール速度
+      };
+
       "com.apple.AppleMultitouchTrackpad" = {
         TrackpadPinch = 1;                       # 拡大/縮小 (2 本指ピンチ)
         TrackpadRotate = 1;                       # 回転 (2 本指)
