@@ -68,6 +68,7 @@
     terminal-notifier
     uv
     bun
+    deno # zeno.zsh が依存
     # direnv は programs.direnv (modules/home/direnv.nix) で管理するため packages から除外
   ];
 }
