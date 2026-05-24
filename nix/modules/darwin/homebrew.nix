@@ -9,12 +9,8 @@
       cleanup = "uninstall";
     };
 
-    taps = [
-      "nikitabobko/tap"
-      "osx-cross/avr"
-      "raine/workmux"
-      "morantron/tmux-fingers"
-    ];
+    # homebrew.taps は flake.nix で nix-homebrew.taps から自動同期される
+    # (modules には書かない)
 
     brews = [
       "osx-cross/avr/avr-gcc@9"
