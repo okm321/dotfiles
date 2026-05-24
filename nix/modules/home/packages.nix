@@ -53,12 +53,13 @@
     skaffold
 
     # --- npm tool / LSP (mise の npm:* から Nix 管理に移行) ---
-    nodePackages.typescript
+    # nodePackages 同士で内包 typescript が重複するため hiPrio で typescript を優先
+    (lib.hiPrio nodePackages.typescript)
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
     nodePackages.vscode-langservers-extracted
-    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.dockerfile-language-server
     nodePackages.eslint
     nodePackages.eslint_d
     nodePackages.wrangler
@@ -72,7 +73,7 @@
     taplo
     codex          # @openai/codex
     gemini-cli     # @google/gemini-cli
-    claude-code-bin # Anthropic Claude Code (prebuilt binary)
+    claude-code # Anthropic Claude Code (旧 claude-code-bin、merged)
 
     # --- Nix 自身の LSP / formatter ---
     nil
