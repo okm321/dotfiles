@@ -18,10 +18,12 @@
 
   # mise install で config 内の全 tool (node + npm:*) を一気に install
   # 既に install 済みは skip されるので冪等
-  # 初回は時間かかる (node + 30+ npm package で数分)
+  # 初回は時間かかる (node + 数個 npm package で数分)
+  # --quiet を外して switch ログでエラーが見えるように
   home.activation.miseInstall = lib.hm.dag.entryAfter [ "miseTrust" ] ''
-    if [ -f "$HOME/dotfiles/mise/config.toml" ] && command -v ${pkgs.mise}/bin/mise > /dev/null; then
-      ${pkgs.mise}/bin/mise install --quiet 2>/dev/null || true
+    if [ -f "$HOME/dotfiles/mise/config.toml" ] && [ -x "${pkgs.mise}/bin/mise" ]; then
+      echo "📦 Running mise install..."
+      ${pkgs.mise}/bin/mise install || echo "⚠️ mise install で一部失敗 (warning ある場合は手動で 'mise install --verbose' を試す)"
     fi
   '';
 }
