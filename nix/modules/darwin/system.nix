@@ -35,7 +35,7 @@
       NSAutomaticSpellingCorrectionEnabled = false;
 
       AppleICUForce24HourTime = true;
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
     };
 
     dock = {
