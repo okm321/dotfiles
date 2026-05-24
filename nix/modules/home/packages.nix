@@ -59,7 +59,7 @@
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
     nodePackages.vscode-langservers-extracted
-    nodePackages.dockerfile-language-server
+    dockerfile-language-server
     nodePackages.eslint
     nodePackages.eslint_d
     nodePackages.wrangler
