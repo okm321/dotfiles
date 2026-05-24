@@ -1,4 +1,4 @@
-.PHONY: switch update gc check show help setup setup-nix setup-host setup-initial setup-shell
+.PHONY: switch update gc check show help setup setup-nix setup-host setup-initial
 
 FLAKE := $(HOME)/dotfiles/nix
 
@@ -49,7 +49,7 @@ reload-ui: ## SystemUIServer / Dock / Finder を再起動して system.defaults 
 #   1. git clone https://github.com/okm321/dotfiles ~/dotfiles
 #   2. cd ~/dotfiles && make setup HOST=macbook-oned
 
-setup: setup-nix setup-host setup-initial setup-shell ## 新 PC 初回セットアップ (例: make setup HOST=macbook-oned)
+setup: setup-nix setup-host setup-initial ## 新 PC 初回セットアップ (例: make setup HOST=macbook-oned)
 	@echo
 	@echo "🎉 Setup complete! 新しいターミナルを開いてください"
 	@echo "  - 各 App の Accessibility 権限 (Aerospace, Raycast, ghostty) を System Settings で許可"
@@ -70,6 +70,3 @@ setup-host: ## .nix-host を HOST 引数で設定 (make setup-host HOST=macbook-
 
 setup-initial: ## 初回 darwin-rebuild switch (nix run 経由、Homebrew 本体含めて全 install)
 	sudo $(NIX) run nix-darwin/nix-darwin-25.11 -- switch --flake $(FLAKE)#$(HOST)
-
-setup-shell: ## デフォルトシェルを Nix の zsh に変更
-	sudo chsh -s /run/current-system/sw/bin/zsh $(USER)
