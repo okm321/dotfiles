@@ -102,6 +102,12 @@
               };
             }
 
+            # nix-darwin の homebrew.taps を nix-homebrew.taps と同期
+            # これがないと初回 switch で `Refusing to untap homebrew/cask` エラー
+            ({ config, ... }: {
+              homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+            })
+
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
