@@ -1,4 +1,4 @@
-.PHONY: switch update gc check show help setup setup-nix setup-host setup-initial
+.PHONY: switch update gc check show history diff help setup setup-nix setup-host setup-initial
 
 FLAKE := $(HOME)/dotfiles/nix
 
@@ -35,14 +35,14 @@ check: ## flake の評価チェック (構文 / 依存)
 show: ## flake.nix の outputs (= 利用可能な darwinConfigurations) を表示
 	nix flake show $(FLAKE)
 
-reload-ui: ## SystemUIServer / Dock / Finder を再起動して system.defaults 変更を即反映
-	@echo "🔄 reloading SystemUIServer (menu bar)..."
-	sudo killall SystemUIServer || true
-	@echo "🔄 reloading Dock..."
-	killall Dock || true
-	@echo "🔄 reloading Finder..."
-	killall Finder || true
-	@echo "✓ done. キーボード/トラックパッド系は再ログインが必要"
+history: ## nix-darwin (+ Home Manager 含む) の generation 一覧
+	darwin-rebuild --list-generations
+
+diff: ## 直前 generation との差分 (パッケージ追加/削除/version up)
+	@PREV=$$(ls -1v /nix/var/nix/profiles/system-*-link | tail -2 | head -1); \
+	CURR=$$(ls -1v /nix/var/nix/profiles/system-*-link | tail -1); \
+	echo "diff: $$PREV → $$CURR"; \
+	nix store diff-closures $$PREV $$CURR
 
 # --- 新 PC 初回セットアップ ---
 # 使い方:
