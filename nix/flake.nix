@@ -31,9 +31,10 @@
       ];
 
       pkgs = import nixpkgs { inherit system overlays; config.allowUnfree = true; };
-    in
-    {
-      darwinConfigurations."macbook-casone" = nix-darwin.lib.darwinSystem {
+
+      # 全マシン共通の darwinSystem 定義 (DRY)
+      # マシン固有設定が必要になったら modules に分岐を入れる
+      darwinSystem = nix-darwin.lib.darwinSystem {
         inherit system;
         modules = [
           { nixpkgs.overlays = overlays; }
@@ -48,9 +49,20 @@
         ];
       };
 
-      homeConfigurations."macbook-casone" = home-manager.lib.homeManagerConfiguration {
+      homeConfig = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
+      };
+    in
+    {
+      darwinConfigurations = {
+        "macbook-casone" = darwinSystem; # 現在の会社 Mac
+        "macbook-oned" = darwinSystem; # 新 PC 用 (構成は共通)
+      };
+
+      homeConfigurations = {
+        "macbook-casone" = homeConfig;
+        "macbook-oned" = homeConfig;
       };
     };
 }
