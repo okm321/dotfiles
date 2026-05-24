@@ -17,6 +17,88 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761588595,
+        "narHash": "sha256-XKUZz9zewJNUj46b4AJdiRZJAvSZ0Dqj2BNfXvFlJC4=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "f387cd2afec9419c8ee37694406ca490c3f34ee5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "gh-prism": {
+      "inputs": {
+        "git-hooks": "git-hooks",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775529530,
+        "narHash": "sha256-kHSqIUw2IbHQVZQOrXBCwGAtfjL+G863pikaKetGTc0=",
+        "owner": "kawarimidoll",
+        "repo": "gh-prism",
+        "rev": "32e679d755e3d124821e42f6f966fbfa3e1c9b88",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kawarimidoll",
+        "repo": "gh-prism",
+        "type": "github"
+      }
+    },
+    "git-hooks": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "gh-prism",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765016596,
+        "narHash": "sha256-rhSqPNxDVow7OQKi4qS5H8Au0P4S3AYbawBSmJNUtBQ=",
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "rev": "548fc44fca28a5e81c5d6b846e555e6b9c2a5a3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "gh-prism",
+          "git-hooks",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -83,6 +165,70 @@
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-morantron-tmux-fingers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771195420,
+        "narHash": "sha256-6zJq2Utr/TnbNS5WhQKQqU3WMAhToSdEvHqll8JzIBY=",
+        "owner": "Morantron",
+        "repo": "tmux-fingers",
+        "rev": "29f90165fa858021ebd31838fb4d6f112c6d9ef0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Morantron",
+        "repo": "tmux-fingers",
+        "type": "github"
+      }
+    },
+    "homebrew-nikitabobko-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773014271,
+        "narHash": "sha256-FTE1he09SKkm7e4W4wwuhoBSgM3zROlRYcjZiU7Yjsg=",
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
+        "rev": "db2dcd4d2fd7087457b3cc0baf597880ac4e35a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
+    "homebrew-osx-cross-avr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778826570,
+        "narHash": "sha256-Hq8xEotHIGn0CfSLphQuPl0Xykp1ZSrWLtik3BvSTnI=",
+        "owner": "osx-cross",
+        "repo": "homebrew-avr",
+        "rev": "fb42cfd103a85c398cfb5cc08eac9ffc79b5b673",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osx-cross",
+        "repo": "homebrew-avr",
+        "type": "github"
+      }
+    },
+    "homebrew-raine-workmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779483989,
+        "narHash": "sha256-Rg2mg2qI4CPxL6zGLnR4kWm1AYCW3EZuVAtMYeR1fNg=",
+        "owner": "raine",
+        "repo": "homebrew-workmux",
+        "rev": "20f1b42bc91fa1bbe9b39b3a8dd8e15ecdcee0b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "raine",
+        "repo": "homebrew-workmux",
         "type": "github"
       }
     },
@@ -159,10 +305,15 @@
     },
     "root": {
       "inputs": {
+        "gh-prism": "gh-prism",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-morantron-tmux-fingers": "homebrew-morantron-tmux-fingers",
+        "homebrew-nikitabobko-tap": "homebrew-nikitabobko-tap",
+        "homebrew-osx-cross-avr": "homebrew-osx-cross-avr",
+        "homebrew-raine-workmux": "homebrew-raine-workmux",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
