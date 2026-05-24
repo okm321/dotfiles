@@ -35,6 +35,15 @@ check: ## flake の評価チェック (構文 / 依存)
 show: ## flake.nix の outputs (= 利用可能な darwinConfigurations) を表示
 	nix flake show $(FLAKE)
 
+reload-ui: ## SystemUIServer / Dock / Finder を再起動して system.defaults 変更を即反映
+	@echo "🔄 reloading SystemUIServer (menu bar)..."
+	sudo killall SystemUIServer || true
+	@echo "🔄 reloading Dock..."
+	killall Dock || true
+	@echo "🔄 reloading Finder..."
+	killall Finder || true
+	@echo "✓ done. キーボード/トラックパッド系は再ログインが必要"
+
 # --- 新 PC 初回セットアップ ---
 # 使い方:
 #   1. git clone https://github.com/okm321/dotfiles ~/dotfiles
