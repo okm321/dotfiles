@@ -1,6 +1,6 @@
-{ ... }:
+{ username, ... }:
 {
-  system.primaryUser = "okamotonaofumi";
+  system.primaryUser = username;
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
 

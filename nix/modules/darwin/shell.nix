@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
-  users.users.okamotonaofumi = {
-    name = "okamotonaofumi";
-    home = "/Users/okamotonaofumi";
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
     shell = pkgs.zsh;
   };
 
