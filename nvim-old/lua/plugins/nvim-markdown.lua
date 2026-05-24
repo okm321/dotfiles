@@ -1,3 +1,0 @@
-return {
-	"ixru/nvim-markdown",
-}
