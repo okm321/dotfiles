@@ -7,6 +7,17 @@ return {
 				backend = "tmux",
 				enabled = false,
 			},
+			-- Claude Code の OSC 52 DCS wrap (tmux 検知時) を抑止
+			-- TMUX のみ空にすることで Claude Code が tmux 検知失敗 → 生 OSC 52 を発行
+			-- → Neovim :terminal の libvterm が OSC 52 を直接ハンドリング (Neovim 0.10+)
+			-- TMUX_PANE は維持: tmux-agent-sidebar の hook が pane 特定に使うため必要
+			tools = {
+				claude = {
+					env = {
+						TMUX = "",
+					},
+				},
+			},
 			win = {
 				split = {
 					width = 100,
