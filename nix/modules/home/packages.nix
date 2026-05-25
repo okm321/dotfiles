@@ -48,6 +48,7 @@
 
     # --- ネットワーク/インフラ ---
     cloudflared
+    terraform
     terraform-ls
     tflint
     skaffold
