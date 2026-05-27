@@ -94,7 +94,7 @@
     };
 
     trackpad = {
-      Clicking = true;
+      Clicking = false;  # タップでクリックを無効化 (物理クリックのみ)
       TrackpadRightClick = true;
       TrackpadThreeFingerDrag = true;
     };
