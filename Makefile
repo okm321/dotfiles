@@ -47,7 +47,7 @@ diff: ## 直前 generation との差分 (パッケージ追加/削除/version up
 # --- 新 PC 初回セットアップ ---
 # 使い方:
 #   1. git clone https://github.com/okm321/dotfiles ~/dotfiles
-#   2. cd ~/dotfiles && make setup HOST=macbook-work
+#   2. cd ~/dotfiles && make setup HOST=macbook-work  (or macbook-private)
 
 setup: setup-nix setup-host setup-initial setup-claude ## 新 PC 初回セットアップ (例: make setup HOST=macbook-work)
 	@echo

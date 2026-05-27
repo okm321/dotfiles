@@ -132,16 +132,9 @@
     in
     {
       darwinConfigurations = {
-        # 現 PC: 既存 /opt/homebrew のため nix-homebrew は disable
-        # このマシン廃棄時はこの attribute 全体を削除すれば良い
         "macbook-private" = mkSystem {
           username = "okm";
-          extraModules = [{
-            nix-homebrew.enable = nixpkgs.lib.mkForce false;
-          }];
         };
-
-        # 新 PC: nix-homebrew で完全管理 (これがデフォルト)
         "macbook-work" = mkSystem {
           username = "okmkm";
         };
