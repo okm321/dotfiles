@@ -168,6 +168,22 @@
         "type": "github"
       }
     },
+    "homebrew-k1low-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779347848,
+        "narHash": "sha256-nNTDVEh5OBcujDYwKUKnVtpWn4Wedu6X2vytfoZmC2I=",
+        "owner": "k1LoW",
+        "repo": "homebrew-tap",
+        "rev": "acb92af65b8b135633d942436511f5120db6bf37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "k1LoW",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-morantron-tmux-fingers": {
       "flake": false,
       "locked": {
@@ -310,6 +326,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-k1low-tap": "homebrew-k1low-tap",
         "homebrew-morantron-tmux-fingers": "homebrew-morantron-tmux-fingers",
         "homebrew-nikitabobko-tap": "homebrew-nikitabobko-tap",
         "homebrew-osx-cross-avr": "homebrew-osx-cross-avr",
