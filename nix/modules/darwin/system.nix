@@ -96,7 +96,7 @@
     trackpad = {
       Clicking = false;  # タップでクリックを無効化 (物理クリックのみ)
       TrackpadRightClick = true;
-      TrackpadThreeFingerDrag = true;
+      TrackpadThreeFingerDrag = false;
     };
 
     # system.defaults.trackpad で書けない詳細設定は CustomUserPreferences で
