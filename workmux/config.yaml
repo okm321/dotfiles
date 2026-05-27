@@ -1,11 +1,29 @@
 nerdfont: true
 agent: claude
 
+# workmux の panes は「直前 pane を split」 仕様しか無いため、
+# 上を左右 + 下を左右の 4 ペインは panes 配列だけでは作れない。
+# focus pane の command で tmux 直叩きして残りのペインを構築する。
+#
+#   構成 (高さ 上 75% / 下 25% 、 横は 上 70/30 ・ 下 50/50):
+#   ┌──────────────┬──────┐
+#   │     nvim     │ chat │
+#   ├──────────┬───┴──────┤
+#   │    sh    │    sh    │
+#   └──────────┴──────────┘
 panes:
   - focus: true
-  - split: vertical
-    size: 30
-  - split: horizontal
+    command: |
+      # 各 split で生成された pane id を変数に保存、 -t で確実に target 指定
+      # ({top-left} 指定はレイアウト次第で誤動作するため pane id 直指定)
+      P_TOP=$(tmux display-message -p '#{pane_id}')
+      P_BOTTOM=$(tmux split-window -v -p 25 -P -F '#{pane_id}')
+      tmux split-window -h -p 50 -t "$P_BOTTOM"
+      # chat ペインに 'ai chat' title 設定 (sidekick helper の検索 key になる)
+      P_CHAT=$(tmux split-window -h -p 30 -t "$P_TOP" -P -F '#{pane_id}')
+      tmux select-pane -t "$P_CHAT" -T 'ai chat'
+      tmux select-pane -t "$P_TOP"
+      exec $SHELL
 
 files:
   symlink:
