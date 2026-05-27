@@ -130,7 +130,6 @@
     "explanatory-output-style@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "notion@claude-plugins-official": true,
     "git@castingone-plugins": true
   },
   "extraKnownMarketplaces": {
