@@ -1,4 +1,4 @@
-.PHONY: switch update gc check show history diff help setup setup-nix setup-host setup-initial
+.PHONY: switch update gc check show history diff help setup setup-nix setup-host setup-initial setup-claude
 
 FLAKE := $(HOME)/dotfiles/nix
 
@@ -49,7 +49,7 @@ diff: ## 直前 generation との差分 (パッケージ追加/削除/version up
 #   1. git clone https://github.com/okm321/dotfiles ~/dotfiles
 #   2. cd ~/dotfiles && make setup HOST=macbook-oned
 
-setup: setup-nix setup-host setup-initial ## 新 PC 初回セットアップ (例: make setup HOST=macbook-oned)
+setup: setup-nix setup-host setup-initial setup-claude ## 新 PC 初回セットアップ (例: make setup HOST=macbook-oned)
 	@echo
 	@echo "🎉 Setup complete! 新しいターミナルを開いてください"
 	@echo "  - 各 App の Accessibility 権限 (Aerospace, Raycast, ghostty) を System Settings で許可"
@@ -70,3 +70,6 @@ setup-host: ## .nix-host を HOST 引数で設定 (make setup-host HOST=macbook-
 
 setup-initial: ## 初回 darwin-rebuild switch (nix run 経由、Homebrew 本体含めて全 install)
 	sudo $(NIX) run nix-darwin/nix-darwin-25.11 -- switch --flake $(FLAKE)#$(HOST)
+
+setup-claude: ## claude code の plugin / MCP server を install (~/dotfiles/claude/setup.sh)
+	bash $(HOME)/dotfiles/claude/setup.sh

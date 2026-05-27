@@ -33,5 +33,6 @@ in
     "claude/rules".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/rules";
     "claude/hooks".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/hooks";
     "claude/commands".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/commands";
+    "claude/statusline.sh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/statusline.sh";
   };
 }
