@@ -52,6 +52,10 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
+    homebrew-k1low-tap = {
+      url = "github:k1LoW/homebrew-tap";
+      flake = false;
+    };
 
     # gh-prism: gh の TUI 拡張 (PR レビュー)
     gh-prism = {
@@ -98,6 +102,7 @@
                   "raine/workmux" = inputs.homebrew-raine-workmux;
                   "morantron/tmux-fingers" = inputs.homebrew-morantron-tmux-fingers;
                   "nikitabobko/tap" = inputs.homebrew-nikitabobko-tap;
+                  "k1low/tap" = inputs.homebrew-k1low-tap;
                 };
               };
             }
