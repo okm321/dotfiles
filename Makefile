@@ -3,10 +3,10 @@
 FLAKE := $(HOME)/dotfiles/nix
 
 # HOST の優先順位:
-#  1. 環境変数 / コマンドライン引数 (例: make switch HOST=macbook-oned)
+#  1. 環境変数 / コマンドライン引数 (例: make switch HOST=macbook-work)
 #  2. ~/dotfiles/.nix-host ファイル (各マシン固有、gitignored)
-#  3. fallback: macbook-casone
-HOST ?= $(shell cat $(HOME)/dotfiles/.nix-host 2>/dev/null || echo macbook-casone)
+#  3. fallback: macbook-private
+HOST ?= $(shell cat $(HOME)/dotfiles/.nix-host 2>/dev/null || echo macbook-private)
 
 # Nix のコマンドは setup 直後 PATH に入ってないので絶対パスを使う
 NIX := /nix/var/nix/profiles/default/bin/nix
@@ -47,9 +47,9 @@ diff: ## 直前 generation との差分 (パッケージ追加/削除/version up
 # --- 新 PC 初回セットアップ ---
 # 使い方:
 #   1. git clone https://github.com/okm321/dotfiles ~/dotfiles
-#   2. cd ~/dotfiles && make setup HOST=macbook-oned
+#   2. cd ~/dotfiles && make setup HOST=macbook-work  (or macbook-private)
 
-setup: setup-nix setup-host setup-initial setup-claude ## 新 PC 初回セットアップ (例: make setup HOST=macbook-oned)
+setup: setup-nix setup-host setup-initial setup-claude ## 新 PC 初回セットアップ (例: make setup HOST=macbook-work)
 	@echo
 	@echo "🎉 Setup complete! 新しいターミナルを開いてください"
 	@echo "  - 各 App の Accessibility 権限 (Aerospace, Raycast, ghostty) を System Settings で許可"
@@ -64,7 +64,7 @@ setup-nix: ## Nix を install (まだの場合)
 		echo "✓ Nix already installed"; \
 	fi
 
-setup-host: ## .nix-host を HOST 引数で設定 (make setup-host HOST=macbook-oned)
+setup-host: ## .nix-host を HOST 引数で設定 (make setup-host HOST=macbook-work)
 	@echo "$(HOST)" > $(HOME)/dotfiles/.nix-host
 	@echo "✓ .nix-host = $(HOST)"
 

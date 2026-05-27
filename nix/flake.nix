@@ -132,24 +132,17 @@
     in
     {
       darwinConfigurations = {
-        # 現 PC: 既存 /opt/homebrew のため nix-homebrew は disable
-        # このマシン廃棄時はこの attribute 全体を削除すれば良い
-        "macbook-casone" = mkSystem {
-          username = "okamotonaofumi";
-          extraModules = [{
-            nix-homebrew.enable = nixpkgs.lib.mkForce false;
-          }];
+        "macbook-private" = mkSystem {
+          username = "okm";
         };
-
-        # 新 PC: nix-homebrew で完全管理 (これがデフォルト)
-        "macbook-oned" = mkSystem {
+        "macbook-work" = mkSystem {
           username = "okmkm";
         };
       };
 
       homeConfigurations = {
-        "macbook-casone" = mkHome "okamotonaofumi";
-        "macbook-oned" = mkHome "okmkm";
+        "macbook-private" = mkHome "okm";
+        "macbook-work" = mkHome "okmkm";
       };
     };
 }
