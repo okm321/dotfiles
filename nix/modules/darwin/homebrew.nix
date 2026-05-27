@@ -37,7 +37,6 @@
       "raycast"
 
       # 開発ツール / API
-      "http-toolkit"
       "tableplus"
       "postman"
       "orbstack"
