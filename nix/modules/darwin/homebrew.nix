@@ -16,6 +16,7 @@
       "osx-cross/avr/avr-gcc@9"
       "raine/workmux/workmux"
       "morantron/tmux-fingers/tmux-fingers"
+      "k1low/tap/mo"  # Markdown viewer (nixpkgs の mo は別物 = moustache template)
       "ical-buddy"
     ];
 

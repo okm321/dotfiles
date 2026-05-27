@@ -82,7 +82,6 @@
 
     # --- Tap 経由のニッチ系 (Nix にあったもの) ---
     gitmux
-    # mo
     termshot
     qmk
     jankyborders
