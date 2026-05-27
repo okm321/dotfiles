@@ -14,9 +14,19 @@ alias reload='exec $SHELL -l'
 alias cdf='cd "$(dirname "$(fzf --preview="bat --color=always  --height 100% {}")")"'
 alias tmux-load="tmux source-file ~/.config/tmux/.tmux.conf"
 # IDEライクのレイアウトを作成する関数
+# 構成 (高さ 上 75% / 下 25% 、 横は 上 70/30 ・ 下 50/50):
+#   ┌──────────────┬──────┐
+#   │     nvim     │ chat │
+#   ├──────────┬───┴──────┤
+#   │    sh    │    sh    │
+#   └──────────┴──────────┘
 function create_ide_layout() {
-  tmux split-window -v -p 30 #ウィンドウを垂直に分割し、新しいペインを作成
-  tmux split-window -h -p 50 #新しく作成されたペインをさらに水平に分割
+  local p_top=$(tmux display-message -p '#{pane_id}')
+  local p_bottom=$(tmux split-window -v -p 25 -P -F '#{pane_id}')
+  tmux split-window -h -p 50 -t "$p_bottom"
+  local p_chat=$(tmux split-window -h -p 30 -t "$p_top" -P -F '#{pane_id}')
+  tmux select-pane -t "$p_chat" -T 'ai chat'
+  tmux select-pane -t "$p_top"
 }
 alias ide='create_ide_layout'
 function ghql() {
