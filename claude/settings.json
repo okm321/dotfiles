@@ -149,6 +149,7 @@
     "mode": "hold"
   },
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
