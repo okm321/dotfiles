@@ -5,7 +5,8 @@ return {
 		cli = {
 			mux = {
 				backend = "tmux",
-				enabled = false,
+				enabled = true,    -- 外部 tmux ペインを使う (内部 :terminal モードを止める)
+				create = "split",  -- 既存 pane が無ければ自動で split 作成 (sidekick が既存検出すれば attach)
 			},
 			-- Claude Code の OSC 52 DCS wrap (tmux 検知時) を抑止
 			-- TMUX のみ空にすることで Claude Code が tmux 検知失敗 → 生 OSC 52 を発行
@@ -80,19 +81,19 @@ return {
     },
     {
       "<leader>at",
-      function() require("sidekick.cli").send({ msg = "{this}" }) end,
+      function() require("config.sidekick_helper").send_and_focus("{this}") end,
       mode = { "x", "n" },
       desc = "Send This",
     },
     {
       "<leader>av",
-      function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+      function() require("config.sidekick_helper").send_and_focus("{selection}") end,
       mode = { "x" },
       desc = "Send Visual Selection",
     },
     {
       "<leader>af",
-      function() require("sidekick.cli").send({ msg = "{file}" }) end,
+      function() require("config.sidekick_helper").send_and_focus("{file}") end,
       desc = "Send File",
     },
     {
@@ -103,9 +104,9 @@ return {
     },
     {
       "<c-t>",
-      function() require("sidekick.cli").focus() end,
+      function() require("config.sidekick_helper").toggle_pane_focus() end,
       mode = { "n", "x", "i", "t" },
-      desc = "Sidekick Switch Focus",
+      desc = "Sidekick Switch Focus (tmux pane)",
     },
     -- Example of a keybinding to open Claude directly
     {
