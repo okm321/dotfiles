@@ -150,6 +150,7 @@
   },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
+  "autoCompactEnabled": true,
   "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
