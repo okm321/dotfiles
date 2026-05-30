@@ -116,6 +116,11 @@
         TrackpadFourFingerPinchGesture = 2;       # 4 本指ピンチ
         TrackpadFiveFingerPinchGesture = 2;       # 5 本指ピンチ
       };
+
+      # 日本語入力 (ことえり) のライブ変換を無効化
+      "com.apple.inputmethod.Kotoeri" = {
+        JIMPrefLiveConversionKey = false;
+      };
     };
   };
 }
