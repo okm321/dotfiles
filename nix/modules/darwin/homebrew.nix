@@ -63,6 +63,8 @@
       "spotify"
 
       # ユーティリティ
+      "1password"
+      "1password-cli"
       "cleanshot"
       "clipy"
       "nani"

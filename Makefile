@@ -39,8 +39,9 @@ history: ## nix-darwin (+ Home Manager 含む) の generation 一覧
 	darwin-rebuild --list-generations
 
 diff: ## 直前 generation との差分 (パッケージ追加/削除/version up)
-	@PREV=$$(ls -1v /nix/var/nix/profiles/system-*-link | tail -2 | head -1); \
-	CURR=$$(ls -1v /nix/var/nix/profiles/system-*-link | tail -1); \
+	@PROFILES=$$(ls -1d /nix/var/nix/profiles/system-*-link | sort -t- -k2 -n); \
+	PREV=$$(echo "$$PROFILES" | tail -2 | head -1); \
+	CURR=$$(echo "$$PROFILES" | tail -1); \
 	echo "diff: $$PREV → $$CURR"; \
 	nix store diff-closures $$PREV $$CURR
 
