@@ -37,6 +37,10 @@ function ghql() {
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias wt="workmux"
 
+# Docker context 切り替え (orbstack ⇔ Docker Desktop)
+alias docker-orb='docker context use orbstack'
+alias docker-dd='docker context use desktop-linux'
+
 function tmux-setup() {
   local profile="$1"
   if [[ -z "$profile" ]]; then

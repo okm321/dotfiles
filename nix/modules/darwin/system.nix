@@ -67,6 +67,7 @@
         "/Applications/Claude.app"
         "/System/Applications/App Store.app"
         "/Applications/OrbStack.app"
+        "/Applications/Docker.app"
         "/Applications/Postman.app"
         "/Applications/draw.io.app"
         "/Applications/TablePlus.app"

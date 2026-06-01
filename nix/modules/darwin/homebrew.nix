@@ -40,6 +40,7 @@
       "tableplus"
       "postman"
       "orbstack"
+      "docker-desktop"
       "drawio"
 
       # エディタ
