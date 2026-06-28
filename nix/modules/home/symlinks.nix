@@ -11,6 +11,8 @@ in
     ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux/.tmux.conf";
     ".gitmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux/.gitmux.conf";
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zsh/.zshrc";
+    ".markdownlint-cli2.jsonc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/markdownlint/.markdownlint-cli2.jsonc";
+    ".textlintrc.json".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/textlint/.textlintrc.json";
   };
 
   xdg.configFile = {

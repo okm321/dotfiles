@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "ja-space-around-code": {
+      "before": true,
+      "after": true
+    }
+  }
+}

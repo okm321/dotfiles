@@ -1,0 +1,36 @@
+// markdownlint-cli2 グローバル設定
+// $HOME に symlink される (modules/home/symlinks.nix)
+// プロジェクト側に .markdownlint-cli2.* / .markdownlint.* があればそちらが優先
+//
+// ルール一覧: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+{
+  "config": {
+    "default": true,
+
+    // line-length: 日本語段落で機能しない (語境界が無い) ため無効化
+    "MD013": false,
+
+    // first-line-h1: ファイル先頭 H1 強制を無効化 (frontmatter 後の H1 を許容)
+    "MD041": false,
+
+    // no-duplicate-heading: 同階層内のみ重複禁止 (異なるセクション配下の重複を許容)
+    "MD024": { "siblings_only": true },
+
+    // no-inline-html: <br>, <details>, <summary> 等の HTML タグを許容
+    "MD033": false,
+
+    // no-emphasis-as-heading: **太字** を見出し代わりに使っても警告しない
+    "MD036": false,
+
+    // hard-tab: tab 文字を許容しない (デフォルト維持、明示)
+    "MD010": true
+  },
+
+  "ignores": [
+    "node_modules/**",
+    "vendor/**",
+    "dist/**",
+    "build/**",
+    ".obsidian/**"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "okm-textlint-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal textlint setup. Run `npm install` here to install rules into node_modules/. Neovim none-ls calls ./node_modules/.bin/textlint with absolute path.",
+  "dependencies": {
+    "textlint": "^15.2.0",
+    "textlint-rule-ja-space-around-code": "^3.0.0"
+  }
+}
