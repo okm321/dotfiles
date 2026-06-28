@@ -37,42 +37,21 @@
     "defaultMode": "auto"
   },
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop-failure"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-end"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "hooks": [
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude notification"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status waiting"
           }
         ]
       }
@@ -85,14 +64,22 @@
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude activity-log"
           }
         ]
-      }
-    ],
-    "UserPromptSubmit": [
+      },
       {
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude user-prompt-submit"
+            "command": "workmux set-window-status working"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-end"
           }
         ]
       }
@@ -110,6 +97,52 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status done"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop-failure"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude user-prompt-submit"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -117,26 +150,42 @@
     "command": "bash \"$HOME\"/.config/claude/statusline.sh"
   },
   "enabledPlugins": {
-    "code-review@claude-plugins-official": true,
     "accesslint@accesslint": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true,
-    "learning-output-style@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "git@castingone-plugins": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "git@castingone-plugins": true
+    "swift-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "jira@oned-claude-plugins": true,
+    "oned-jira@oned-claude-plugins": true,
+    "modern-web-guidance@googlechrome": true
   },
   "extraKnownMarketplaces": {
+    "googlechrome": {
+      "source": {
+        "source": "github",
+        "repo": "GoogleChrome/modern-web-guidance"
+      }
+    },
     "accesslint": {
       "source": {
         "source": "github",
         "repo": "accesslint/claude-marketplace"
+      }
+    },
+    "oned-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "1d-dev/oned-claude-plugins"
       }
     }
   },
@@ -159,9 +208,16 @@
     {
       "name": "accesslint",
       "source": {
-        "source": "github",
+        "path": "plugins/accesslint",
         "repo": "accesslint/claude-marketplace",
-        "path": "plugins/accesslint"
+        "source": "github"
+      }
+    },
+    {
+      "name": "modern-web-guidance",
+      "source": {
+        "repo": "GoogleChrome/modern-web-guidance",
+        "source": "github"
       }
     }
   ]
