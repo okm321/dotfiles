@@ -26,6 +26,12 @@ esac
 # uv (Python package manager)
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
+# ~/.local/bin (claude code 公式 native installer の置き場など)
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
 eval "$(direnv hook zsh)"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
