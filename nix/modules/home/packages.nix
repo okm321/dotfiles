@@ -31,6 +31,7 @@
     tree-sitter
     stylua
     fastfetch
+    gitleaks
 
     # --- メディア・画像処理 ---
     ffmpeg
@@ -41,10 +42,15 @@
     # --- 開発系 ---
     mise
     lua-language-server
+    go
+    gopls
+    marksman
+    typos-lsp
     httpie
     qsv
     redis
     pgcli
+    mycli
 
     # --- ネットワーク/インフラ ---
     cloudflared
@@ -52,6 +58,7 @@
     terraform-ls
     tflint
     skaffold
+    ssm-session-manager-plugin
 
     # --- npm tool / LSP (mise の npm:* から Nix 管理に移行) ---
     # nodePackages 同士で内包 typescript が重複するため hiPrio で typescript を優先
@@ -61,8 +68,7 @@
     nodePackages.yaml-language-server
     nodePackages.vscode-langservers-extracted
     dockerfile-language-server
-    nodePackages.eslint
-    nodePackages.eslint_d
+    # eslint は project の node_modules を使う (system にあると LSP が pnpm の plugin 解決に失敗)
     nodePackages.wrangler
     nodePackages.yarn
     nodePackages.sql-formatter
@@ -72,9 +78,13 @@
     prettierd
     biome
     taplo
+    stylelint-lsp
+    graphql-language-service-cli
+    markdownlint-cli2
+
     codex          # @openai/codex
     gemini-cli     # @google/gemini-cli
-    claude-code # Anthropic Claude Code (旧 claude-code-bin、merged)
+    # claude-code は nix 管理外。最新版に追いつかないため公式 native installer or npm global で管理
 
     # --- Nix 自身の LSP / formatter ---
     nil

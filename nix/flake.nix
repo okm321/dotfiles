@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    # 25.11 stable に無い最新版を取りたいパッケージ用 (現状は neovim 0.12.x)
+    # 25.11 stable より新しい neovim 0.12.x を取るための入力
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {

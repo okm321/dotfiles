@@ -32,6 +32,16 @@
       ghq.root = "~/project";
     };
 
+    # 全リポ共通の ignore (~/.config/git/ignore に自動展開)
+    # 個別リポで commit したい時は .gitignore に `!pattern` で打ち消し可能
+    ignores = [
+      "mise.toml"
+      "mise.local.toml"
+      ".mise.toml"
+      ".mise.local.toml"
+      ".DS_Store"
+    ];
+
     # 個人情報 (user.name, user.email) は公開 repo に入れないため
     # dotfiles の user.conf を include で読み込む (gitignore 済)
     includes = [
