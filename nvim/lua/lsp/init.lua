@@ -10,6 +10,8 @@ vim.lsp.enable({
 	"css_variables",
 	"cssls",
 	"cssmodules_ls",
+	"stylelint_lsp",
+	"graphql",
 	"marksman",
 	"dockerls",
 	"terraformls",

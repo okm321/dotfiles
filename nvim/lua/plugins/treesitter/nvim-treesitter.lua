@@ -24,6 +24,7 @@ return {
 		local ensure_installed = {
 			"typescript", "tsx", "javascript", "vue", "go",
 			"html", "css", "scss",
+			"graphql",
 			"json", "jsonc", "yaml", "toml", "xml",
 			"markdown", "markdown_inline", "jsdoc",
 			"dockerfile", "bash",
