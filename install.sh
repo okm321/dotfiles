@@ -86,35 +86,49 @@ fi
 # clone だけだと TPM 本体しか入らない。tmux server が無くても内部で起動する
 "$HOME/.tmux/plugins/tpm/bin/install_plugins" || true
 
-if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
-	if ! gh extension list | grep -q 'kawarimidoll/gh-prism'; then
-		gh extension install kawarimidoll/gh-prism || echo "warning: gh-prism の install に失敗" >&2
-	fi
-else
-	echo "gh が未認証です。gh auth login の後で実行: gh extension install kawarimidoll/gh-prism"
+if ! gh auth status >/dev/null 2>&1; then
+	gh auth login || echo "warning: gh auth login に失敗。後で gh auth login を実行" >&2
+fi
+if gh auth status >/dev/null 2>&1 && ! gh extension list | grep -q 'kawarimidoll/gh-prism'; then
+	gh extension install kawarimidoll/gh-prism || echo "warning: gh-prism の install に失敗" >&2
+fi
+
+# ログインシェルを Homebrew の zsh に
+zsh_path=/opt/homebrew/bin/zsh
+grep -qx "$zsh_path" /etc/shells || echo "$zsh_path" | sudo tee -a /etc/shells >/dev/null
+[ "$(dscl . -read "$HOME" UserShell | awk '{print $2}')" = "$zsh_path" ] || chsh -s "$zsh_path"
+
+# sudo の Touch ID。pam_reattach は tmux の中でも効かせるため
+pam=/etc/pam.d/sudo_local
+pam_body='auth       optional       /opt/homebrew/lib/pam/pam_reattach.so
+auth       sufficient     pam_tid.so'
+if [ ! -e "$pam" ]; then
+	printf '%s\n' "$pam_body" | sudo tee "$pam" >/dev/null
+elif [ "$(cat "$pam")" != "$pam_body" ]; then
+	echo "warning: $pam が別の内容なので上書きしません。内容を確認してください" >&2
+	status=1
+fi
+
+sh "$DOTFILES/macos/defaults.sh"
+
+# Claude Code は公式の native installer で入れる (https://code.claude.com/docs/en/setup)
+if [ ! -x "$HOME/.local/bin/claude" ]; then
+	curl -fsSL https://claude.ai/install.sh | bash
 fi
 
 cat <<'MANUAL'
 
-残りは手動で実施してください (このスクリプトは実行しません)
+残りは手動で実施してください
 
-1. ログインシェルを Homebrew の zsh に変更
-     grep -qx /opt/homebrew/bin/zsh /etc/shells || echo /opt/homebrew/bin/zsh | sudo tee -a /etc/shells
-     chsh -s /opt/homebrew/bin/zsh
-
-2. sudo の Touch ID (/etc/pam.d/sudo_local を次の内容にする)
-     auth       optional       /opt/homebrew/lib/pam/pam_reattach.so
-     auth       sufficient     pam_tid.so
-
-3. macOS の設定
-     sh ~/dotfiles/macos/defaults.sh
-
-4. Dock の常駐アプリは手動で並べる
-
-5. 手動で入れるアプリ
+1. ログアウトしてログインし直す (macOS の設定とログインシェルの反映)
+2. claude を起動してログインし、続けて sh ~/dotfiles/claude/setup.sh
+3. 手動で入れるアプリ
      Xcode, Amazon Kindle (App Store)
-     Orca (/Applications/Orca.app。cask の orca は別物)
-     Dia (/Applications/Dia.app。cask 管理外で入れている)
+     Orca, Dia (公式サイト)
 MANUAL
+if [ "$host" = private ]; then
+	echo "     GatherV2 (公式サイト。cask の gather は旧版)"
+fi
+echo "4. Dock の常駐アプリを並べる"
 
 exit "$status"
