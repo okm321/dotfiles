@@ -80,7 +80,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- see: https://github.com/coder/claudecode.nvim/issues/52#issuecomment-2994326218
--- vim.env.CLAUDE_CONFIG_DIR = vim.fn.expand("~/.config/claude")
 
 -- なんかavanteでmonorepoの場合diff表示する時にnew bufになるから入れてる
 -- https://github.com/yetone/avante.nvim/issues/1759#issuecomment-2770887161

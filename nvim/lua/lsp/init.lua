@@ -18,7 +18,6 @@ vim.lsp.enable({
 	"jsonls",
 	"yamlls",
 	"taplo",
-	"nil_ls",
 	"dartls",
 	"buf_ls",
 })

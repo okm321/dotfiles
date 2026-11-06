@@ -41,6 +41,6 @@
 
 ## Claude Code Settings (dotfiles)
 
-- 設定の実体は `~/dotfiles/claude/`。`~/.config/claude` と `~/.config/claude-work` はnixのsymlinkなので、そこに直接ファイルを作らない
+- 設定の実体は `~/dotfiles/claude/`。`~/.claude` の該当ファイルは `install.sh` が張る symlink なので、そこに直接ファイルを作らない
 - 案件固有の名前・設定はdotfilesに載せない(プロジェクト側のCLAUDE.mdかローカルファイルへ)
 - MCPサーバーは `mcp-servers.json` に書く。変更したら「`sh ~/dotfiles/claude/setup.sh` を実行してください」と伝える

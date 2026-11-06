@@ -1,6 +1,6 @@
 .zshrc.local
 /git/user.conf
-/.nix-host
+/.host
 
 /aider/.aider.conf.yml
 .aider*
@@ -9,3 +9,6 @@ zsh/.tmux-setup/*
 
 /claude/skills/.trash/
 /claude/skills/synced/
+
+# グローバル ignore の mise.toml を打ち消す
+!/hosts/*/mise.toml

@@ -1,0 +1,12 @@
+tap "osx-cross/avr", trusted: true
+# qmk の依存 (arm-none-eabi-gcc@8) がこの tap にある
+tap "osx-cross/arm", trusted: true
+tap "qmk/qmk", trusted: true
+
+brew "osx-cross/avr/avr-gcc@9"
+brew "qmk/qmk/qmk"
+
+cask "notion"
+cask "spotify"
+cask "orbstack"
+cask "gather"

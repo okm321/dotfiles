@@ -21,7 +21,7 @@ return {
 		}
 
 		-- textlint: dotfiles/textlint/ にローカル install したルールを使う。
-		-- nixpkgs にルール (ja-space-around-code 等) が無いため、ホームの専用ディレクトリで
+		-- 配布パッケージにルール (ja-space-around-code 等) が無いため、ホームの専用ディレクトリで
 		-- npm install して node_modules を持つ構成。bin は absolute path で呼び出す。
 		-- 初回セットアップ: cd ~/dotfiles/textlint && npm install
 		local textlint_cmd = vim.fn.expand("~/dotfiles/textlint/node_modules/.bin/textlint")

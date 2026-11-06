@@ -14,14 +14,12 @@ alias reload='exec $SHELL -l'
 alias cdf='cd "$(dirname "$(fzf --preview="bat --color=always  --height 100% {}")")"'
 alias tmux-load="tmux source-file ~/.config/tmux/.tmux.conf"
 
-# claude のアカウント切替 (.claude-config-dir) は ~/dotfiles/bin/claude の shim が担う
 # ide (tmux IDE レイアウト) は ~/dotfiles/bin/ide
 function ghql() {
   local dir=$(ghq list -p | fzf --preview "eza -la {}" --prompt="🔍 ghq Search ")
   [ -n "$dir" ] && builtin cd "$dir"
 }
 
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias wt="workmux"  # add --pr のレイアウト切替は ~/dotfiles/bin/workmux の shim
 alias ccsl='ccstatusline --config ~/dotfiles/ccstatusline/settings.json'  # Claude Code statusline の TUI 設定
 

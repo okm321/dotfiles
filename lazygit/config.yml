@@ -1,7 +1,7 @@
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --side-by-side
+      command: delta --dark --paging=never --side-by-side
 gui:
   nerdFontsVersion: "3"
 os:

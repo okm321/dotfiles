@@ -3,6 +3,8 @@
 # zshの読み込み時間を表示するときはコメントアウトを外す
 # zmodload zsh/zprof
 
+source "$HOME/dotfiles/zsh/.zshenv"
+
 # Deno (sheldon より先に読み込む。zeno.zsh が依存)
 [ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 
@@ -32,7 +34,7 @@ case ":$PATH:" in
   *) export PATH="$HOME/.local/bin:$PATH" ;;
 esac
 
-# ~/dotfiles/bin (claude shim など。~/.local/bin より前に置く)
+# ~/dotfiles/bin (workmux shim など。~/.local/bin より前に置く)
 case ":$PATH:" in
   *":$HOME/dotfiles/bin:"*) ;;
   *) export PATH="$HOME/dotfiles/bin:$PATH" ;;
@@ -55,8 +57,6 @@ eval "$(zoxide init zsh --no-cmd)"
 source ~/dotfiles/zsh/zoxide.zsh
 
 export XDG_CONFIG_HOME="$HOME/.config"
-
-export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 export EDITOR="nvim"
 

@@ -1,21 +1,63 @@
 [tools]
 node = "lts"
+go = "latest"
+bun = "latest"
+uv = "latest"
 
-# Nix にない or 新興 AI tool 系のみ mise で管理
-# (定番ツール 19 個は ~/dotfiles/nix/modules/home/packages.nix に移行済み)
-# (netlify-cli, ts-node, cz-conventional-changelog, sql-formatter-cli,
-#  @vue/typescript-plugin は使ってないため削除)
+# CLI
+bat = "latest"
+fd = "latest"
+fzf = "latest"
+delta = "latest"
+gitleaks = "latest"
+jq = "latest"
+lazygit = "latest"
+lsd = "latest"
+neovim = "latest"
+ripgrep = "latest"
+stylua = "latest"
+tree-sitter = "latest"
+yazi = "latest"
+zoxide = "latest"
+"github:k1LoW/mo" = "latest"  # tap は Linux 向け formula の定義エラーで tap できない
+
+# 開発 / インフラ
+biome = "latest"
+buf = "latest"
+cloudflared = "latest"
+lua-language-server = "latest"
+skaffold = "latest"
+sqlc = "latest"
+taplo = "latest"
+terraform-ls = "latest"
+tflint = "latest"
+
+# npm tool / LSP
+"npm:typescript" = "5"  # 7 系は tsserver が無い
+"npm:typescript-language-server" = "latest"
+"npm:bash-language-server" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:stylelint-lsp" = "latest"
+"npm:graphql-language-service-cli" = "latest"
+"npm:@vue/language-server" = "latest"
+"npm:markdownlint-cli2" = "latest"
+"npm:sql-formatter" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+"npm:@antfu/ni" = "latest"
+"npm:yarn" = "latest"  # registry の yarn は berry になるので classic のまま
+"npm:@google/gemini-cli" = "latest"
 "npm:css-variables-language-server" = "latest"
 "npm:cssmodules-language-server" = "latest"
 "npm:git-cz" = "latest"
 "npm:git-split-diffs" = "latest"
-"npm:lehre" = "latest"
 "npm:@aikidosec/safe-chain" = "latest"
 "npm:@github/copilot-language-server" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
-"npm:@openai/codex" = "latest"  # nixpkgs は 1〜2 週遅れるので最新追従のため mise
+"npm:@openai/codex" = "latest"
 "npm:ccstatusline" = "latest"  # Claude Code statusline (設定は ~/dotfiles/ccstatusline/settings.json)
-"npm:vercel" = "latest"  # nixpkgs 26.05 で nodePackages ごと削除された
+"npm:vercel" = "latest"
 
 [settings]
 idiomatic_version_file = true

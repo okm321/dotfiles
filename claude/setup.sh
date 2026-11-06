@@ -5,19 +5,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SETTINGS_FILE="$SCRIPT_DIR/settings.json"
 MCP_FILE="$SCRIPT_DIR/mcp-servers.json"
 
-# 実行時 cwd から .claude-config-dir マーカーを上方向に探し、対象 config dir を確定する
-# (zsh の claude ラッパーと同じ判定。シェルの環境変数には依存しない)
-dir="$PWD"
-while [ "$dir" != "/" ]; do
-  if [ -f "$dir/.claude-config-dir" ]; then
-    CLAUDE_CONFIG_DIR="$(cat "$dir/.claude-config-dir")"
-    export CLAUDE_CONFIG_DIR
-    break
-  fi
-  dir="$(dirname "$dir")"
-done
-echo "Target config dir: ${CLAUDE_CONFIG_DIR:-$HOME/.claude (default)}"
-
 # Install plugins
 echo "=== Installing Plugins ==="
 
@@ -54,7 +41,7 @@ if jq -e '.enabledPlugins["claude-seo@agricidaniel-claude-seo"]' "$SETTINGS_FILE
     echo "Warning: python3 が見つかりません。claude-seo の Python セットアップをスキップ"
   else
     # requirements.txt はプラグイン配置先を優先、無ければ GitHub から取得
-    REQ=$(find "$HOME/.config/claude/plugins" -name requirements.txt -path '*claude-seo*' 2>/dev/null | head -1)
+    REQ=$(find "$HOME/.claude/plugins" -name requirements.txt -path '*claude-seo*' 2>/dev/null | head -1)
     TMP_REQ=""
     if [[ -z "$REQ" ]]; then
       TMP_REQ=$(mktemp)

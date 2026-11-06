@@ -137,7 +137,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME\"/.config/claude/hooks/scripts/setup-plan-exclude.sh"
+            "command": "bash \"$HOME\"/.claude/hooks/scripts/setup-plan-exclude.sh"
           },
           {
             "type": "command",
