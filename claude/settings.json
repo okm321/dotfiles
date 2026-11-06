@@ -319,7 +319,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "\"$HOME\"/.local/share/mise/installs/npm-ccstatusline/latest/bin/ccstatusline --config \"$HOME\"/dotfiles/ccstatusline/settings.json",
+    "command": "\"$HOME\"/.local/share/mise/shims/ccstatusline --config \"$HOME\"/dotfiles/ccstatusline/settings.json",
     "padding": 0
   },
   "enabledPlugins": {
