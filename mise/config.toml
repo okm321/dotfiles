@@ -41,7 +41,6 @@ tflint = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:stylelint-lsp" = "latest"
 "npm:graphql-language-service-cli" = "latest"
-"npm:@vue/language-server" = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:sql-formatter" = "latest"
 "npm:@fsouza/prettierd" = "latest"
@@ -53,11 +52,9 @@ tflint = "latest"
 "npm:git-cz" = "latest"
 "npm:git-split-diffs" = "latest"
 "npm:@aikidosec/safe-chain" = "latest"
-"npm:@github/copilot-language-server" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
 "npm:@openai/codex" = "latest"
 "npm:ccstatusline" = "latest"  # Claude Code statusline (設定は ~/dotfiles/ccstatusline/settings.json)
-"npm:vercel" = "latest"
 
 [settings]
 idiomatic_version_file = true

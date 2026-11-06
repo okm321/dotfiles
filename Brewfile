@@ -61,6 +61,9 @@ cask "raycast"
 # 開発ツール
 cask "gcloud-cli"
 cask "session-manager-plugin"
+# mise の npm だと provenance の無い版で trust policy に止められる
+cask "copilot-language-server"
+cask "vercel"
 cask "tableplus"
 cask "postman"
 cask "docker-desktop"
