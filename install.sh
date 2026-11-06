@@ -63,6 +63,10 @@ for f in CLAUDE.md settings.json mcp-servers.json skills agents hooks commands; 
 	link "claude/$f" ".claude/$f"
 done
 
+# 公開 repo なので commit 前に認証情報と社名を検査する
+git -C "$DOTFILES" config core.hooksPath git/hooks
+[ -s "$DOTFILES/.deny-words" ] || echo "warning: .deny-words が無いので社名の検査は効きません (1行1つの正規表現で作る)" >&2
+
 mise trust "$DOTFILES/mise/config.toml"
 if [ -f "hosts/$host/mise.toml" ]; then
 	link "hosts/$host/mise.toml" .config/mise/conf.d/host.toml

@@ -1,0 +1,28 @@
+#!/bin/sh
+# 公開 repo なので、認証情報と .deny-words の語を含む commit を止める
+# 止められない語の誤検知は git commit --no-verify で通す
+set -eu
+root="$(git rev-parse --show-toplevel)"
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+	echo "pre-commit: gitleaks が見つからないので commit を止めました" >&2
+	exit 1
+fi
+gitleaks git --staged --no-banner --redact "$root" || {
+	echo "pre-commit: 認証情報らしきものが含まれています" >&2
+	exit 1
+}
+
+words="$root/.deny-words"
+if [ ! -s "$words" ]; then
+	echo "pre-commit: $words が無いので社名などの検査を飛ばしました" >&2
+	exit 0
+fi
+hits="$(git diff --cached -U0 --no-ext-diff | grep '^+' | grep -v '^+++' | grep -inE -f "$words" || true)"
+paths="$(git diff --cached --name-only | grep -iE -f "$words" || true)"
+if [ -n "$hits$paths" ]; then
+	echo "pre-commit: .deny-words の語が含まれています" >&2
+	[ -n "$hits" ] && echo "$hits" | cut -c1-120 >&2
+	[ -n "$paths" ] && echo "$paths" >&2
+	exit 1
+fi

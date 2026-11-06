@@ -12,3 +12,4 @@ zsh/.tmux-setup/*
 
 # グローバル ignore の mise.toml を打ち消す
 !/hosts/*/mise.toml
+/.deny-words
