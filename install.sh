@@ -18,7 +18,11 @@ echo "$host" >.host
 export PATH="/opt/homebrew/bin:$PATH"
 
 if ! command -v brew >/dev/null 2>&1; then
-	echo "error: brew が見つかりません。https://brew.sh の手順で Homebrew を入れてから再実行してください" >&2
+	echo "Homebrew が無いので公式インストーラーで入れます (https://brew.sh)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+if ! command -v brew >/dev/null 2>&1; then
+	echo "error: Homebrew を入れた後も /opt/homebrew/bin/brew が見つかりません (Intel Mac は未対応)" >&2
 	exit 1
 fi
 
