@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
+    # --- エージェント多重化 TUI (公式 flake) ---
+    inputs.herdr.packages.${pkgs.system}.default
+
     # --- シェル基盤 ---
     zsh
     bash
@@ -24,6 +27,7 @@
     zoxide
     yazi
     gnused
+    (writeShellScriptBin "gsed" ''exec ${gnused}/bin/sed "$@"'') # homebrew 互換の gsed 名
     htop
     pwgen
     p7zip
@@ -41,40 +45,42 @@
 
     # --- 開発系 ---
     mise
+    cocoapods
     lua-language-server
     go
     gopls
-    marksman
+    buf
+    sqlc
     typos-lsp
     httpie
     qsv
     redis
+    postgresql # psql 用 (サーバは起動しない)
     pgcli
     mycli
 
     # --- ネットワーク/インフラ ---
     cloudflared
-    terraform
+    tenv # tfenv 後継。terraform 本体は tenv 経由で管理 (nix の terraform と共存すると PATH で衝突するため除外)
     terraform-ls
     tflint
     skaffold
     ssm-session-manager-plugin
 
     # --- npm tool / LSP (mise の npm:* から Nix 管理に移行) ---
-    # nodePackages 同士で内包 typescript が重複するため hiPrio で typescript を優先
-    (lib.hiPrio nodePackages.typescript)
-    nodePackages.typescript-language-server
-    nodePackages.bash-language-server
-    nodePackages.yaml-language-server
-    nodePackages.vscode-langservers-extracted
+    # npm 系パッケージ同士で内包 typescript が重複するため hiPrio で typescript を優先
+    (lib.hiPrio typescript)
+    typescript-language-server
+    bash-language-server
+    yaml-language-server
+    vscode-langservers-extracted
     dockerfile-language-server
     # eslint は project の node_modules を使う (system にあると LSP が pnpm の plugin 解決に失敗)
-    nodePackages.wrangler
-    nodePackages.yarn
-    nodePackages.sql-formatter
-    nodePackages."@vue/language-server"
-    nodePackages."@antfu/ni"
-    nodePackages.vercel
+    wrangler
+    yarn
+    sql-formatter
+    vue-language-server
+    ni
     prettierd
     biome
     taplo
@@ -82,9 +88,8 @@
     graphql-language-service-cli
     markdownlint-cli2
 
-    codex          # @openai/codex
     gemini-cli     # @google/gemini-cli
-    # claude-code は nix 管理外。最新版に追いつかないため公式 native installer or npm global で管理
+    # claude-code / codex は nix 管理外。最新版に追いつかないため公式 native installer or npm global で管理
 
     # --- Nix 自身の LSP / formatter ---
     nil

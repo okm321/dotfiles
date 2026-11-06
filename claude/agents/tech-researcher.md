@@ -2,6 +2,7 @@
 name: tech-researcher
 description: 技術トピックを調査し、最新情報をまとめる。ライブラリの新機能、破壊的変更、ベストプラクティスを調査する際に使用。
 tools: Read, Glob, Grep, Bash, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
+model: sonnet
 ---
 
 # Tech Researcher Agent

@@ -13,6 +13,9 @@ node = "lts"
 "npm:@aikidosec/safe-chain" = "latest"
 "npm:@github/copilot-language-server" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
+"npm:@openai/codex" = "latest"  # nixpkgs は 1〜2 週遅れるので最新追従のため mise
+"npm:ccstatusline" = "latest"  # Claude Code statusline (設定は ~/dotfiles/ccstatusline/settings.json)
+"npm:vercel" = "latest"  # nixpkgs 26.05 で nodePackages ごと削除された
 
 [settings]
 idiomatic_version_file = true

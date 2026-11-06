@@ -7,6 +7,9 @@ return {
 	},
 	config = function()
 		require("go").setup({
+			-- デフォルト true。CmdlineEnter で load された瞬間に
+			-- vim.lsp.inlay_hint.enable(true) がグローバルに実行されてしまうため無効化
+			lsp_inlay_hints = { enable = false },
 			diagnostic = {
 				hdlr = false,
 				underline = true,

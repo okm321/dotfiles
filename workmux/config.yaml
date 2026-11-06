@@ -1,22 +1,27 @@
 nerdfont: true
 agent: claude
 
-# workmux の panes は「直前 pane を split」 仕様しか無いため、
-# 上を左右 + 下を左右の 4 ペインは panes 配列だけでは作れない。
-# focus pane の command で tmux 直叩きして残りのペインを構築する。
-#
-#   構成 (高さ 上 75% / 下 25% 、 横は 上 70/30 ・ 下 50/50):
-#   ┌──────────────┬──────┐
-#   │     nvim     │ chat │
-#   ├──────────┬───┴──────┤
-#   │    sh    │    sh    │
-#   └──────────┴──────────┘
+# ide = ~/dotfiles/bin/ide (nvim 上 75% / 下 sh 50・50)。alias だと zsh-defer の遅延読込に間に合わない
 panes:
   - command: ide
     focus: true
+
+# workmux add --pr の時は ~/dotfiles/bin/workmux の shim が -l pr を付ける (右上の claude が /pr-review を流す)
+layouts:
+  # -p/-P でプロンプトを渡した時 (/worktree スキル等)。shim が自動で -l agent を付ける
+  agent:
+    panes:
+      - command: <agent>
+        focus: true
+      - split: vertical
+        percentage: 25
+  pr:
+    panes:
+      - command: ide --pr
+        focus: true
 
 worktree_naming: basename
 
 files:
   symlink:
-    - .claude/lseettings.local.json
+    - .claude/settings.local.json

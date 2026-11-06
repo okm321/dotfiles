@@ -11,20 +11,9 @@ Tasks: $ARGUMENTS
 
 ## You are a dispatcher, not an implementer
 
-**HARD RULE — NO EXCEPTIONS:** Do NOT explore, read, grep, glob, or search the
-codebase. Do NOT use the Task/Explore agent. Do NOT investigate the problem. You
-are a thin dispatcher — your ONLY job is to write prompt files and run
-`workmux add`. The worktree agent will do all the exploration and implementation.
-
-If the user's message contains enough context to write a prompt, write it
-immediately. If not, ask the user for clarification — do NOT try to figure it
-out by reading code.
-
-If tasks reference earlier conversation (e.g., "do option 2"), include all
-relevant context in each prompt you write.
-
-If tasks reference a markdown file (e.g., a plan or spec), re-read the file to
-ensure you have the latest version before writing prompts.
+See the `/workmux` skill's Dispatcher Principles for the hard rule (no
+exploring/reading/searching the codebase) and prompt file rules. Follow
+them here.
 
 For each task:
 
@@ -32,21 +21,11 @@ For each task:
 2. Write a detailed implementation prompt to a temp file
 3. Run `workmux add <worktree-name> -b -P <temp-file>` to create the worktree
 
-The prompt file should:
-
-- Include the full task description
-- Use RELATIVE paths only (never absolute paths, since each worktree has its own
-  root directory)
-- Be specific about what the agent should accomplish
-
 ## Skill delegation
 
-If the user passes a skill reference (e.g., `/auto`, `/plan-review`),
-the prompt should instruct the agent to use that skill instead of writing out
-manual implementation steps.
-
-**Skills can have flags.** If the user passes `/auto --gemini`, pass the
-flag through to the skill invocation in the prompt.
+If the user passes a skill reference (e.g., `/auto`, `/plan-review`), write
+the prompt so the agent invokes that skill instead of manual implementation
+steps. Pass any flags through (e.g. `/auto --gemini`).
 
 Example prompt:
 ```
@@ -91,26 +70,11 @@ directly in this worktree.
 
 If the task mentions another repository, absolute project path, or work that
 clearly spans multiple repositories, adapt the dispatch to the target project
-instead of assuming the current repository.
-
-For each target project:
-
-1. Use the project path provided by the user, or the project path already present
-   in the conversation. Do not explore that repository.
-2. Derive the default tmux session name from the repository directory basename.
-   For `/Users/me/code/api-server`, use `api-server`.
-3. Check whether a tmux session already exists for that project with
-   `tmux list-sessions -F '#{session_name} #{session_path}'`. Prefer a session
-   whose path matches the target project. Otherwise use the derived session name.
-4. If no session exists, create one with `tmux new-session -d -s <session> -c
-   <project-path>`.
-5. Run `workmux add` from that project's tmux session by creating a window rooted
-   at the project path:
-
-```bash
-tmux new-window -t <session> -c <project-path> \
-  "workmux add <worktree-name> -b -P <prompt-file>; exit"
-```
+instead of assuming the current repository. Use the project path provided by
+the user, or already present in the conversation — do not explore that
+repository. Follow the `/workmux` skill's cross-project worktree creation
+steps to find or create the target tmux session and run `workmux add` inside
+it.
 
 If a task touches both the current repository and another repository, create one
 prompt and worktree per repository. Each prompt should explain the cross-repo

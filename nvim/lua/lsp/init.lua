@@ -19,4 +19,6 @@ vim.lsp.enable({
 	"yamlls",
 	"taplo",
 	"nil_ls",
+	"dartls",
+	"buf_ls",
 })

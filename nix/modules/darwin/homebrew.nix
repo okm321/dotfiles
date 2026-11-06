@@ -6,7 +6,8 @@
     onActivation = {
       autoUpdate = false;
       upgrade = false;
-      cleanup = "uninstall";
+      # brew 7 で --cleanup が廃止。nix-darwin 25.11 が追従したら "uninstall" に戻す
+      cleanup = "none";
     };
 
     # homebrew.taps は flake.nix で nix-homebrew.taps から自動同期される
@@ -15,9 +16,11 @@
     brews = [
       "osx-cross/avr/avr-gcc@9"
       "raine/workmux/workmux"
+      "umputun/apps/revdiff"  # diff レビュー TUI (Claude Code plugin と併用)
       "morantron/tmux-fingers/tmux-fingers"
       "k1low/tap/mo"  # Markdown viewer (nixpkgs の mo は別物 = moustache template)
       "ical-buddy"
+      "leoafarias/fvm/fvm"  # Flutter SDK バージョン管理 (nixpkgs の fvm は 0.9.3 と古い)
     ];
 
     # mas が新版 (v2+) で `mas get <id>` サブコマンドを削除したため
@@ -37,15 +40,17 @@
       "raycast"
 
       # 開発ツール / API
+      "google-cloud-sdk"
       "tableplus"
       "postman"
       "orbstack"
       "docker-desktop"
       "drawio"
 
-      # エディタ
+      # エディタ / IDE
       "zed"
       "visual-studio-code"
+      "android-studio"
 
       # ブラウザ
       "google-chrome"
@@ -68,8 +73,10 @@
       "1password-cli"
       "cleanshot"
       "clipy"
+      "steipete/tap/codexbar"
       "nani"
       "voiceink"
+      "keycastr"
 
       # Microsoft Office (一括)
       "microsoft-office"

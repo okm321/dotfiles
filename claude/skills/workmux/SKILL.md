@@ -13,9 +13,35 @@ development. Each worktree is an isolated workspace with its own branch,
 terminal state, and AI agent.
 
 **If the user asks you to create worktrees or dispatch tasks (e.g.,
-"/workmux add ..."), you are a dispatcher.** Write prompt files and run
-commands. Do NOT explore, read, or research the codebase first. Use
-context you already have. The worktree agent does all the work.
+"/workmux add ..."), you are a dispatcher, not an implementer.** See
+Dispatcher Principles below.
+
+## Dispatcher Principles
+
+Your only job is to write prompt files and run `workmux add`.
+
+**Hard rule:** Do NOT explore, read, grep, glob, or search the codebase,
+and do NOT use the Task/Explore agent. Use context you already have. The
+worktree agent does all the exploration and implementation.
+
+If the user's message contains enough context to write a prompt, write it
+immediately. If not, ask for clarification — do NOT try to figure it out
+by reading code.
+
+**Prompt file rules:**
+
+- Self-contained with full context (agents cannot see your conversation)
+- Use RELATIVE paths only (each worktree has its own root)
+- Be specific about what the agent should accomplish
+- If referencing earlier conversation context, include it verbatim
+- If a task references a markdown file (plan, spec), re-read it for the
+  latest version before writing the prompt
+
+**Skill delegation:** if the user passes a skill reference (e.g., `/auto`,
+`/plan-review`), instruct the agent to use that skill instead of writing
+out manual implementation steps, passing along any flags (e.g.
+`/auto --gemini`). Do not delegate to a skill unless the user explicitly
+referenced one.
 
 ## Key Concepts
 
@@ -26,7 +52,8 @@ context you already have. The worktree agent does all the work.
 - **Window prefix**: tmux windows are named `wm-<handle>` by default
   (configurable via `window_prefix`)
 - **Agent status**: agents report status via hooks: working, waiting (needs
-  input), done (finished)
+  input), done (finished). Agents typically go working -> done; waiting
+  only occurs if the agent prompts for input
 
 ## Commands
 
@@ -204,9 +231,6 @@ step. This cleans up the worktree, tmux window, and branch.
 Use `/worktree` to spin off tasks into parallel worktree agents. The
 agent writes a prompt file and runs `workmux add -b -P <file>`.
 
-For full lifecycle orchestration (spawn, monitor, merge), use
-`/coordinator`.
-
 ### Cross-project worktree creation
 
 `workmux add` creates worktrees in the current git repo and adds the
@@ -218,6 +242,10 @@ Discover project paths from existing sessions:
 ```bash
 tmux list-sessions -F '#{session_name} #{session_path}'
 ```
+
+Prefer a session whose path matches the target project. If none exists,
+derive a session name from the project directory basename (e.g.
+`/Users/me/code/api-server` -> `api-server`).
 
 Then create the worktree in the target session:
 
@@ -235,15 +263,12 @@ tmux new-window -t <session> -c <project-path> \
 The temporary window closes when `workmux add` finishes; the worktree
 window that workmux creates stays in the session.
 
-Do NOT research before dispatching. Use context you already have, but
-do not explore or read code just to write the prompt. Worktree agents
-can read files from other projects via absolute paths, so reference
-other projects by path and let the agent explore on its own.
+Worktree agents can read files from other projects via absolute paths, so
+reference other projects by path and let the agent explore on its own.
 
 ## Related Skills
 
 - **`/merge`**: commit, rebase, and merge the current branch
 - **`/rebase`**: rebase with smart conflict resolution
 - **`/worktree`**: delegate tasks to parallel worktree agents
-- **`/coordinator`**: orchestrate multiple agents (spawn, monitor, merge)
 - **`/open-pr`**: write PR description and open in browser

@@ -1,0 +1,104 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "current-working-dir",
+        "color": "cyan",
+        "rawValue": true,
+        "metadata": {
+          "fishStyle": "true"
+        }
+      },
+      {
+        "id": "3",
+        "type": "git-branch",
+        "color": "magenta"
+      },
+      {
+        "id": "a92577c8-0d7a-463e-a58e-8b047994b3d2",
+        "type": "free-memory",
+        "backgroundColor": "bgBrightBlack"
+      },
+      {
+        "id": "0da1ffdf-6f34-4033-9d97-5ca17b499f1f",
+        "type": "claude-account-email",
+        "backgroundColor": "bgBrightBlue"
+      }
+    ],
+    [
+      {
+        "id": "b4e4e6f6-3e51-467f-9cf1-bc942b546e91",
+        "type": "session-usage",
+        "backgroundColor": "bgBrightBlack"
+      },
+      {
+        "id": "f7b68bd6-281e-4623-9183-f31f52f8bbcd",
+        "type": "context-percentage",
+        "backgroundColor": "bgRed"
+      },
+      {
+        "id": "a017a9fa-24da-40b9-8b14-ab7f5aa744f1",
+        "type": "model",
+        "backgroundColor": "bgRed"
+      },
+      {
+        "id": "ca7bae84-978d-401d-99b8-589a597edd5a",
+        "type": "version",
+        "backgroundColor": "bgYellow"
+      }
+    ],
+    [
+      {
+        "id": "9226e3d8-b7a0-459a-a17a-af2eef6e610b",
+        "type": "reset-timer",
+        "backgroundColor": "bgBrightYellow"
+      },
+      {
+        "id": "794cfc1a-75db-4946-b6ad-3ceebe5f42df",
+        "type": "weekly-usage",
+        "backgroundColor": "bgBlue"
+      },
+      {
+        "id": "94b5cc4c-1ca1-477c-b0c0-62b6e82c9039",
+        "type": "fable-weekly-usage",
+        "backgroundColor": "bgBrightCyan"
+      },
+      {
+        "id": "e271dc2a-2d51-4940-a695-f46da7a816a3",
+        "type": "weekly-reset-timer",
+        "backgroundColor": "bgBrightBlue"
+      }
+    ]
+  ],
+  "flexMode": "full",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPadding": " ",
+  "defaultPaddingSide": "both",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "terminalWidthCacheTtlSeconds": 5,
+  "customCommandCacheTtlSeconds": 0,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [
+      ""
+    ],
+    "endCaps": [
+      ""
+    ],
+    "theme": "nord",
+    "autoAlign": true,
+    "continueThemeAcrossLines": true
+  }
+}

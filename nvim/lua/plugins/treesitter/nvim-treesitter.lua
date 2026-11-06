@@ -32,6 +32,8 @@ return {
 			"lua", "luadoc", "luap", "vim", "vimdoc",
 			"printf", "query",
 			"sql", "hcl", "terraform", "c",
+			"dart",
+			"proto",
 		}
 		local installed = require("nvim-treesitter.config").get_installed()
 		local to_install = vim.iter(ensure_installed)

@@ -6,3 +6,6 @@
 .aider*
 zsh/.tmux-setup/*
 !zsh/.tmux-setup/sample.conf
+
+/claude/skills/.trash/
+/claude/skills/synced/

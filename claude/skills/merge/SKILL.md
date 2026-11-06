@@ -46,17 +46,8 @@ git rebase <base-branch>
 
 IMPORTANT: Do NOT run `git fetch`. Do NOT rebase onto `origin/<branch>`. Only rebase onto the local branch name (e.g., `git rebase main`, not `git rebase origin/main`).
 
-If conflicts occur:
-
-- BEFORE resolving any conflict, understand what changes were made to each
-  conflicting file in the base branch
-- For each conflicting file, run `git log -p -n 3 <base-branch> -- <file>` to
-  see recent changes to that file in the base branch
-- The goal is to preserve BOTH the changes from the base branch AND our branch's
-  changes
-- After resolving each conflict, stage the file and continue with
-  `git rebase --continue`
-- If a conflict is too complex or unclear, ask for guidance before proceeding
+If conflicts occur, follow the `/rebase` skill's conflict resolution
+procedure, treating `<base-branch>` as the target branch.
 
 ## Step 3: Merge
 

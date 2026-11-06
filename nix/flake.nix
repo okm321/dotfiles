@@ -2,18 +2,18 @@
   description = "okm321 dotfiles - Nix + Home Manager + nix-darwin";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    # 25.11 stable より新しい neovim 0.12.x を取るための入力
+    # stable より新しい版が要るパッケージ用の入力
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,6 +44,10 @@
       url = "github:raine/homebrew-workmux";
       flake = false;
     };
+    homebrew-umputun-apps = {
+      url = "github:umputun/homebrew-apps";
+      flake = false;
+    };
     homebrew-morantron-tmux-fingers = {
       url = "github:Morantron/tmux-fingers";
       flake = false;
@@ -56,11 +60,26 @@
       url = "github:k1LoW/homebrew-tap";
       flake = false;
     };
+    homebrew-leoafarias-fvm = {
+      url = "github:leoafarias/homebrew-fvm";
+      flake = false;
+    };
+    homebrew-steipete-tap = {
+      url = "github:steipete/homebrew-tap";
+      flake = false;
+    };
 
     # gh-prism: gh の TUI 拡張 (PR レビュー)
     gh-prism = {
       url = "github:kawarimidoll/gh-prism";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # herdr: エージェント多重化 TUI (nixpkgs 未収録、公式 flake で配布)
+    # herdr 本体は nixos-unstable 前提なので nixpkgs-unstable に follows
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -72,6 +91,11 @@
       overlays = [
         (final: prev: {
           neovim = nixpkgs-unstable.legacyPackages.${system}.neovim;
+          buf = nixpkgs-unstable.legacyPackages.${system}.buf; # LSP 型補完は 1.60 以降
+          # 26.05 の版は脆弱性の修正前
+          mise = nixpkgs-unstable.legacyPackages.${system}.mise;
+          fzf = nixpkgs-unstable.legacyPackages.${system}.fzf;
+
         })
       ];
 
@@ -100,9 +124,12 @@
                   "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
                   "osx-cross/avr" = inputs.homebrew-osx-cross-avr;
                   "raine/workmux" = inputs.homebrew-raine-workmux;
+                  "umputun/apps" = inputs.homebrew-umputun-apps;
                   "morantron/tmux-fingers" = inputs.homebrew-morantron-tmux-fingers;
                   "nikitabobko/tap" = inputs.homebrew-nikitabobko-tap;
                   "k1low/tap" = inputs.homebrew-k1low-tap;
+                  "leoafarias/fvm" = inputs.homebrew-leoafarias-fvm;
+                  "steipete/tap" = inputs.homebrew-steipete-tap;
                 };
               };
             }
@@ -110,7 +137,9 @@
             # nix-darwin の homebrew.taps を nix-homebrew.taps と同期
             # これがないと初回 switch で `Refusing to untap homebrew/cask` エラー
             ({ config, ... }: {
-              homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+              # brew 6 以降は非公式 tap を trust しないと読み込まない
+              homebrew.taps = map (name: { inherit name; trusted = true; })
+                (builtins.attrNames config.nix-homebrew.taps);
             })
 
             home-manager.darwinModules.home-manager

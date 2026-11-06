@@ -13,29 +13,17 @@ alias c='clear'
 alias reload='exec $SHELL -l'
 alias cdf='cd "$(dirname "$(fzf --preview="bat --color=always  --height 100% {}")")"'
 alias tmux-load="tmux source-file ~/.config/tmux/.tmux.conf"
-# IDEライクのレイアウトを作成する関数
-# 構成 (高さ 上 75% / 下 25% 、 横は 上 70/30 ・ 下 50/50):
-#   ┌──────────────┬──────┐
-#   │     nvim     │ chat │
-#   ├──────────┬───┴──────┤
-#   │    sh    │    sh    │
-#   └──────────┴──────────┘
-function create_ide_layout() {
-  local p_top=$(tmux display-message -p '#{pane_id}')
-  local p_bottom=$(tmux split-window -v -p 25 -P -F '#{pane_id}')
-  tmux split-window -h -p 50 -t "$p_bottom"
-  local p_chat=$(tmux split-window -h -p 30 -t "$p_top" -P -F '#{pane_id}')
-  tmux select-pane -t "$p_chat" -T 'ai chat'
-  tmux select-pane -t "$p_top"
-}
-alias ide='create_ide_layout'
+
+# claude のアカウント切替 (.claude-config-dir) は ~/dotfiles/bin/claude の shim が担う
+# ide (tmux IDE レイアウト) は ~/dotfiles/bin/ide
 function ghql() {
   local dir=$(ghq list -p | fzf --preview "eza -la {}" --prompt="🔍 ghq Search ")
   [ -n "$dir" ] && builtin cd "$dir"
 }
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias wt="workmux"
+alias wt="workmux"  # add --pr のレイアウト切替は ~/dotfiles/bin/workmux の shim
+alias ccsl='ccstatusline --config ~/dotfiles/ccstatusline/settings.json'  # Claude Code statusline の TUI 設定
 
 # Docker context 切り替え (orbstack ⇔ Docker Desktop)
 alias docker-orb='docker context use orbstack'

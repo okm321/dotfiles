@@ -32,6 +32,18 @@ case ":$PATH:" in
   *) export PATH="$HOME/.local/bin:$PATH" ;;
 esac
 
+# ~/dotfiles/bin (claude shim など。~/.local/bin より前に置く)
+case ":$PATH:" in
+  *":$HOME/dotfiles/bin:"*) ;;
+  *) export PATH="$HOME/dotfiles/bin:$PATH" ;;
+esac
+
+# fvm global の flutter/dart (dartls などが参照)
+case ":$PATH:" in
+  *":$HOME/fvm/default/bin:"*) ;;
+  *) export PATH="$HOME/fvm/default/bin:$PATH" ;;
+esac
+
 eval "$(direnv hook zsh)"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
@@ -54,3 +66,4 @@ export EDITOR="nvim"
 # humanlog
 export PATH=~/.humanlog/bin:$PATH
 
+[[ -f ~/.safe-chain/scripts/init-posix.sh ]] && source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

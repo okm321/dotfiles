@@ -1,0 +1,20 @@
+#!/bin/sh
+# workmux shim: `add` の引数に応じてレイアウトを自動選択して本体に渡す (--pr → pr, プロンプト付き → agent)。
+# zsh 関数ではなく PATH 上の shim なので、`wt` でも `workmux` でも同じ挙動になる。
+real=/opt/homebrew/bin/workmux
+if [ "$1" = "add" ]; then
+  has_pr=0; has_prompt=0; has_layout=0
+  for a in "$@"; do
+    case "$a" in
+      --pr|--pr=*) has_pr=1 ;;
+      --prompt-file-only) has_prompt=0; break ;;
+      -p|-P|-e|--prompt|--prompt=*|--prompt-file|--prompt-file=*|--prompt-editor) has_prompt=1 ;;
+      -l|--layout|--layout=*) has_layout=1 ;;
+    esac
+  done
+  if [ "$has_layout" = 0 ]; then
+    if [ "$has_pr" = 1 ]; then exec "$real" "$@" -l pr; fi
+    if [ "$has_prompt" = 1 ]; then exec "$real" "$@" -l agent; fi
+  fi
+fi
+exec "$real" "$@"

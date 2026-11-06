@@ -1,0 +1,21 @@
+#!/bin/sh
+# tmux の IDE レイアウト。zsh 関数ではなく PATH 上のスクリプトにしているのは、
+# workmux の pane command が zsh-defer で遅延読み込みされる alias より先に走るため。
+#
+#   通常 (上 75% / 下 25%、下は左右 50/50)   --pr (右上に claude を足して /pr-review を流す)
+#   ┌─────────────────────┐                  ┌──────────────┬──────┐
+#   │        nvim         │                  │     nvim     │claude│
+#   ├──────────┬──────────┤                  ├──────────┬───┴──────┤
+#   │    sh    │    sh    │                  │    sh    │    sh    │
+#   └──────────┴──────────┘                  └──────────┴──────────┘
+p_top=$(tmux display-message -p '#{pane_id}')
+p_bottom=$(tmux split-window -v -p 25 -c "$PWD" -P -F '#{pane_id}')
+tmux split-window -h -p 50 -c "$PWD" -t "$p_bottom"
+
+if [ "$1" = "--pr" ]; then
+  p_chat=$(tmux split-window -h -p 30 -c "$PWD" -t "$p_top" -P -F '#{pane_id}')
+  tmux select-pane -t "$p_chat" -T 'pr review'
+  # PR 番号は /pr-review 側が gh で解決する
+  tmux send-keys -t "$p_chat" "claude '/pr-review'" Enter
+fi
+tmux select-pane -t "$p_top"

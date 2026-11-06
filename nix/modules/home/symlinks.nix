@@ -1,6 +1,25 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
+
+  # 複数の Claude Code アカウントで同じ共通設定を共有する。
+  # サブアカウントはプロジェクト側の .envrc (dotfiles 管理外) の CLAUDE_CONFIG_DIR で切替
+  claudeConfigDirs = [ "claude" "claude-work" ];
+  claudeSharedFiles = [
+    "CLAUDE.md"
+    "settings.json"
+    "mcp-servers.json"
+    "skills"
+    "agents"
+    "hooks"
+    "commands"
+  ];
+  claudeSymlinks = builtins.listToAttrs (lib.concatMap (dir:
+    map (f: {
+      name = "${dir}/${f}";
+      value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/${f}";
+    }) claudeSharedFiles
+  ) claudeConfigDirs);
 in
 {
   home.file = {
@@ -26,15 +45,6 @@ in
     "workmux/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/workmux/config.yaml";
     "raycast/scripts".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/raycast/scripts";
     "mise/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/mise/config.toml";
-
-    "claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/CLAUDE.md";
-    "claude/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/settings.json";
-    "claude/mcp-servers.json".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/mcp-servers.json";
-    "claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/skills";
-    "claude/agents".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/agents";
-    "claude/rules".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/rules";
-    "claude/hooks".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/hooks";
-    "claude/commands".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/commands";
-    "claude/statusline.sh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/claude/statusline.sh";
-  };
+    "herdr/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/herdr/config.toml";
+  } // claudeSymlinks;
 }

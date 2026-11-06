@@ -33,18 +33,23 @@
       "@playwright/mcp@latest"
     ]
   },
-  "pencil": {
-    "command": "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
-    "args": [
-      "--app",
-      "desktop"
-    ],
-    "env": {},
-    "type": "stdio"
-  },
   "drawio": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@drawio/mcp"]
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "@drawio/mcp"
+    ]
+  },
+  "figma-desktop": {
+    "type": "http",
+    "url": "http://127.0.0.1:3845/mcp"
+  },
+  "stripe": {
+    "type": "http",
+    "url": "https://mcp.stripe.com"
+  },
+  "sentry": {
+    "type": "http",
+    "url": "https://mcp.sentry.dev/mcp"
   }
 }

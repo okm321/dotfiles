@@ -1,6 +1,9 @@
 {
+  "cleanupPeriodDays": 30,
   "env": {
-    "ENABLE_TOOL_SEARCH": "true"
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus",
+    "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1"
   },
   "permissions": {
     "allow": [
@@ -34,8 +37,34 @@
       "mcp__ReactAria__*",
       "mcp__claude_ai_Claudeflare_Documents__*"
     ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(git branch -D *)",
+      "Bash(git branch --delete --force *)",
+      "Bash(git checkout -- .)",
+      "Bash(gh repo delete *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh auth *)",
+      "Bash(git config --global *)",
+      "Bash(chmod 777 *)",
+      "Bash(chmod -R 777 *)",
+      "Bash(dd if=*)",
+      "Bash(mkfs *)",
+      "Bash(npm install -g *)",
+      "Bash(npm i -g *)",
+      "Bash(pnpm add -g *)"
+    ],
+    "ask": [
+      "Bash(git push *)"
+    ],
     "defaultMode": "auto"
   },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -72,6 +101,16 @@
             "command": "workmux set-window-status working"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SessionEnd": [
@@ -80,6 +119,15 @@
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-end"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
           }
         ]
       }
@@ -94,6 +142,24 @@
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude session-start"
+          }
+        ]
+      },
+      {
+        "matcher": "startup|resume|clear|fork",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux register-agent"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
           }
         ]
       }
@@ -114,6 +180,15 @@
             "command": "workmux set-window-status done"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "StopFailure": [
@@ -122,6 +197,15 @@
           {
             "type": "command",
             "command": "bash ~/.tmux/plugins/tmux-agent-sidebar/hook.sh claude stop-failure"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
           }
         ]
       }
@@ -142,32 +226,128 @@
             "command": "workmux set-window-status working"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -x \"$HOME/.orca/agent-hooks/claude-hook.sh\" ] && /bin/sh \"$HOME/.orca/agent-hooks/claude-hook.sh\" || true",
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
   "statusLine": {
     "type": "command",
-    "command": "bash \"$HOME\"/.config/claude/statusline.sh"
+    "command": "\"$HOME\"/.local/share/mise/installs/npm-ccstatusline/latest/bin/ccstatusline --config \"$HOME\"/dotfiles/ccstatusline/settings.json",
+    "padding": 0
   },
   "enabledPlugins": {
     "accesslint@accesslint": true,
+    "atlassian@claude-plugins-official": true,
+    "claude-seo@agricidaniel-claude-seo": true,
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
-    "git@project-a-plugins": true,
     "gopls-lsp@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
+    "modern-web-guidance@googlechrome": true,
+    "natural-japanese@natural-japanese": true,
+    "notion@claude-plugins-official": true,
+    "ponytail@ponytail": true,
     "ralph-loop@claude-plugins-official": true,
+    "revdiff@revdiff": true,
+    "reviewable-html-workbench@reviewable-html-workbench-local": true,
+    "skill-creator@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
+    "terminal-browser@terminal-browser": true,
     "typescript-lsp@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "jira@work-claude-plugins": true,
-    "work-jira@work-claude-plugins": true,
-    "modern-web-guidance@googlechrome": true
+    "vercel@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "googlechrome": {
@@ -176,16 +356,46 @@
         "repo": "GoogleChrome/modern-web-guidance"
       }
     },
+    "natural-japanese": {
+      "source": {
+        "source": "github",
+        "repo": "coji/natural-japanese"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "revdiff": {
+      "source": {
+        "source": "github",
+        "repo": "umputun/revdiff"
+      }
+    },
     "accesslint": {
       "source": {
         "source": "github",
         "repo": "accesslint/claude-marketplace"
       }
     },
-    "work-claude-plugins": {
+    "agricidaniel-claude-seo": {
       "source": {
         "source": "github",
-        "repo": "example-org/work-claude-plugins"
+        "repo": "AgriciDaniel/claude-seo"
+      }
+    },
+    "reviewable-html-workbench-local": {
+      "source": {
+        "source": "github",
+        "repo": "u-ichi/reviewable-html-workbench"
+      }
+    },
+    "terminal-browser": {
+      "source": {
+        "source": "github",
+        "repo": "zenbu-labs/terminal-browser"
       }
     }
   },
@@ -198,27 +408,16 @@
     "mode": "hold"
   },
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "autoCompactEnabled": true,
+  "switchModelsOnFlag": true,
   "remoteControlAtStartup": false,
-  "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "defaultMode": "acceptEdits",
-  "plugins": [
-    {
-      "name": "accesslint",
-      "source": {
-        "path": "plugins/accesslint",
-        "repo": "accesslint/claude-marketplace",
-        "source": "github"
-      }
-    },
-    {
-      "name": "modern-web-guidance",
-      "source": {
-        "repo": "GoogleChrome/modern-web-guidance",
-        "source": "github"
-      }
-    }
-  ]
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Bash(terraform apply:*) in terraform/aws/production or terraform/sentry/production",
+      "Bash(rm -rf:*) outside session-created scratch paths"
+    ]
+  }
 }

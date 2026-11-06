@@ -5,8 +5,6 @@ background-blur-radius = 50
 # フォント
 # https://github.com/subframe7536/maple-font
 font-family = "Maple Mono NF CN Medium"
-font-family = "x14y24pxHeadUpDaisy"
-font-family = "Hiragino Kaku Gothic Pro"
 font-thicken
 font-style-italic = Italic
 font-style-bold = Bold
