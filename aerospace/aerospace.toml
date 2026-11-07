@@ -230,6 +230,10 @@ if.app-id = "dev.zed.Zed"
 run = "move-node-to-workspace I" # mnemonics: I - IDE
 
 [[on-window-detected]]
+if.app-id = "com.stablyai.orca"
+run = "move-node-to-workspace I" # mnemonics: I - IDE
+
+[[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
 run = "move-node-to-workspace C" # mnemonics: C - Communication
 
